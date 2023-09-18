@@ -1,0 +1,23 @@
+Please assess the answer of the interviewee based on the following criteria and give a score from 1 to 10 for each category:
+
+1. Relevance - Does the candidate's answer address the specific behavior or skill that the interviewer is looking for?
+2. Specificity - The answer provides a specific example of the situation or challenge, with relevant details to give context. Vague or overly broad answers raise questions.
+3. Actions - The steps you took are clearly articulated. What exactly did you do to address the situation? The actions should demonstrate skills and qualities the role requires.
+4. Results and Impact - The end result or outcome of your actions is conveyed. What changed or improved as a result of your efforts? What did you achieve? Positive results and quantifiable impacts highlight your effectiveness. Does the candidate's answer demonstrate the positive impact of their behavior or skill?
+5. Learning -  What the candidate learned from the situation comes through. Mistakes or failures are best addressed with lessons learned and how your would improve next time. Growth mindset is important.
+6. Clarity - Is the candidate's answer easy to understand and follow? Does it demonstrate effective communication skills? Is the answer clear and concise?
+7. Soft skills - Key qualities like communication, critical thinking, leadership, problem-solving, teamwork, work ethic, compassion, etc. The answer illustrates several of these skills and strengths in action.
+
+Please provide your response in the following format:
+
+"1. Relevance: *your score/10 - *your assessment.
+
+2. Specificity: *your score/10 - *your assessment.
+
+….
+
+….
+
+Overall, I would rate the answer a *your overall score out of 10. *your overall assessment."
+
+Add you a short paragraph summary of your overall score and assessment to the end.

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Interview Practice</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/interviewquestion.css' %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
+            <li class="navMenu">About</li>
+            <li class="navMenu">Login</li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <!--Spinner-->
+    <div id="spinner">
+        <div class="loadingio-spinner-spinner-fnpk4eprp3r">
+            <div class="ldio-pal3955r1rq">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div><p>Your Answer is submitted!<br> Coach Monkey is assessing your answer...</p></div>
+    </div>
+
+    <section id="sideNavContainer">
+        <a href="#questionBox" class="menu-item"><span class="marks">?</span>Question</a>
+        <a href="#answerTranscript" class="menu-item"><span class="marks">!</span>Your Answer</a>
+        <a href="#assessment" class="menu-item"><span class="marks">%</span>Assessment</a>
+        <a href="#revisedAnswer" class="menu-item"><span class="marks">~</span>Revised Answer</a>
+        <br><br><br><br><br><br><br>
+        <a id="nextQuestion" href=""><span class="marks"></span>Next >></a>
+    </section>
+
+    <section id="mainContent">
+        <div id="questionBox" class="content-section">
+            <div class="transparentContainerBox">
+
+                <!--Question Number-->
+                <div id="questionNumber">
+                    <div class="theBrownVerticalDecoBar">
+                        <p>Interview Practice<br>Question {{ form.current_question }}/{{ form.length_of_interview }}</p>
+                    </div>
+                </div>
+
+
+                <!--Question Body-->
+                <div id="questionBody">
+                    <p id="question_text">{{ form.question_text }}</p>
+                </div>
+
+                <!--Recorder-->
+                <div id="recorder">
+
+                    <div id="allRecorderButtons">
+                        <button id="recordButton" class="button-1">
+                            <img src="{% static 'interview/images/RecordButton.svg' %}" alt="Record Button"
+                                 class="svgRecorderButton"/>
+                        </button>
+                        <div id="descriptionRecord">Record</div>
+                        <button id="stopButton" class="button-1" disabled>
+                            <img src="{% static 'interview/images/StopButton.svg' %}" alt="Stop Button"
+                                 class="svgRecorderButton"/>
+                        </button>
+                        <div id="descriptionStop">Stop</div>
+                        <!--<button id="recordButton" class="button-1">Record</button>
+                           <button id="pauseButton" class="button-1" disabled>Pause</button>
+                           <button id="stopButton" class="button-1" disabled>Stop</button>-->
+                        <!--Timer-->
+                        <div id="timer">00:00</div>
+                        <script src="{% static 'interview/js/timer.js' %}"></script>
+
+                        <div id="instructionForRecording">Once ready, click the ‘Record’ button to start recording.
+                        </div>
+                    </div>
+
+                    <br>
+                    <strong>
+                        <div id="yourAnswer"></div>
+                    </strong>
+                    <div id="showAudio"></div>
+                    <ol id="recordingsList"></ol>
+                    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+                    <script src="{% static 'interview/js/recorder.js' %}"></script>
+                    <script src="{% static 'interview/js/recorderapp.js' %}"></script>
+                    <script>let upload_url ={% url 'interview:upload_voice' %}</script>
+                </div>
+            </div>
+        </div>
+
+        <!--Answer, Assess & Revise-->
+        <div id="AAR">
+            <div id="answerTranscript" class="content-section">
+                <div class="transparentContainerBox">
+                    <div class="theBrownVerticalDecoBar">
+                        <h3>Transcript of Your Answer</h3>
+                    </div>
+                    <p id="my_answer">blah blahblah blah blah blah blah blahblah blahblah blah blah blah blah blahblah
+                        blahblah blah
+                        blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah
+                        blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah
+                        blah blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah
+                        blah</p>
+                </div>
+            </div>
+
+            <div id="assessment" class="content-section">
+                <div class="transparentContainerBox">
+                    <div class="theBrownVerticalDecoBar">
+                        <h3>Assessment</h3>
+                    </div>
+                    <p id="my_assessment">
+                        <span>Specificity: 4/5</span> - The answer provides a specific example with relevant details
+                        about the situation, but could benefit from more context, such as the industry or type of
+                        product being developed.‍<br><br>
+                        <span>Actions: 4/5</span> - The steps taken by the interviewee are clearly articulated,
+                        including having an open debate and reaching a compromise with their colleague. However, it
+                        would be helpful to know more about the interviewee's role in the project to understand their
+                        actions better.<br><br>
+                        <span>Results: 3/5</span> - The end result is conveyed, which was a compromise on the product
+                        roadmap, but the answer could benefit from more information on the impact of the compromise and
+                        how it affected the project or product.<br><br>
+                        ‍<span>Learning: 3/5</span> - Although the interviewee did not mention any specific mistakes or
+                        failures, they do show a growth mindset by being open to compromise and taking customer feedback
+                        into consideration.<br><br>
+                        <span>Soft skills: 4/5</span> - The answer illustrates several soft skills, including
+                        communication, critical thinking, problem-solving, and compromise. However, there is not much
+                        information about teamwork or leadership skills in this specific scenario.<br><br>
+                        <span>Overall</span> - I would rate the answer a 3.6 out of 5. While the interviewee provided a
+                        specific example with clear actions and some soft skills demonstrated, more information on
+                        results and learning would have been helpful to fully assess their answer.<br>
+                    </p>
+                </div>
+            </div>
+
+            <div id="revisedAnswer" class="content-section">
+                <div class="transparentContainerBox">
+                    <div class="theBrownVerticalDecoBar">
+                        <h3>Revised Answer</h3>
+                    </div>
+                    <p id="my_revise">blah blahblah blah blah blah blah blahblah blahblah blah blah blah blah blahblah
+                        blahblah blah
+                        blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah
+                        blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah
+                        blah blah blah blah blahblah blahblah blah blah blah blah blahblah blahblah blah blah blah blah
+                        blah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="{% static 'interview/js/scroll_smooth.js' %}"></script>
+<script src="{% static 'interview/js/next_question.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sample Form</title>
+</head>
+<body>
+    <h1>Interview setup</h1>
+
+    <form method="post" action="{% url 'interview:setup_page' %}">
+        {% csrf_token %}
+
+        <label for="username">Role:</label>
+        <input type="text" id="role" name="role" required><br><br>
+
+        <label for="username">Year:</label>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="email">Question:</label>
+        <input type="text" id="question" name="question" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

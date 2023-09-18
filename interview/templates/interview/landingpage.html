@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+    {% load static %}
+  <meta charset="utf-8">
+  <title>Mock Interview - Home</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link rel="stylesheet" type="text/css" href="{% static 'interview/css/landingpage.css' %}">
+  <style>
+    body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+        }
+  </style>
+</head>
+
+<body>
+    <nav>
+    <div id="navContainer">
+    <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+      <ul id="navBar">
+      <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
+      <li class="navMenu">About</li>
+      <li class="navMenu">Login</li>
+      </ul>
+    </div>
+    </nav>
+    
+    <main>
+
+
+      <div id="WordLeftIMGRight">
+
+      <div id="bigWordAtTheTop">
+        <div id="firstWord">The <span class="emphasizeThoseWords">AI-Powered</span> career coaching platform to 
+          help you <span class="emphasizeThoseWords">ACE</span> your next interview and <span class="emphasizeThoseWords">LAND</span> your dream job.
+        </div>
+        <div id="startItNow">Start a Mock Interview with us Now.</div>
+        <div id="interviewButtonContainer">
+          <div id="interviewButton">
+          <a href="{% url 'interview:setup_page' %}">Interview Now</a>
+        </div>
+      </div>
+      </div>
+
+      <div id="bigImage">
+        <img src="{% static 'interview/images/big landing page image - uncropped.jpeg' %}" alt="Five people are cheering for something"/>
+      </div>
+
+    </div>
+
+
+
+      <div id="PPPWord">
+        <div id="PPPBigWord">Preparation. Practice. Performance.</div>
+        <div id="PPPLittleWord">Your on-demand interview coach to assist you achieving breakthroughs and perfection in interview preparation. <br>We help you find the right words for every question and GET The JOB YOU WANT.</div>
+      </div>
+
+
+
+      <div id="threeConfidentInterviewees">
+        <div id="theFirstInterviewee" class="eachInterviewee">
+          <img src={% static 'interview/images/confident interviewee1.jpeg' %}/>
+          <div class="myGoalContainer"><div class="myGoal">Gain confidence for interviews</div>
+        </div></div>
+        <div id="theSecondInterviewee" class="eachInterviewee">
+          <img src="{% static 'interview/images/confident interviewee2.jpeg' %}"/>
+          <div class="myGoalContainer"><div class="myGoal">Make a winning first impression</div>
+        </div></div>
+        <div id="theThirdInterviewee" class="eachInterviewee">
+          <img src="{% static 'interview/images/confident interviewee3.jpeg' %}"/>
+          <div class="myGoalContainer"><div class="myGoal">Stand out in your interviews</div>
+        </div></div>
+      </div>
+
+
+
+      <div id="hereComesTheMonkeysContainer">
+      <div id="hereComesTheMonkeys">
+
+        <div id="theFirstLine" class="twoAtATime">
+
+          <div id="1stMonkey" class="forEachMonkey">
+            <div class="logoLefttWordRightContainer">
+            <div class="monkeyLogoContainer">
+              <img src="{% static 'interview/images/Logo(Monkey Only).svg' %}"/>
+            </div>
+            <div class="monkeysWord">
+              <div class="monkeysWordTitle">Personalized mock interview experience</div>
+              <div class="monkeysWordContent">Candidates can practice with our AI interviewer for any role tailored to their unique background and skills. They receive targeted insights and feedback based on analysis of their responses.</div>
+            </div>
+          </div>
+        </div>
+
+          <div id="2ndMonkey" class="forEachMonkey">
+            <div class="logoLefttWordRightContainer">
+            <div class="monkeyLogoContainer">
+              <img src="{% static 'interview/images/Logo(Monkey Only).svg' %}"/>
+            </div>
+            <div class="monkeysWord">
+              <div class="monkeysWordTitle">On-demand availability</div>
+              <div class="monkeysWordContent">Candidates can practice interviewing anytime, anywhere. No need to wait for or coordinate with a human coach. The AI interviewer is always available on-demand at low cost.</div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        <div id="theSecondLine" class="twoAtATime">
+          <div id="3rdMonkey" class="forEachMonkey">
+            <div class="logoLefttWordRightContainer">
+            <div class="monkeyLogoContainer">
+              <img src="{% static 'interview/images/Logo(Monkey Only).svg' %}"/>
+            </div>
+            <div class="monkeysWord">
+              <div class="monkeysWordTitle">Simulation of real interviews</div>
+              <div class="monkeysWordContent">Our AI interviewer mimics the behavior of human interviewers, posing common questions and follow-ups as well as providing natural responses. This gives candidates an experience that closely matches what they'll face with potential employers.</div>
+            </div>
+          </div>
+        </div>
+
+          <div id="4thMonkey" class="forEachMonkey">
+            <div class="logoLefttWordRightContainer">
+            <div class="monkeyLogoContainer">
+              <img src="{% static 'interview/images/Logo(Monkey Only).svg' %}"/>
+            </div>
+            <div class="monkeysWord">
+              <div class="monkeysWordTitle">Data-backed improvements</div>
+              <div class="monkeysWordContent">The AI interviewer analyzes each mock interview using our proprietary assessment framework capturing key indicators for success. It pinpoints specific areas for candidates to focus on to enhance their interview skills.</div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+      </div>
+
+    </main>
+</body>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interview</title>
+</head>
+<body>
+
+<p>Role is {{ form.role }}</p>
+<p>Year_of_experience is {{ form.year_of_experience }}</p>
+<p>Length_of_interview is {{ form.length_of_interview }}</p>
+
+
+{% csrf_token %}
+
+<p>Question index: {{ form.current_question }}/{{ form.length_of_interview }}</p>
+<button id="nextQuestion" onclick="nextQuestion()">Next question</button>
+
+<p>Question area:</p>
+<p id="question">{{ form.question_text }}</p>
+{#<button id="speak-btn">Play</button>#}
+{#<audio autoplay id="audioPlayback" controls>#}
+{#      <source id="audioSource" type="audio/mp3" src="">#}
+{#</audio>#}
+{#<label><select name="voices" id="voices"></select></label>#}
+
+<p>Answer area:</p>
+<label><textarea id="userTextarea">Please record or type here...</textarea></label>
+<button id="record-button">Start Recording</button>
+<div id="audio-container"></div>
+<div>Recording time: <span id="timer"></span></div>
+<button>Submit</button>
+
+<br><br>
+
+<p id="loading"></p>
+
+<p>Score area:</p>
+<button onclick="">Get score(这个相当于submit?)</button>
+<p id="score-content">...</p>
+
+<p>Evaluation area:</p>
+<button onclick="">Get Evaluation</button>
+<p id="evaluation-content">...</p>
+
+<p>Rewrite area:</p>
+<button onclick="">Rewrite answer</button>
+<p id="rewrite-content">...</p>
+
+
+</body>
+</html>
+
+<script>
+function nextQuestion(){
+    const currentURL = window.location.href;
+    console.log("Current URL: " + currentURL);
+
+    const regex = /question_index=(\d+)/;
+    const match = currentURL.match(regex);
+
+    if (match) {
+        const firstNumber = match[1];
+        {#console.log("test", parseInt(firstNumber, 10) + 1);#}
+        {#console.log("question_index=" + (parseInt(firstNumber, 10) + 1))#}
+        {#console.log(newStr)#}
+        window.location.href = currentURL.replace(regex, "question_index=" + (parseInt(firstNumber, 10) + 1));
+
+    } else {
+        console.log("no question_index match");
+    }
+}
+
+</script>
