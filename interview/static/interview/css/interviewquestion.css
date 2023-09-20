@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    color:blue;
+    color:black;
 }
 
 /* Top Nav Bar*/
@@ -52,7 +52,7 @@ nav{
 
 
 #sideNavContainer{
-display: none;
+/*display: none;*/
 
   width: 210px;/*width of Side Nav Bar*/
   height: 100%;
@@ -69,19 +69,10 @@ display: none;
   #sideNavContainer a{
   display: block; /*This allows menu content in <a> to display vertically*/
   padding: 15px 35px;
-}
-  
-
-#sideNavContainer span{
-  display: inline-block; /*This allows you to set up width of the span*/
-  width:20px;
-  text-align: center;
-}
-
-#sideNavContainer a{
   text-decoration: none;
   color: white;
 }
+  
 
 #sideNavContainer a:hover{
   text-decoration: none;
@@ -117,7 +108,7 @@ main{
 .transparentContainerBox{
     width:700px;
     min-height:450px;
-    margin-left:80px;
+    margin-left:30px;
     margin-bottom: 2rem; 
     
     position: relative; 
@@ -384,7 +375,7 @@ margin:0;
 
   /*Answer Assessment & Revise*/
   #AAR {
-    display: none;
+    /*display: none;*/
     position: relative;  
   }
 
@@ -517,3 +508,29 @@ margin:0;
   transform-origin: 0 0; /* see note above */
 }
 .ldio-pal3955r1rq div { box-sizing: content-box; }
+
+/*Side Bar & Icon*/
+i{
+  padding-right: 4px;
+  color:white;
+}
+
+#menu-item-question-icon{
+  position:relative;
+  left:0px;
+}
+
+#menu-item-uranswer-icon{
+  position:relative;
+  left:1.5px;
+}
+
+#menu-item-uranswer-text{
+  position:relative;
+  left:3px;
+}
+
+#menu-item-next{
+  text-align: center;
+  font-size: 1.25rem;
+}
