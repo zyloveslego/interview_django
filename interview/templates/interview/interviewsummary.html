@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <title>Customize Your Interview</title>
+  <title>Interview Summary</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link rel="stylesheet" type="text/css" href="css/interviewsummary.css">
   <style>
@@ -13,16 +13,16 @@
 </head>
 
 <body>
-    <nav>
+  <nav>
     <div id="navContainer">
-    <img src="images/Logo.svg" alt="Company Logo" id="companyLogo"/>
+      <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
       <ul id="navBar">
-        <li class="navMenu"><a href=landingpage.html>Home</a></li>
-      <li class="navMenu">About</li>
-      <li class="navMenu">Login</li>
+        <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
+        <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
+        <li class="navMenu">Career Path Builder</li>
       </ul>
     </div>
-    </nav>
+  </nav>
     
     <main>
       <div id="summary" class="content-section">
