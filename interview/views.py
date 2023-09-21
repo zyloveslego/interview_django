@@ -112,6 +112,7 @@ def get_access_from_chatgpt(question_text, answer_text):
               answer_text)
     print(prompt)
 
+
     openai.api_key = ""
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
