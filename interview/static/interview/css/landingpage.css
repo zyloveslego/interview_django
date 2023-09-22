@@ -77,12 +77,14 @@ main{
   justify-content: space-between; 
   margin: 0; /* Remove margin */
   padding: 0; 
+  font-family: sans-serif;
 }
 
 #bigWordAtTheTop{
   display:block;
   margin:50px;
   text-align: center;
+  font-family: sans-serif;
 }
 
 #interviewButtonContainer{
@@ -103,6 +105,7 @@ main{
 #firstWord{
   font-size: 2rem;
   padding: 20px 0;
+  font-family: sans-serif;
 }
 
 #firstWord .emphasizeThoseWords{
@@ -114,6 +117,7 @@ main{
   font-size: 1.25rem;
   color:#7e5f50;
   padding: 20px 0;
+  font-family: sans-serif;
 }
 
 
@@ -168,7 +172,6 @@ main{
   #PPPBigWord, #PPPLittleWord{
     text-align: center;
     color: #7E5F50;
-    font-family: 'Britannia';
   }
 
   #PPPBigWord{
@@ -210,9 +213,8 @@ main{
     color:#7E5F50;
     font-size: 1.25rem;
     font-weight: bold;
-    font-family: 'Britannia';
     padding: 20px 0;
-    width: 160px;
+    width: 165px;
   }
 
   .myGoalContainer{
@@ -241,12 +243,10 @@ main{
 
   .forEachMonkey{
     display: inline-block;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-right: 28px;
     padding-left: 0px;
     color:#7E5F50;
-    font-family: 'Britannia';
-    font-weight: bold;
     
     /*transparentContainerBox*/
       width:360px;
