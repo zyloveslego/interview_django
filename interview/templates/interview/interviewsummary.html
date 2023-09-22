@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <title>Interview Summary</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link rel="stylesheet" type="text/css" href="css/interviewsummary.css">
-  <style>
-    body{
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Interview Summary</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/interviewsummary.css' %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-  </style>
+    </style>
 </head>
 
 <body>
-  <nav>
+<nav>
     <div id="navContainer">
-      <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-      <ul id="navBar">
-        <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-        <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
-        <li class="navMenu">Career Path Builder</li>
-      </ul>
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</li>
+        </ul>
     </div>
-  </nav>
-    
-    <main>
-      <div id="summary" class="content-section">
+</nav>
+
+<main>
+    <div id="summary" class="content-section">
         <div class="transparentContainerBox">
-          
+
             <div class="theBrownVerticalDecoBar">
-               <h3>Summary</h3>
+                <h3>Summary</h3>
             </div>
             <div class="summaryContent">
-              <p>Congrats! Your interview practice is completed. Here is the overall feedback from Coach Monkey.  
-                <br><br>Overall, you demonstrated strong communication and interpersonal skills during the behavioral interview. Your responses were thoughtful and you provided clear examples that highlighted your abilities.
-                <br><br>On the question about describing a time you faced a challenge at work, you gave a detailed account of how you approached the situation in a methodical way to uncover the root issues. You showed strong analytical and problem-solving skills. Your step-by-step explanation was easy to follow.
-                <br><br>When asked about a time you failed and what you learned from it, you openly acknowledged the failure and took responsibility for your part in it. You showed maturity in being able to reflect on mistakes and describe specific lessons that will make you a more effective team member in the future.
-                <br><br>Discussing your proudest professional achievement, you highlighted positive outcomes you drove while keeping the focus on the team effort. I appreciated how you shared credit and talked about the group dynamics. This demonstrates you are a collaborative team player.
-                <br><br>Overall, your interview responses were sincere and thoughtful. You have strong self-awareness and the ability to reflect on and articulate your experience. Your examples indicate you are a skilled, reliable, and personable candidate who would thrive in a team environment. I have no concerns about your behavioral competencies for this role based on our discussion today.
+                <p>Congrats! Your interview practice is completed. Here is the overall feedback from Coach Monkey.
+                    <br><br>Overall, you demonstrated strong communication and interpersonal skills during the
+                    behavioral interview. Your responses were thoughtful and you provided clear examples that
+                    highlighted your abilities.
+                    <br><br>On the question about describing a time you faced a challenge at work, you gave a detailed
+                    account of how you approached the situation in a methodical way to uncover the root issues. You
+                    showed strong analytical and problem-solving skills. Your step-by-step explanation was easy to
+                    follow.
+                    <br><br>When asked about a time you failed and what you learned from it, you openly acknowledged the
+                    failure and took responsibility for your part in it. You showed maturity in being able to reflect on
+                    mistakes and describe specific lessons that will make you a more effective team member in the
+                    future.
+                    <br><br>Discussing your proudest professional achievement, you highlighted positive outcomes you
+                    drove while keeping the focus on the team effort. I appreciated how you shared credit and talked
+                    about the group dynamics. This demonstrates you are a collaborative team player.
+                    <br><br>Overall, your interview responses were sincere and thoughtful. You have strong
+                    self-awareness and the ability to reflect on and articulate your experience. Your examples indicate
+                    you are a skilled, reliable, and personable candidate who would thrive in a team environment. I have
+                    no concerns about your behavioral competencies for this role based on our discussion today.
                 </p>
-           </div>
+            </div>
 
 
-         </div>
         </div>
+    </div>
 
-    </main>
+</main>
 </body>

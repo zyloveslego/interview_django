@@ -15,211 +15,223 @@
 </head>
 
 <body>
-    <nav>
-        <div id="navContainer">
-          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-          <ul id="navBar">
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
-            <li class="navMenu"><a href={% url 'interview:career-builder-intro' %}>Career Path Builder</a></li>
-          </ul>
-        </div>
-      </nav>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <div id="main-content">
         <div id="main-content-container">
-        <div class="theBrownVerticalDecoBar">
-            <h1>Career Path Recommendations</h1>
-        </div>
-    
-        <div>
-            <p>Based on your experience and interests, here are some potential career tracks and details on each:</p>
-        </div>
-    
-        <div id="career-rec">
-            <div class="line-one">
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3>Investment Banking Analyst</h3>
-                    <p>
-                        <span>Pros:</span> High earning potential, fast-paced environment, work on high-profile deals.
-                        <br><br><span>Cons:</span> Long hours (80+ hrs/week), high stress.
-                        <br><br><span>Salary:</span> Starting $100k+ and bonuses.
-                        <br><br><span>Work-life balance:</span> Poor, expect to work very long hours.
-                        <br><br><span>Career potential:</span> Associate, VP, MD roles. Exit ops in PE,
-                        hedge funds, corporate roles.
-                    </p>
-                </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
-                    </div>
-                </div>
-        
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3>Data Scientist</h3>
-                    <p>
-                        <span>Pros:</span> Use advanced analytics, work on impactful projects, high demand for skills.
-                        <br><br><span>Cons:</span> Can be isolating/lonely work. Need to constantly learn new skills and tools.
-                        <br><br><span>Salary:</span> $100k-$130k for entry level roles.
-                        <br><br><span>Work-life balance:</span> Average to good work-life balance.
-                        <br><br><span>Career potential:</span> Lead data scientist, head of analytics, CTO.
-                    </p>
-                </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
-                    </div>
-                </div>
+            <div class="theBrownVerticalDecoBar">
+                <h1>Career Path Recommendations</h1>
             </div>
 
-            <div class="line-one">
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3> Software Engineer</h3>
-                    <p>
-                        <span>Pros:</span> Competitive salary, good benefits, engaging technical work.
-                        <br><br><span>Cons:</span> Requires constant learning and skill development. Can be stressful.
-                        <br><br><span>Salary:</span> $100k-$140k for entry level at top tech firms.
-                        <br><br><span>Work-life balance:</span> Average, depends on team and company culture.
-                        <br><br><span>Career potential:</span> Senior engineer, tech lead, CTO.
-                    </p>
-                </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
-                    </div>
-                </div>
-            
-        
-            
-        
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3>Management Consulting Analyst</h3>
-                    <p>
-                        <span>Pros:</span> Variety of projects, work with top executives, fast career progression, develop
-                        business strategy skills.
-                        <br><br><span>Cons:</span> Frequent travel and long hours. High pressure to perform.
-                        <br><br><span>Salary:</span> $80k-$90k starting.
-                        <br><br><span>Work-life balance:</span> Below average, expect 60-80 hr weeks.
-                        <br><br><span>Career potential:</span> Progress from analyst to consultant to manager/partner. Exit ops
-                        in industry.
-                    </p>
-                </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
-                    </div>
-                </div>
-        </div>
-        
+            <div>
+                <p>Based on your experience and interests, here are some potential career tracks and details on
+                    each:</p>
+            </div>
+
+            <div id="career-rec">
                 <div class="line-one">
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3>Digital Marketing Manager</h3>
-                    <p>
-                        <span>Pros:</span> Play a key role in building and enhancing a company's online presence.
-                        <br><br><span>Cons:</span> The industry evolves quickly, you'll need to stay updated on industry trends and technologies. Can be competitive.
-                        <br><br><span>Salary:</span> Starting between $60k and $100k per year.
-                        <br><br><span>Work-life balance:</span> Average, depends on company and role.
-                        <br><br><span>Career potential:</span> Sr Digital Marketing Manager, Director of Digital Marketing, CMO
-                    </p>
-                </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3>Investment Banking Analyst</h3>
+                            <p>
+                                <span>Pros:</span> High earning potential, fast-paced environment, work on high-profile
+                                deals.
+                                <br><br><span>Cons:</span> Long hours (80+ hrs/week), high stress.
+                                <br><br><span>Salary:</span> Starting $100k+ and bonuses.
+                                <br><br><span>Work-life balance:</span> Poor, expect to work very long hours.
+                                <br><br><span>Career potential:</span> Associate, VP, MD roles. Exit ops in PE,
+                                hedge funds, corporate roles.
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
+                    </div>
+
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3>Data Scientist</h3>
+                            <p>
+                                <span>Pros:</span> Use advanced analytics, work on impactful projects, high demand for
+                                skills.
+                                <br><br><span>Cons:</span> Can be isolating/lonely work. Need to constantly learn new
+                                skills and tools.
+                                <br><br><span>Salary:</span> $100k-$130k for entry level roles.
+                                <br><br><span>Work-life balance:</span> Average to good work-life balance.
+                                <br><br><span>Career potential:</span> Lead data scientist, head of analytics, CTO.
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
                     </div>
                 </div>
-            
-        
-            
-                <div class="transparentContainerBox">
-                    <div class="job-description-container">
-                    <h3>Product Manager</h3>
-                    <p>
-                        <span>Pros:</span> Strategic role, work cross-functionally, high impact on business.
-                        <br><br><span>Cons:</span> Can be ambiguous, fast-paced, lots of accountability.
-                        <br><br><span>Salary:</span> $100k-$150k starting compensation at top tech companies.
-                        <br><br><span>Work-life balance:</span> Can be good or bad depending on company and role demands.
-                        <br><br><span>Career potential:</span> Senior PM, Director of Product, VP of Product.
-                    </p>
+
+                <div class="line-one">
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3> Software Engineer</h3>
+                            <p>
+                                <span>Pros:</span> Competitive salary, good benefits, engaging technical work.
+                                <br><br><span>Cons:</span> Requires constant learning and skill development. Can be
+                                stressful.
+                                <br><br><span>Salary:</span> $100k-$140k for entry level at top tech firms.
+                                <br><br><span>Work-life balance:</span> Average, depends on team and company culture.
+                                <br><br><span>Career potential:</span> Senior engineer, tech lead, CTO.
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
+                    </div>
+
+
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3>Management Consulting Analyst</h3>
+                            <p>
+                                <span>Pros:</span> Variety of projects, work with top executives, fast career
+                                progression, develop
+                                business strategy skills.
+                                <br><br><span>Cons:</span> Frequent travel and long hours. High pressure to perform.
+                                <br><br><span>Salary:</span> $80k-$90k starting.
+                                <br><br><span>Work-life balance:</span> Below average, expect 60-80 hr weeks.
+                                <br><br><span>Career potential:</span> Progress from analyst to consultant to
+                                manager/partner. Exit ops
+                                in industry.
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
+                    </div>
                 </div>
-                    <div class="learn-more-button-container">
-                        <button class="connect-button">Learn More</button>
+
+                <div class="line-one">
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3>Digital Marketing Manager</h3>
+                            <p>
+                                <span>Pros:</span> Play a key role in building and enhancing a company's online
+                                presence.
+                                <br><br><span>Cons:</span> The industry evolves quickly, you'll need to stay updated on
+                                industry trends and technologies. Can be competitive.
+                                <br><br><span>Salary:</span> Starting between $60k and $100k per year.
+                                <br><br><span>Work-life balance:</span> Average, depends on company and role.
+                                <br><br><span>Career potential:</span> Sr Digital Marketing Manager, Director of Digital
+                                Marketing, CMO
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
+                    </div>
+
+
+                    <div class="transparentContainerBox">
+                        <div class="job-description-container">
+                            <h3>Product Manager</h3>
+                            <p>
+                                <span>Pros:</span> Strategic role, work cross-functionally, high impact on business.
+                                <br><br><span>Cons:</span> Can be ambiguous, fast-paced, lots of accountability.
+                                <br><br><span>Salary:</span> $100k-$150k starting compensation at top tech companies.
+                                <br><br><span>Work-life balance:</span> Can be good or bad depending on company and role
+                                demands.
+                                <br><br><span>Career potential:</span> Senior PM, Director of Product, VP of Product.
+                            </p>
+                        </div>
+                        <div class="learn-more-button-container">
+                            <button class="connect-button">Learn More</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    
 
     </div>
 
     <div id="mentor">
         <div id="mentor-container">
-        <p id="connect-with-mentor">Connect with our mentors to hear their stories and get to know what the day to day looks like</p>
-        <div id="horizontal-bar"></div>
-        <div id="mentor-details">
-            <div class="mentor-line-one">
-                <div class="each-mentor-box">
-                    <img src="{% static 'interview/images/mentor1.png' %}" alt="Picture of mentor number one" />
-                    
-                    <div id="mentor-content">
-                        <div class="mentor-text-description">
-                            <i class="fa-solid fa-ellipsis menu-icon"></i>
-                            <div class="mentor-name">Matt Smith</div>
-                            <p class="mentor-job-position">Investment Banking<br>Associate at Goldman Sachs</p>
+            <p id="connect-with-mentor">Connect with our mentors to hear their stories and get to know what the day to
+                day looks like</p>
+            <div id="horizontal-bar"></div>
+            <div id="mentor-details">
+                <div class="mentor-line-one">
+                    <div class="each-mentor-box">
+                        <img src="{% static 'interview/images/mentor1.png' %}" alt="Picture of mentor number one"/>
+
+                        <div id="mentor-content">
+                            <div class="mentor-text-description">
+                                <i class="fa-solid fa-ellipsis menu-icon"></i>
+                                <div class="mentor-name">Matt Smith</div>
+                                <p class="mentor-job-position">Investment Banking<br>Associate at Goldman Sachs</p>
+                            </div>
+                            <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect
+                            </button>
                         </div>
-                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
                     </div>
+
+                    <div class="each-mentor-box">
+                        <img src="{% static 'interview/images/mentor2.png' %}" alt="Picture of mentor number two"/>
+                        <div id="mentor-content">
+                            <div class="mentor-text-description">
+                                <i class="fa-solid fa-ellipsis menu-icon"></i>
+                                <div class="mentor-name">Andrew Bell</div>
+                                <p class="mentor-job-position">Software Engineer at<br>Facebook</p>
+                            </div>
+                            <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="each-mentor-box">
-                    <img src="{% static 'interview/images/mentor2.png' %}" alt="Picture of mentor number two" />
-                    <div id="mentor-content">
-                        <div class="mentor-text-description">
-                            <i class="fa-solid fa-ellipsis menu-icon"></i>
-                            <div class="mentor-name">Andrew Bell</div>
-                            <p class="mentor-job-position">Software Engineer at<br>Facebook</p>
+                <div class="mentor-line-one">
+                    <div class="each-mentor-box">
+                        <img src="{% static 'interview/images/mentor3.png' %}" alt="Picture of mentor number one"/>
+                        <div id="mentor-content">
+                            <div class="mentor-text-description">
+                                <i class="fa-solid fa-ellipsis menu-icon"></i>
+                                <div class="mentor-name">Ana Irwin</div>
+                                <p class="mentor-job-position">Product Manager at<br>Amazon</p>
+                            </div>
+                            <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect
+                            </button>
                         </div>
-                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
                     </div>
+
+                    <div class="each-mentor-box">
+                        <img src="{% static 'interview/images/mentor4.png' %}" alt="Picture of mentor number two"/>
+                        <div id="mentor-content">
+                            <div class="mentor-text-description">
+                                <i class="fa-solid fa-ellipsis menu-icon"></i>
+                                <div class="mentor-name">Emily Mitchell</div>
+                                <p class="mentor-job-position">Research Scientist at<br>Google</p>
+                            </div>
+                            <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
-        
             </div>
 
-            <div class="mentor-line-one">
-                <div class="each-mentor-box">
-                    <img src="{% static 'interview/images/mentor3.png' %}" alt="Picture of mentor number one" />
-                    <div id="mentor-content">
-                        <div class="mentor-text-description">
-                            <i class="fa-solid fa-ellipsis menu-icon"></i>
-                            <div class="mentor-name">Ana Irwin</div>
-                            <p class="mentor-job-position">Product Manager at<br>Amazon</p>
-                        </div>
-                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
-                    </div>
-                </div>
-
-                <div class="each-mentor-box">
-                    <img src="{% static 'interview/images/mentor4.png' %}" alt="Picture of mentor number two" />
-                    <div id="mentor-content">
-                        <div class="mentor-text-description">
-                            <i class="fa-solid fa-ellipsis menu-icon"></i>
-                            <div class="mentor-name">Emily Mitchell</div>
-                            <p class="mentor-job-position">Research Scientist at<br>Google</p>
-                        </div>
-                        <button class="connect-button"><i class="fa-solid fa-comments" class="chat-icon"></i>Connect</button>
-                    </div>
-                </div>
-        
+            <div id="footnote">*Our mentors are AI characters trained with real-life experience data</div>
+            <div id="see-more-button-container">
+                <button class="connect-button"> Click to See More</button>
             </div>
         </div>
-
-        <div id="footnote">*Our mentors are AI characters trained with real-life experience data</div>
-        <div id="see-more-button-container">
-        <button class="connect-button"> Click to See More</button>
     </div>
-    </div>
-</div>
 </main>
 </body>

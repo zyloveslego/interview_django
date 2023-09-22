@@ -1,209 +1,212 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <title>Career Path Builder - Background</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link rel="stylesheet" type="text/css" href="{% static 'interview/css/career-builder-background.css' %}">
-  
-  <style>
-    body{
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Career Path Builder - Background</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/career-builder-background.css' %}">
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-  </style>
-  <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
+    </style>
+    <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <nav>
+<nav>
     <div id="navContainer">
-    <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
-            <ul id="navBar">
-                <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-                <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
-                <li class="navMenu">Career Path Builder</li>
-            </ul>
-        </div>
-    </nav>
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <main>
-        <section id="sideNavContainer">
-            <p id="sidemenu-background"><i class="fa-regular fa-circle-check" id="first-icon"></i>Background</p>
-            <p id="sidemenu-interests"><i class="fa-regular fa-circle-check" id="second-icon"></i>Interests</p>
-            <p id="sidemenu-preferences"><i class="fa-regular fa-circle-check" id="third-icon"></i>Preferences</p>
-        </section>
+<main>
+    <section id="sideNavContainer">
+        <p id="sidemenu-background"><i class="fa-regular fa-circle-check" id="first-icon"></i>Background</p>
+        <p id="sidemenu-interests"><i class="fa-regular fa-circle-check" id="second-icon"></i>Interests</p>
+        <p id="sidemenu-preferences"><i class="fa-regular fa-circle-check" id="third-icon"></i>Preferences</p>
+    </section>
 
-        <section id="mainContent">
-            <div id="tell-us-about-yourself-container">
-                <div class="theBrownVerticalDecoBar">
-                    <div id="tell-us-about-yourself">Tell us about yourself, we will gather your information and provide career
-                        track recommendations based
-                        on your answer.
-                    </div>
+    <section id="mainContent">
+        <div id="tell-us-about-yourself-container">
+            <div class="theBrownVerticalDecoBar">
+                <div id="tell-us-about-yourself">Tell us about yourself, we will gather your information and provide
+                    career
+                    track recommendations based
+                    on your answer.
                 </div>
             </div>
+        </div>
 
-            <h1 id="title-background">Background</h1>
-            
-            <div id="uploadResume" class="transparentContainerBox">
-                <p class="second-title" id="upload-resume">Upload Your Resume</p>
-                <div id="container-1">
-                    <div id="container-2">
-                        <input type="file" id="fileInput" accept=".pdf, .doc, .docx">
-                    </div>
-                    <div id="container-3">
+        <h1 id="title-background">Background</h1>
+
+        <div id="uploadResume" class="transparentContainerBox">
+            <p class="second-title" id="upload-resume">Upload Your Resume</p>
+            <div id="container-1">
+                <div id="container-2">
+                    <input type="file" id="fileInput" accept=".pdf, .doc, .docx">
+                </div>
+                <div id="container-3">
                     <button id="upload-button" class="submit-button">
                         <span>Upload</span>
                         <i class="fa-regular fa-circle-check" id="upload-icon"></i>
                     </button>
                 </div>
                 <div id="container-4">
-                    <a href="career-builder-interests.html" id="next-button-one" class="submit-button">Next<i
+                    <a href="{% url 'interview:career_interests' %}" id="next-button-one" class="submit-button">Next<i
                             class="fa-regular fa-circle-right"></i></a>
-                        
+
                 </div>
             </div>
-            </div>
+        </div>
 
-            <script>
-                // Get a collection of elements with the class "option-button"
-                const buttons = document.getElementById("upload-button");
-                const icon= document.getElementById("upload-icon");
-                // Loop through each button and add a click event listener
-                
-                  buttons.addEventListener("click", function() {
-                    // Add a class to change the style after it's clicked
-                    icon.style.display="block";
-                  });
-                </script>
+        <script>
+            // Get a collection of elements with the class "option-button"
+            const buttons = document.getElementById("upload-button");
+            const icon = document.getElementById("upload-icon");
+            // Loop through each button and add a click event listener
 
-           
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-    const fileInput = document.getElementById("fileInput");
-    const uploadButton = document.getElementById("upload-button");
-    const statusMessage = document.getElementById("statusMessage");
-
-    uploadButton.addEventListener("click", function() {
-        const selectedFile = fileInput.files[0]; // Get the selected file
-        if (selectedFile) {
-            // Display a message with the file name
-            statusMessage.textContent = `Uploaded: ${selectedFile.name}`;
-            
-            // You can perform further actions here, such as sending the file to a server using AJAX or fetching it in JavaScript.
-        } else {
-            statusMessage.textContent = "Please select a file to upload.";
-        }
-    });
-});
-            </script>
-
-            <div id="or">
-                OR...You can <a id="showButton" href="#alternative">answer the following questions</a>
-            </div>
+            buttons.addEventListener("click", function () {
+                // Add a class to change the style after it's clicked
+                icon.style.display = "block";
+            });
+        </script>
 
 
-            <div id="alternative-outer-container">
-                <div id="alternative" class="transparentContainerBox" style="display: none;">
-                    <div id="alternative-inner-container">
-                        <p class="second-title">Please answer the following questions:</p>
-                        <div>
-                            <div id="question-1-Education">
-                                <h3>1.Education</h3>
-                                <form>
-                                    <div>
-                                        <label for="highest-level-education" class="questions-setup-text">Highest Level of
-                                            Education:</label>
-                                        <select name="highest-level-education" id="highest-level-education" required="">
-                                            <option value="" disabled selected>Select an option</option>
-                                            <option value="1">High school or equivalent</option>
-                                            <option value="2">Associate degree</option>
-                                            <option value="3">Bachelor's degree</option>
-                                            <option value="4">Master's degree</option>
-                                            <option value="5">Doctorate</option>
-                                        </select>
-                                    </div>
-            
-                                    <div>
-                                        <label for="major">Major:</label>
-                                        <input type="text" id="major" name="major" required maxlength="50">
-                                    </div>
-            
-                                    <div>
-                                        <label for="other-education">Other education or traning you had:<br></label>
-                                        <input type="text" id="other-education" name="other-education" maxlength="100">
-                                    </div>
-            
-                                </form>
-                            </div>
-            
-                            <div id="question-2-WorkExperience">
-                                <h3>2.Work Experience</h3>
-                                <form>
-                                    <div>
-                                        <label for="years-of-experience" class="questions-setup-text">Years of Experience:</label>
-                                        <select name="years-of-experience" id="years-of-experience" required="">
-                                            <option value="" disabled selected>Select an option</option>
-                                            <option value="1">0-1 year</option>
-                                            <option value="2">1-3 years</option>
-                                            <option value="3">3-5 years</option>
-                                            <option value="4">5-10 years</option>
-                                            <option value="5">10+ years</option>
-                                        </select>
-                                    </div>
-            
-                                    <div>
-                                        <label for="industry">Industry:</label>
-                                        <input type="text" id="industry" name="industry" maxlength="50">
-                                    </div>
-            
-                                    <div>
-                                        <label for="position">Position:</label>
-                                        <input type="text" id="position" name="position" maxlength="50">
-                                    </div>
-            
-                                    <div>
-                                        <label for="duty">Duty:<br></label>
-                                        <input type="text" id="duty" name="duty" maxlength="300">
-                                    </div>
-            
-                                    <div>
-                                        <label for="other-work">Other work experience you had:<br></label>
-                                        <input type="text" id="other-work" name="other-work" maxlength="300">
-                                    </div>
-                                </form>
-                            </div>
-            
-                            <div id="question-3-skills">
-                                <h3>3.Skills</h3>
-                                <form>
-                                    <div>
-                                        <label for="skills">Tell us about any skills you mastered or any certificate you earned,
-                                            technical skills are preferred:<br></label>
-                                        <input type="text" id="skills" name="skills" maxlength="200">
-                                    </div>
-                                </form>
-                            </div>
-                            <a href="career-builder-interests.html"
-                             id="next-button-two" class="submit-button">Next<i class="fa-regular fa-circle-right"></i></a>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const fileInput = document.getElementById("fileInput");
+                const uploadButton = document.getElementById("upload-button");
+                const statusMessage = document.getElementById("statusMessage");
+
+                uploadButton.addEventListener("click", function () {
+                    const selectedFile = fileInput.files[0]; // Get the selected file
+                    if (selectedFile) {
+                        // Display a message with the file name
+                        statusMessage.textContent = `Uploaded: ${selectedFile.name}`;
+
+                        // You can perform further actions here, such as sending the file to a server using AJAX or fetching it in JavaScript.
+                    } else {
+                        statusMessage.textContent = "Please select a file to upload.";
+                    }
+                });
+            });
+        </script>
+
+        <div id="or">
+            OR...You can <a id="showButton" href="#alternative">answer the following questions</a>
+        </div>
+
+
+        <div id="alternative-outer-container">
+            <div id="alternative" class="transparentContainerBox" style="display: none;">
+                <div id="alternative-inner-container">
+                    <p class="second-title">Please answer the following questions:</p>
+                    <div>
+                        <div id="question-1-Education">
+                            <h3>1.Education</h3>
+                            <form>
+                                <div>
+                                    <label for="highest-level-education" class="questions-setup-text">Highest Level of
+                                        Education:</label>
+                                    <select name="highest-level-education" id="highest-level-education" required="">
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option value="1">High school or equivalent</option>
+                                        <option value="2">Associate degree</option>
+                                        <option value="3">Bachelor's degree</option>
+                                        <option value="4">Master's degree</option>
+                                        <option value="5">Doctorate</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="major">Major:</label>
+                                    <input type="text" id="major" name="major" required maxlength="50">
+                                </div>
+
+                                <div>
+                                    <label for="other-education">Other education or training you had:<br></label>
+                                    <input type="text" id="other-education" name="other-education" maxlength="100">
+                                </div>
+
+                            </form>
                         </div>
+
+                        <div id="question-2-WorkExperience">
+                            <h3>2.Work Experience</h3>
+                            <form>
+                                <div>
+                                    <label for="years-of-experience" class="questions-setup-text">Years of
+                                        Experience:</label>
+                                    <select name="years-of-experience" id="years-of-experience" required="">
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option value="1">0-1 year</option>
+                                        <option value="2">1-3 years</option>
+                                        <option value="3">3-5 years</option>
+                                        <option value="4">5-10 years</option>
+                                        <option value="5">10+ years</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="industry">Industry:</label>
+                                    <input type="text" id="industry" name="industry" maxlength="50">
+                                </div>
+
+                                <div>
+                                    <label for="position">Position:</label>
+                                    <input type="text" id="position" name="position" maxlength="50">
+                                </div>
+
+                                <div>
+                                    <label for="duty">Duty:<br></label>
+                                    <input type="text" id="duty" name="duty" maxlength="300">
+                                </div>
+
+                                <div>
+                                    <label for="other-work">Other work experience you had:<br></label>
+                                    <input type="text" id="other-work" name="other-work" maxlength="300">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="question-3-skills">
+                            <h3>3.Skills</h3>
+                            <form>
+                                <div>
+                                    <label for="skills">Tell us about any skills you mastered or any certificate you
+                                        earned,
+                                        technical skills are preferred:<br></label>
+                                    <input type="text" id="skills" name="skills" maxlength="200">
+                                </div>
+                            </form>
+                        </div>
+                        <a href=""{% url 'interview:career_interests' %}""
+                           id="next-button-two" class="submit-button">Next<i class="fa-regular fa-circle-right"></i></a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <script>
-            // Get a reference to the button and the hidden section
-const showButton = document.getElementById("showButton");
-const hiddenSection = document.getElementById("alternative");
+    <script>
+        // Get a reference to the button and the hidden section
+        const showButton = document.getElementById("showButton");
+        const hiddenSection = document.getElementById("alternative");
 
-// Add a click event listener to the button
-showButton.addEventListener("click", function() {
-    // Toggle the visibility of the hidden section
-        hiddenSection.style.display = "block"; // Show the hidden section
-});
-</script>
+        // Add a click event listener to the button
+        showButton.addEventListener("click", function () {
+            // Toggle the visibility of the hidden section
+            hiddenSection.style.display = "block"; // Show the hidden section
+        });
+    </script>
 
-    </main>
+</main>
 </body>

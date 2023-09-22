@@ -15,99 +15,105 @@
 </head>
 
 <body>
-    <nav>
-        <div id="navContainer">
-          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-          <ul id="navBar">
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
-            <li class="navMenu">Career Path Builder</li>
-          </ul>
-        </div>
-      </nav>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <section id="main-content">
-    <div id="WordRightIMGLeft">
-        <div id="bigImage">
-            <img src="{% static 'interview/images/career-builder-intro-img1.jpg' %}"
-            
-                alt="A professional woman is talking to someone in front of her" />
-        </div>
-        <div id="bigWordAtTheTop">
-            <div id="firstWord">Career Path Builder</div>
-            <div id="description">Career Path Builder is your personal roadmap to success, leveraging advanced data
-                analysis to align your education and work experience with tailor-made career recommendations.
-                <br><br>Discover, plan, and achieve your dream career with Career Path Builder today! Your future starts
-                here.
+        <div id="WordRightIMGLeft">
+            <div id="bigImage">
+                <img src="{% static 'interview/images/career-builder-intro-img1.jpg' %}"
+
+                     alt="A professional woman is talking to someone in front of her"/>
             </div>
-            <div id="interviewButtonContainer">
-                <div id="interviewButton">
-                    <a href="career-builder-background.html">Start Now</a>
+            <div id="bigWordAtTheTop">
+                <div id="firstWord">Career Path Builder</div>
+                <div id="description">Career Path Builder is your personal roadmap to success, leveraging advanced data
+                    analysis to align your education and work experience with tailor-made career recommendations.
+                    <br><br>Discover, plan, and achieve your dream career with Career Path Builder today! Your future
+                    starts
+                    here.
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div id="PPPWord">
-        <div id="PPPBigWord">Dream. Plan. Achieve <br>
-            Your Career Your Canvas</div>
-        <div id="PPPLittleWord">
-            In an ever-evolving job market, finding the right career path can be a daunting task. Career Path Builder is
-            here to empower you with personalized insights and recommendations tailored to your unique education
-            background and work experience.
-        </div>
-    </div>
-
-
-    <div id="second-image">
-        <img src="{% static 'interview/images/career-builder-intro-img2.jpg' %}" alt="Three people sitting outside, on stairs, and talking" />
-        <div id="pave-container">
-        <a href="career-builder-background.html">
-            <div id="pave">Pave Your Way to Success Now</div>
-        </a>
-    </div>
-    </div>
-
-    <div id="three-icon-container">
-        <div id="three-icon">
-            <div class="each-icon">
-                <img src=  "{% static 'interview/images/careerpath-icon1-head-side-brain.png' %}"
-              
-                    alt="A Humen Brain Icon" />
-                <div>
-                    <h3>Map Your Career Expedition</h3>
-                    <div>Our intuitive and user-friendly platform harnesses the power of data analytics and artificial
-                        intelligence to analyze your educational qualifications and work history.
-                    </div>
-                </div>
-            </div>
-
-            <div class="each-icon">
-                <img src="{% static 'interview/images/careerpath-icon2-map-marker.png' %}"
-                
-                    alt="A Map Marker Icon" />
-                <div>
-                    <h3>Navigate Success with Us</h3>
-                    <div> By understanding your skills, interests, and goals, Career Path Builder offers you a dynamic and informed perspective on your future career trajectory.
-                    </div>
-                </div>
-            </div>
-
-            <div class="each-icon">
-                <img src="{% static 'interview/images/careerpath-icon3-unlock.png' %}"
-                
-                    alt="An Unlock Icon" />
-                <div>
-                    <h3>Unlock Your Career Potential</h3>
-                    <div>Whether you're a student eager to launch your professional journey or a seasoned professional seeking a change, let us empower you to achieve your dream career.
+                <div id="interviewButtonContainer">
+                    <div id="interviewButton">
+                        <a href="{% url 'interview:career_background' %}">Start Now</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+
+
+        <div id="PPPWord">
+            <div id="PPPBigWord">Dream. Plan. Achieve <br>
+                Your Career Your Canvas
+            </div>
+            <div id="PPPLittleWord">
+                In an ever-evolving job market, finding the right career path can be a daunting task. Career Path
+                Builder is
+                here to empower you with personalized insights and recommendations tailored to your unique education
+                background and work experience.
+            </div>
+        </div>
+
+
+        <div id="second-image">
+            <img src="{% static 'interview/images/career-builder-intro-img2.jpg' %}"
+                 alt="Three people sitting outside, on stairs, and talking"/>
+            <div id="pave-container">
+                <a href="{% url 'interview:career_background' %}">
+                    <div id="pave">Pave Your Way to Success Now</div>
+                </a>
+            </div>
+        </div>
+
+        <div id="three-icon-container">
+            <div id="three-icon">
+                <div class="each-icon">
+                    <img src="{% static 'interview/images/careerpath-icon1-head-side-brain.png' %}"
+
+                         alt="A Humen Brain Icon"/>
+                    <div>
+                        <h3>Map Your Career Expedition</h3>
+                        <div>Our intuitive and user-friendly platform harnesses the power of data analytics and
+                            artificial
+                            intelligence to analyze your educational qualifications and work history.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="each-icon">
+                    <img src="{% static 'interview/images/careerpath-icon2-map-marker.png' %}"
+
+                         alt="A Map Marker Icon"/>
+                    <div>
+                        <h3>Navigate Success with Us</h3>
+                        <div> By understanding your skills, interests, and goals, Career Path Builder offers you a
+                            dynamic and informed perspective on your future career trajectory.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="each-icon">
+                    <img src="{% static 'interview/images/careerpath-icon3-unlock.png' %}"
+
+                         alt="An Unlock Icon"/>
+                    <div>
+                        <h3>Unlock Your Career Potential</h3>
+                        <div>Whether you're a student eager to launch your professional journey or a seasoned
+                            professional seeking a change, let us empower you to achieve your dream career.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 </body>

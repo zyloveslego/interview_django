@@ -88,7 +88,7 @@ def interview_question_page(request, interview_id, question_index):
 
 # interview over
 def interview_over(request):
-    return render(request, 'interview/interview_over.html')
+    return render(request, 'interview/interviewsummary.html')
 
 
 # landing page
@@ -111,7 +111,6 @@ def get_access_from_chatgpt(question_text, answer_text):
     prompt = (prompt_default + "\n\n" + "Interviewer Question: " + question_text + "\n" + "Interviewee Answer: " +
               answer_text)
     print(prompt)
-
 
     openai.api_key = ""
     response = openai.ChatCompletion.create(
@@ -162,3 +161,24 @@ def upload_voice(request):
 # test
 def test(request):
     return render(request, 'interview/anchor_test.html')
+
+
+# career part
+def career_background(request):
+    return render(request, 'interview/career-builder-background.html')
+
+
+def career_interests(request):
+    return render(request, 'interview/career-builder-interests.html')
+
+
+def career_intro(request):
+    return render(request, 'interview/career-builder-intro.html')
+
+
+def career_preferences(request):
+    return render(request, 'interview/career-builder-preferences.html')
+
+
+def career_results(request):
+    return render(request, 'interview/career-builder-results.html')

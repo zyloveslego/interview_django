@@ -10,4 +10,11 @@ urlpatterns = [
     path("landingpage", views.landing_page, name="landing_page"),
     path("test/", views.test, name="test"),
     path("upload_voice/", views.upload_voice, name="upload_voice"),
+
+    path("career_background", views.career_background, name="career_background"),
+    path("career_interests", views.career_interests, name="career_interests"),
+    path("career_intro", views.career_intro, name="career_intro"),
+    path("career_preferences", views.career_preferences, name="career_preferences"),
+    path("career_results", views.career_results, name="career_results"),
+
 ]

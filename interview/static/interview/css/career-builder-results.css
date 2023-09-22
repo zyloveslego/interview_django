@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Britannia'; /* Give your font a name */
-  src: url('fonts/Britannia CG Bold Regular.otf') format('opentype'); /* Specify the font file path */
+  src: url('../fonts/Britannia CG Bold Regular.otf') format('opentype'); /* Specify the font file path */
   /* You can also include additional font formats for better browser compatibility */
 }
 

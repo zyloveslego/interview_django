@@ -16,16 +16,16 @@
 </head>
 
 <body>
-    <nav>
-        <div id="navContainer">
-          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-          <ul id="navBar">
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
             <li class="navMenu">Career Path Builder</li>
-          </ul>
-        </div>
-      </nav>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <!--Spinner-->
@@ -50,73 +50,78 @@
     </div>
 
     <section id="sideNavContainer">
-        <a href="#questionBox" class="menu-item"><i class="fa-regular fa-circle-question" id="menu-item-question-icon"></i>Question</a>
-        <a href="#answerTranscript" class="menu-item"><i class="fa-regular fa-file-lines" id="menu-item-uranswer-icon"></i><span id="menu-item-uranswer-text">Your Answer</span></a>
+        <a href="#questionBox" class="menu-item"><i class="fa-regular fa-circle-question"
+                                                    id="menu-item-question-icon"></i>Question</a>
+        <a href="#answerTranscript" class="menu-item"><i class="fa-regular fa-file-lines"
+                                                         id="menu-item-uranswer-icon"></i><span
+                id="menu-item-uranswer-text">Your Answer</span></a>
         <a href="#assessment" class="menu-item"><i class="fa-regular fa-sun"></i>Assessment</a>
-        <a href="#revisedAnswer" class="menu-item"><i class="fa-solid fa-wand-magic-sparkles" id="menu-item-ra-icon"></i>Revised Answer</a>
+        <a href="#revisedAnswer" class="menu-item"><i class="fa-solid fa-wand-magic-sparkles"
+                                                      id="menu-item-ra-icon"></i>Revised Answer</a>
         <br><br><br><br><br><br><br>
         <a href="#home" id="menu-item-next">Next <i class="fa-regular fa-circle-right"></i> </a>
-      </section>
+    </section>
 
     <section id="mainContent">
         <div id="question-box-and-skip-container">
-        <div id="questionBox" class="content-section">
-            <div class="transparentContainerBox">
+            <div id="questionBox" class="content-section">
+                <div class="transparentContainerBox">
 
-                <!--Question Number-->
-                <div id="questionNumber">
-                    <div class="theBrownVerticalDecoBar">
-                        <p>Interview Practice<br>Question {{ form.current_question }}/{{ form.length_of_interview }}</p>
-                    </div>
-                </div>
-
-
-                <!--Question Body-->
-                <div id="questionBody">
-                    <p id="question_text">{{ form.question_text }}</p>
-                </div>
-
-                <!--Recorder-->
-                <div id="recorder">
-
-                    <div id="allRecorderButtons">
-                        <button id="recordButton" class="button-1">
-                            <img src="{% static 'interview/images/RecordButton.svg' %}" alt="Record Button"
-                                 class="svgRecorderButton"/>
-                        </button>
-                        <div id="descriptionRecord">Record</div>
-                        <button id="stopButton" class="button-1" disabled>
-                            <img src="{% static 'interview/images/StopButton.svg' %}" alt="Stop Button"
-                                 class="svgRecorderButton"/>
-                        </button>
-                        <div id="descriptionStop">Stop</div>
-                        <!--<button id="recordButton" class="button-1">Record</button>
-                           <button id="pauseButton" class="button-1" disabled>Pause</button>
-                           <button id="stopButton" class="button-1" disabled>Stop</button>-->
-                        <!--Timer-->
-                        <div id="timer">00:00</div>
-                        <script src="{% static 'interview/js/timer.js' %}"></script>
-
-                        <div id="instructionForRecording">Once ready, click the ‘Record’ button to start recording.
+                    <!--Question Number-->
+                    <div id="questionNumber">
+                        <div class="theBrownVerticalDecoBar">
+                            <p>Interview Practice<br>Question {{ form.current_question }}/{{ form.length_of_interview }}
+                            </p>
                         </div>
                     </div>
 
-                    <br>
-                    <strong>
-                        <div id="yourAnswer"></div>
-                    </strong>
-                    <div id="showAudio"></div>
-                    <ol id="recordingsList"></ol>
-                    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-                    <script src="{% static 'interview/js/recorder.js' %}"></script>
-                    <script src="{% static 'interview/js/recorderapp.js' %}"></script>
-                    <script>let upload_url ={% url 'interview:upload_voice' %}</script>
+
+                    <!--Question Body-->
+                    <div id="questionBody">
+                        <p id="question_text">{{ form.question_text }}</p>
+                    </div>
+
+                    <!--Recorder-->
+                    <div id="recorder">
+
+                        <div id="allRecorderButtons">
+                            <button id="recordButton" class="button-1">
+                                <img src="{% static 'interview/images/RecordButton.svg' %}" alt="Record Button"
+                                     class="svgRecorderButton"/>
+                            </button>
+                            <div id="descriptionRecord">Record</div>
+                            <button id="stopButton" class="button-1" disabled>
+                                <img src="{% static 'interview/images/StopButton.svg' %}" alt="Stop Button"
+                                     class="svgRecorderButton"/>
+                            </button>
+                            <div id="descriptionStop">Stop</div>
+                            <!--<button id="recordButton" class="button-1">Record</button>
+                               <button id="pauseButton" class="button-1" disabled>Pause</button>
+                               <button id="stopButton" class="button-1" disabled>Stop</button>-->
+                            <!--Timer-->
+                            <div id="timer">00:00</div>
+                            <script src="{% static 'interview/js/timer.js' %}"></script>
+
+                            <div id="instructionForRecording">Once ready, click the ‘Record’ button to start recording.
+                            </div>
+                        </div>
+
+                        <br>
+                        <strong>
+                            <div id="yourAnswer"></div>
+                        </strong>
+                        <div id="showAudio"></div>
+                        <ol id="recordingsList"></ol>
+                        <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+                        <script src="{% static 'interview/js/recorder.js' %}"></script>
+                        <script src="{% static 'interview/js/recorderapp.js' %}"></script>
+                        <script>let upload_url ={% url 'interview:upload_voice' %}</script>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="skip-button-containcer">
-            <button class="submit-button">Skip</button>
+            <div id="skip-button-containcer">
+                <button class="submit-button">Skip</button>
             </div>
         </div>
 

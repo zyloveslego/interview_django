@@ -14,16 +14,16 @@
 </head>
 
 <body>
-    <nav>
-        <div id="navContainer">
-          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-          <ul id="navBar">
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-            <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
             <li class="navMenu">Career Path Builder</li>
-          </ul>
-        </div>
-      </nav>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <div id="setupBox" class="content-section">

@@ -18,8 +18,8 @@
       <div id="navContainer">
         <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
         <ul id="navBar">
-          <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
-          <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
+          <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+          <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
           <li class="navMenu">Career Path Builder</li>
         </ul>
       </div>
@@ -59,7 +59,7 @@
 
       <div id="threeConfidentInterviewees">
         <div id="theFirstInterviewee" class="eachInterviewee">
-          <img src={% static 'interview/images/confident interviewee1.jpeg' %}/>
+          <img src="{% static 'interview/images/confident interviewee1.jpeg' %}"/>
           <div class="myGoalContainer"><div class="myGoal">Gain confidence for interviews</div>
         </div></div>
         <div id="theSecondInterviewee" class="eachInterviewee">
