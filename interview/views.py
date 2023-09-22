@@ -83,11 +83,11 @@ def interview_question_page(request, interview_id, question_index):
                 }
         return render(request, 'interview/interview_question_page.html', {"form": form})
     else:
-        return redirect('interview:over')
+        return redirect('interview:summary')
 
 
 # interview over
-def interview_over(request):
+def interview_summary(request):
     return render(request, 'interview/interviewsummary.html')
 
 
@@ -112,7 +112,7 @@ def get_access_from_chatgpt(question_text, answer_text):
               answer_text)
     print(prompt)
 
-    openai.api_key = ""
+    openai.api_key = "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"
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[

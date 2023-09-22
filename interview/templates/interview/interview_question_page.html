@@ -59,7 +59,7 @@
         <a href="#revisedAnswer" class="menu-item"><i class="fa-solid fa-wand-magic-sparkles"
                                                       id="menu-item-ra-icon"></i>Revised Answer</a>
         <br><br><br><br><br><br><br>
-        <a href="#home" id="menu-item-next">Next <i class="fa-regular fa-circle-right"></i> </a>
+        <a href="" id="nextQuestion">Next <i class="fa-regular fa-circle-right"></i> </a>
     </section>
 
     <section id="mainContent">
@@ -121,7 +121,7 @@
             </div>
 
             <div id="skip-button-containcer">
-                <button class="submit-button">Skip</button>
+                <a href="{% url 'interview:summary' %}" class="submit-button">Skip</a>
             </div>
         </div>
 
