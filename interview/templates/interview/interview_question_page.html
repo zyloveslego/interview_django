@@ -59,6 +59,7 @@
       </section>
 
     <section id="mainContent">
+        <div id="question-box-and-skip-container">
         <div id="questionBox" class="content-section">
             <div class="transparentContainerBox">
 
@@ -111,6 +112,11 @@
                     <script src="{% static 'interview/js/recorderapp.js' %}"></script>
                     <script>let upload_url ={% url 'interview:upload_voice' %}</script>
                 </div>
+            </div>
+        </div>
+
+        <div id="skip-button-containcer">
+            <button class="submit-button">Skip</button>
             </div>
         </div>
 

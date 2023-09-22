@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title>Career Path Builder - Results</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/interviewsetup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/career-builder-results.css' %}">
     <style>
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
     </style>
+    <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,98 +21,205 @@
           <ul id="navBar">
             <li class="navMenu"><a href={% url 'interview:landing_page' %}>Home</a></li>
             <li class="navMenu"><a href={% url 'interview:landing_page' %}>Mock Interview</a></li>
-            <li class="navMenu">Career Path Builder</li>
+            <li class="navMenu"><a href={% url 'interview:career-builder-intro' %}>Career Path Builder</a></li>
           </ul>
         </div>
       </nav>
 
 <main>
-    <div id="setupBox" class="content-section">
-        <div class="transparentContainerBox">
-            <div id="setupQuestion">
-                <div class="theBrownVerticalDecoBar">
-                    <p>Tell us more about yourself and customize your mock interview experience</p>
+    <div id="main-content">
+        <div id="main-content-container">
+        <div class="theBrownVerticalDecoBar">
+            <h1>Career Path Recommendations</h1>
+        </div>
+    
+        <div>
+            <p>Based on your experience and interests, here are some potential career tracks and details on each:</p>
+        </div>
+    
+        <div id="career-rec">
+            <div class="line-one">
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3>Investment Banking Analyst</h3>
+                    <p>
+                        <span>Pros:</span> High earning potential, fast-paced environment, work on high-profile deals.
+                        <br><br><span>Cons:</span> Long hours (80+ hrs/week), high stress.
+                        <br><br><span>Salary:</span> Starting $100k+ and bonuses.
+                        <br><br><span>Work-life balance:</span> Poor, expect to work very long hours.
+                        <br><br><span>Career potential:</span> Associate, VP, MD roles. Exit ops in PE,
+                        hedge funds, corporate roles.
+                    </p>
                 </div>
-
-                <!--Setup Form-->
-                <div class="form-block w-form">
-                    <form id="wf-form-interview-setup-Form" name="wf-form-interview-setup-Form"
-                          data-name="interview setup Form" method="post" class="interview-setup-form"
-                          data-wf-page-id="644dd40e1a62013c9d0dab85"
-                          data-wf-element-id="bde9699f-01e1-5fbf-8f15-b8c9853ce5ac"
-                          action="{% url 'interview:setup_page' %}">
-                        {% csrf_token %}
-
-                        <!--Select Role-->
-                        <div class="div-block-2">
-                            <label for="YOE" class="questions-setup-text">Choose Your Role:</label>
-                            <label class="radio-button-field w-radio">
-                                <input type="radio" id="individual-contributor" name="role"
-                                       value="individual-contributor" required=""
-                                       class="w-form-formradioinput w-radio-input">
-                                <span class="radio-button-label w-form-label" for="individual-contributor">Individual Contributor</span>
-                            </label>
-                            <label class="w-radio">
-                                <input type="radio" id="manager" name="role" value="manager"
-                                       class="w-form-formradioinput w-radio-input">
-                                <span class="radio-button-label w-form-label" for="manager">Manager</span>
-                            </label>
-                        </div>
-
-
-                        <!--Select years of experience-->
-                        <div class="div-block-2">
-                            <label for="YOE" class="questions-setup-text">Years of Experience:</label>
-                            <select class="w-select" name="YOE" id="YOE" required="">
-                                <option value="" disabled selected>Select an option</option>
-                                <option value="1">0-1 year</option>
-                                <option value="2">1-3 years</option>
-                                <option value="3">3-5 years</option>
-                                <option value="4">5-10 years</option>
-                                <option value="5">10+ years</option>
-                            </select>
-                        </div>
-
-                        <!--Select # of Questions-->
-                        <div class="div-block-2">
-                            <label for="YOE-4" class="questions-setup-text">Number of Questions:</label>
-                            <label class="radio-button-field w-radio">
-                                <input type="radio" data-name="Radio 3" id="radio-3" name="n_question" value="3"
-                                       class="w-form-formradioinput w-radio-input">
-                                <span class="w-form-label" for="radio-3">  3    </span></label>
-                            <label class="w-radio">
-                                <input type="radio" data-name="Radio 3" id="radio-3" name="n_question" value="5"
-                                       class="w-form-formradioinput w-radio-input">
-                                <span class="radio-button-label w-form-label" for="radio-3">  5    </span></label>
-                            <label class="radio-button-field-2 w-radio">
-                                <input type="radio" data-name="Radio 5" id="radio-5" name="n_question" value="7"
-                                       class="w-form-formradioinput w-radio-input">
-                                <span class="radio-button-label w-form-label" for="radio-5">  7    </span>
-                            </label>
-                        </div>
-
-                        <!--Start Button-->
-                        <div class="div-block-3">
-                            <!--<a href="interviewquestion.html" class="submit-button">Start Now</a>-->
-                            <input type="submit" value="Start Now" class="submit-button">
-                        </div>
-
-                    </form>
-                    <!--
-                    <div class="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
                     </div>
-                    <div class="w-form-fail">
-                      <div>Oops! Something went wrong while submitting the form.</div>
-                    </div>
-                    -->
                 </div>
+        
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3>Data Scientist</h3>
+                    <p>
+                        <span>Pros:</span> Use advanced analytics, work on impactful projects, high demand for skills.
+                        <br><br><span>Cons:</span> Can be isolating/lonely work. Need to constantly learn new skills and tools.
+                        <br><br><span>Salary:</span> $100k-$130k for entry level roles.
+                        <br><br><span>Work-life balance:</span> Average to good work-life balance.
+                        <br><br><span>Career potential:</span> Lead data scientist, head of analytics, CTO.
+                    </p>
+                </div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
 
-
+            <div class="line-one">
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3> Software Engineer</h3>
+                    <p>
+                        <span>Pros:</span> Competitive salary, good benefits, engaging technical work.
+                        <br><br><span>Cons:</span> Requires constant learning and skill development. Can be stressful.
+                        <br><br><span>Salary:</span> $100k-$140k for entry level at top tech firms.
+                        <br><br><span>Work-life balance:</span> Average, depends on team and company culture.
+                        <br><br><span>Career potential:</span> Senior engineer, tech lead, CTO.
+                    </p>
+                </div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
+                    </div>
+                </div>
+            
+        
+            
+        
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3>Management Consulting Analyst</h3>
+                    <p>
+                        <span>Pros:</span> Variety of projects, work with top executives, fast career progression, develop
+                        business strategy skills.
+                        <br><br><span>Cons:</span> Frequent travel and long hours. High pressure to perform.
+                        <br><br><span>Salary:</span> $80k-$90k starting.
+                        <br><br><span>Work-life balance:</span> Below average, expect 60-80 hr weeks.
+                        <br><br><span>Career potential:</span> Progress from analyst to consultant to manager/partner. Exit ops
+                        in industry.
+                    </p>
+                </div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
+                    </div>
+                </div>
+        </div>
+        
+                <div class="line-one">
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3>Digital Marketing Manager</h3>
+                    <p>
+                        <span>Pros:</span> Play a key role in building and enhancing a company's online presence.
+                        <br><br><span>Cons:</span> The industry evolves quickly, you'll need to stay updated on industry trends and technologies. Can be competitive.
+                        <br><br><span>Salary:</span> Starting between $60k and $100k per year.
+                        <br><br><span>Work-life balance:</span> Average, depends on company and role.
+                        <br><br><span>Career potential:</span> Sr Digital Marketing Manager, Director of Digital Marketing, CMO
+                    </p>
+                </div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
+                    </div>
+                </div>
+            
+        
+            
+                <div class="transparentContainerBox">
+                    <div class="job-description-container">
+                    <h3>Product Manager</h3>
+                    <p>
+                        <span>Pros:</span> Strategic role, work cross-functionally, high impact on business.
+                        <br><br><span>Cons:</span> Can be ambiguous, fast-paced, lots of accountability.
+                        <br><br><span>Salary:</span> $100k-$150k starting compensation at top tech companies.
+                        <br><br><span>Work-life balance:</span> Can be good or bad depending on company and role demands.
+                        <br><br><span>Career potential:</span> Senior PM, Director of Product, VP of Product.
+                    </p>
+                </div>
+                    <div class="learn-more-button-container">
+                        <button class="connect-button">Learn More</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    
 
+    </div>
+
+    <div id="mentor">
+        <div id="mentor-container">
+        <p id="connect-with-mentor">Connect with our mentors to hear their stories and get to know what the day to day looks like</p>
+        <div id="horizontal-bar"></div>
+        <div id="mentor-details">
+            <div class="mentor-line-one">
+                <div class="each-mentor-box">
+                    <img src="{% static 'interview/images/mentor1.png' %}" alt="Picture of mentor number one" />
+                    
+                    <div id="mentor-content">
+                        <div class="mentor-text-description">
+                            <i class="fa-solid fa-ellipsis menu-icon"></i>
+                            <div class="mentor-name">Matt Smith</div>
+                            <p class="mentor-job-position">Investment Banking<br>Associate at Goldman Sachs</p>
+                        </div>
+                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
+                    </div>
+                </div>
+
+                <div class="each-mentor-box">
+                    <img src="{% static 'interview/images/mentor2.png' %}" alt="Picture of mentor number two" />
+                    <div id="mentor-content">
+                        <div class="mentor-text-description">
+                            <i class="fa-solid fa-ellipsis menu-icon"></i>
+                            <div class="mentor-name">Andrew Bell</div>
+                            <p class="mentor-job-position">Software Engineer at<br>Facebook</p>
+                        </div>
+                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
+                    </div>
+                </div>
+        
+            </div>
+
+            <div class="mentor-line-one">
+                <div class="each-mentor-box">
+                    <img src="{% static 'interview/images/mentor3.png' %}" alt="Picture of mentor number one" />
+                    <div id="mentor-content">
+                        <div class="mentor-text-description">
+                            <i class="fa-solid fa-ellipsis menu-icon"></i>
+                            <div class="mentor-name">Ana Irwin</div>
+                            <p class="mentor-job-position">Product Manager at<br>Amazon</p>
+                        </div>
+                        <button class="connect-button"><i class="fa-solid fa-comments chat-icon"></i>Connect</button>
+                    </div>
+                </div>
+
+                <div class="each-mentor-box">
+                    <img src="{% static 'interview/images/mentor4.png' %}" alt="Picture of mentor number two" />
+                    <div id="mentor-content">
+                        <div class="mentor-text-description">
+                            <i class="fa-solid fa-ellipsis menu-icon"></i>
+                            <div class="mentor-name">Emily Mitchell</div>
+                            <p class="mentor-job-position">Research Scientist at<br>Google</p>
+                        </div>
+                        <button class="connect-button"><i class="fa-solid fa-comments" class="chat-icon"></i>Connect</button>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+
+        <div id="footnote">*Our mentors are AI characters trained with real-life experience data</div>
+        <div id="see-more-button-container">
+        <button class="connect-button"> Click to See More</button>
+    </div>
+    </div>
+</div>
 </main>
 </body>

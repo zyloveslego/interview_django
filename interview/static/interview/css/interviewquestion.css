@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Tahoma', sans-serif;
     word-wrap: break-word;
     overflow-wrap: break-word;
     color:black;
@@ -52,7 +52,7 @@ nav{
 
 
 #sideNavContainer{
-/*display: none;*/
+display: none;
 
   width: 210px;/*width of Side Nav Bar*/
   height: 100%;
@@ -260,7 +260,17 @@ margin:0;
     margin-left: 0;
   }
   
+  /*Skip Button*/
+  #question-box-and-skip-container{
+    display: flex;
+    justify-content: space-around;
+  }
 
+  #skip-button-containcer button{
+    margin-top:530px;
+    padding-left:35px;
+    padding-right:35px;
+  }
 
 
  /* Your Answer*/
@@ -375,7 +385,7 @@ margin:0;
 
   /*Answer Assessment & Revise*/
   #AAR {
-    /*display: none;*/
+    display: none;
     position: relative;  
   }
 
