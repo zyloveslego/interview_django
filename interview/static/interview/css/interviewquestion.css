@@ -52,7 +52,7 @@ nav{
 
 
 #sideNavContainer{
-display: none;
+display: block;
 
   width: 210px;/*width of Side Nav Bar*/
   height: 100%;
@@ -261,17 +261,18 @@ margin:0;
   }
   
   /*Skip Button*/
-  #question-box-and-skip-container{
+  /*#question-box-and-skip-container{
     display: flex;
     justify-content: space-around;
   }
 
-  #skip-button-containcer button{
+  #skip-button-containcer a{
     margin-top:530px;
     padding-left:35px;
     padding-right:35px;
+    text-decoration: none;
   }
-
+*/
 
  /* Your Answer*/
   
@@ -385,8 +386,9 @@ margin:0;
 
   /*Answer Assessment & Revise*/
   #AAR {
-    display: none;
-    position: relative;  
+    display: block;
+    position: relative;
+    /*left:40px;  /*For Skip Button*/ 
   }
 
   #AAR .theBrownVerticalDecoBar{
@@ -417,7 +419,7 @@ margin:0;
   }
 
   #revisedAnswer{
-    padding-bottom: 50px;
+    padding-bottom: 20px;
   }
 
 

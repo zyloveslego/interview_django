@@ -78,46 +78,52 @@ main{
   margin: 0; /* Remove margin */
   padding: 0; 
   font-family: sans-serif;
+  width: 100%;
+ 
 }
 
 #bigWordAtTheTop{
   display:block;
-  margin:50px;
   text-align: center;
   font-family: sans-serif;
+  width: 40%;
 }
 
 #interviewButtonContainer{
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center align vertically */
   justify-content: center;
+  margin-left:15%;
+  margin-right: 15%;
+  margin-bottom: 0;
+  margin-top: 5%;
+  font-size: 1rem;
 }
 
 #bigImage{
   order:2;
+  width:60%;
 }
 
 #bigImage img{
-  width:750px;
+  width:100%;
   height:auto;
+  max-width: 100%;
 }
 
 #firstWord{
   font-size: 2rem;
   padding: 20px 0;
   font-family: sans-serif;
+  margin-left:15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+  margin-top: 0;
 }
 
 #firstWord .emphasizeThoseWords{
   color:#7e5f50;
-  font-weight:bold;
-}
-
-#startItNow{
-  font-size: 1.25rem;
-  color:#7e5f50;
-  padding: 20px 0;
-  font-family: sans-serif;
+  /*font-weight:bold;*/
 }
 
 
@@ -127,14 +133,14 @@ main{
     appearance: none;
     background-color: #FAFBFC;
     border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
+    border-radius: 20px;
     box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
     box-sizing: border-box;
     color: #24292E;
     cursor: pointer;
     display: inline-block;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 22px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 20px;
     list-style: none;
@@ -164,9 +170,17 @@ main{
     color:#ffffff;
   }
 
+  /*Set width of the content*/
+  #PPPWord, #threeConfidentInterviewees, #hereComesTheMonkeysContainer{
+width:70%;
+margin-right: auto;
+margin-left: auto;
+  }
+
   #PPPWord{
     margin:110px;
     display:block;
+    border: 1px black solid;
   }
 
   #PPPBigWord, #PPPLittleWord{
