@@ -140,7 +140,7 @@ main{
     cursor: pointer;
     display: inline-block;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 20px;
     list-style: none;
@@ -178,9 +178,10 @@ margin-left: auto;
   }
 
   #PPPWord{
-    margin:110px;
+    margin-top:10%;
+    margin-bottom:10%;
     display:block;
-    border: 1px black solid;
+    
   }
 
   #PPPBigWord, #PPPLittleWord{
@@ -205,17 +206,20 @@ margin-left: auto;
     justify-content: center;
     margin-top: 120px;
     margin-bottom: 250px;
-
+    
   }
 
   #threeConfidentInterviewees img{
-    width:300px;
-    height:300px;
+    width:100%;
+    height:auto;
+  
   }
 
   .eachInterviewee{
     display: inline-block;
-    padding: 6px;
+    padding: 1%;
+    width:33%;
+    
   }
 
   #theThirdInterviewee, #theFirstInterviewee{
@@ -229,6 +233,7 @@ margin-left: auto;
     font-weight: bold;
     padding: 20px 0;
     width: 165px;
+    
   }
 
   .myGoalContainer{
@@ -242,17 +247,24 @@ margin-left: auto;
     overflow: hidden;
     position: relative;
     left: -5px;
-    top: -10px;
-    
+    top: -10px;    
   }
   .monkeyLogoContainer{
     width:80px;
+    border: 1px black solid;
   }
 
   #hereComesTheMonkeysContainer{
     display: flex;
     justify-content: center;
     padding-bottom: 50px;
+    border: 1px black solid;
+    height:60vh;
+  }
+
+  #hereComesTheMonkeys{
+    border:1px black solid; 
+
   }
 
   .forEachMonkey{
@@ -261,14 +273,14 @@ margin-left: auto;
     padding-right: 28px;
     padding-left: 0px;
     color:#7E5F50;
-    
+    border: 1px black solid;
     /*transparentContainerBox*/
-      width:360px;
+      /*width:360px;
       height:220px;
-      margin: 1rem;
+      margin: 1rem;*/
+      width:40%;
   
       background: white; 
-  
       box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
       border-radius: 12px;
   }
