@@ -53,8 +53,7 @@ nav{
 
 #sideNavContainer{
 display: block;
-
-  width: 210px;/*width of Side Nav Bar*/
+  width:16.5%;
   height: 100%;
   background-color: rgba(126,95,80,0.93);
   color:#ffffff;
@@ -90,7 +89,7 @@ background-color: #7E5F50;
 }
 
 #mainContent{
-margin-left:210px; /* Equal to the width of the sidebar */
+margin-left:16.5%; /* Equal to the width of the sidebar */
 }
 
 
@@ -101,14 +100,16 @@ main{
     position: relative;
     top:77px;
     z-index: 0;
-    width: 1200px;
+    width: 100%;
     margin:auto;
 }
   
 .transparentContainerBox{
-    width:700px;
+    width: 70%;
+
     min-height:500px;
-    margin-left:30px;
+
+    margin-left:10%;
     margin-bottom: 2rem; 
     
     position: relative; 
@@ -154,7 +155,8 @@ padding-left: 10px;
     top:30px;
 
     width:450px;
-    height:55px;  
+    height:55px; 
+     
     background: white; 
     border-radius: 15px; 
     border: 2.5px #7E5F50 solid;
@@ -545,4 +547,11 @@ i{
 #menu-item-next{
   text-align: center;
   font-size: 1.25rem;
+}
+
+
+@media only screen and (min-width: 1500px){
+  .transparentContainerBox{
+   min-height:625px;
+  }
 }

@@ -97,7 +97,6 @@ main{
   margin-right: 15%;
   margin-bottom: 0;
   margin-top: 5%;
-  font-size: 1rem;
 }
 
 #bigImage{
@@ -193,7 +192,6 @@ margin-left: auto;
     font-weight: bold;
     font-size: 2.25rem;
     padding: 20px;
-    font-weight: bold;
   }
 
   #PPPLittleWord{
@@ -242,6 +240,12 @@ margin-left: auto;
   }
 
   /*4 Monkeys*/
+  #hereComesTheMonkeysContainer{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+  }
+
   #hereComesTheMonkeys img{
     width:100px;
     overflow: hidden;
@@ -249,22 +253,9 @@ margin-left: auto;
     left: -5px;
     top: -10px;    
   }
+
   .monkeyLogoContainer{
     width:80px;
-    border: 1px black solid;
-  }
-
-  #hereComesTheMonkeysContainer{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
-    border: 1px black solid;
-    height:60vh;
-  }
-
-  #hereComesTheMonkeys{
-    border:1px black solid; 
-
   }
 
   .forEachMonkey{
@@ -273,16 +264,14 @@ margin-left: auto;
     padding-right: 28px;
     padding-left: 0px;
     color:#7E5F50;
-    border: 1px black solid;
-    /*transparentContainerBox*/
-      /*width:360px;
-      height:220px;
-      margin: 1rem;*/
-      width:40%;
-  
-      background: white; 
+    background: white; 
       box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
       border-radius: 12px;
+  
+    /*transparentContainerBox*/
+      width:360px;
+      height:220px;
+      margin: 1rem;
   }
 
   .monkeysWordTitle{
@@ -299,4 +288,40 @@ margin-left: auto;
 
   .monkeysWord{
     order:2;/*This puts word to the right side and logo to the left side.*/
+  }
+
+
+  @media only screen and (min-width: 1500px){
+    #firstWord{
+      font-size: 2.5rem;
+    }
+    #interviewButton a{
+      font-size: 1.5rem;
+    }
+
+    #PPPBigWord{
+      font-size: 2.8rem;
+    }
+  
+    #PPPLittleWord{
+      font-size: 1.5rem;
+    }
+
+    #hereComesTheMonkeys img{
+      width:125px;   
+    }
+    .monkeyLogoContainer{
+      width:100px;
+    }
+  
+    .forEachMonkey{
+        width:450px;
+        height:275px;
+        margin: 20px;
+        font-size: 1.25rem;
+    }
+  
+    .monkeysWordTitle{
+      font-size: 1.5rem;
+    }
   }

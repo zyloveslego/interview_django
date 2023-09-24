@@ -60,7 +60,7 @@ main{
 }
   
 .transparentContainerBox{
-    width:800px;
+    width:62.5%;
     height:auto;
     margin:auto;  
     
@@ -93,7 +93,7 @@ main{
   }
 
   .summaryContent p{
-  width:700px;
+  width:80%;
   padding:50px;
   font-size:1rem;
   line-height: 1.5;

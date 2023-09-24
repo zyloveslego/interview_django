@@ -64,7 +64,7 @@ margin-top:1.5625rem;
 #sideNavContainer{
   /*display: none;*/
   
-    width: 210px;/*width of Side Nav Bar*/
+  width:16.5%;/*width of Side Nav Bar*/
     height: 100%;
     background-color: rgba(126,95,80,0.93);
     color:#ffffff;
@@ -95,11 +95,11 @@ margin-top:1.5625rem;
   }
   
   #mainContent{
-  margin-left:210px; /* Equal to the width of the sidebar */
-  width:750px;
-  position: relative;
-    left:70px;
-    top:105px;
+   margin-left:16.5%; /* Equal to the width of the sidebar */
+   width: 60%;
+   position: relative;
+   left:5.5%;
+   top:105px;
   }
 
   /*Main Content*/

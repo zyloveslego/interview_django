@@ -60,7 +60,7 @@ main{
 }
   
 .transparentContainerBox{
-    width:800px;
+    width: 62.5%;
     height:450px;
     margin:auto;  
     
@@ -181,3 +181,8 @@ margin-left:20px;
     cursor: default;
   }
   
+  @media only screen and (min-width: 1500px){
+    .transparentContainerBox{
+     min-height:565px;
+    }
+  }
