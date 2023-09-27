@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -16,176 +17,232 @@
 </head>
 
 <body>
-<nav>
-    <div id="navContainer">
-        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
-        <ul id="navBar">
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav>
+        <div id="navContainer">
+            <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
+            <ul id="navBar">
+                <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+                <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+                <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<main>
-    <!--Spinner-->
-    <div id="spinner">
-        <div class="loadingio-spinner-spinner-fnpk4eprp3r">
-            <div class="ldio-pal3955r1rq">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+    <main>
+        <!--Spinner-->
+        <div id="spinner">
+            <div class="loadingio-spinner-spinner-fnpk4eprp3r">
+                <div class="ldio-pal3955r1rq">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div>
+                <p>Your Answer is submitted!<br> Coach Monkey is assessing your answer...</p>
             </div>
         </div>
-        <div><p>Your Answer is submitted!<br> Coach Monkey is assessing your answer...</p></div>
-    </div>
 
-    <section id="sideNavContainer">
-        <a href="#questionBox" class="menu-item"><i class="fa-regular fa-circle-question"
-                                                    id="menu-item-question-icon"></i>Question</a>
-        <a href="#answerTranscript" class="menu-item"><i class="fa-regular fa-file-lines"
-                                                         id="menu-item-uranswer-icon"></i><span
-                id="menu-item-uranswer-text">Your Answer</span></a>
-        <a href="#assessment" class="menu-item"><i class="fa-regular fa-sun"></i>Assessment</a>
-        <a href="#revisedAnswer" class="menu-item"><i class="fa-solid fa-wand-magic-sparkles"
-                                                      id="menu-item-ra-icon"></i>Revised Answer</a>
-        <br><br><br><br><br><br><br>
-        <a href="" id="nextQuestion">Next <i class="fa-regular fa-circle-right"></i> </a>
-    </section>
+        <section id="sideNavContainer">
+            <a href="#questionBox" class="menu-item"><i class="fa-regular fa-circle-question"
+                    id="menu-item-question-icon"></i>Question</a>
+            <a href="#answerTranscript" class="menu-item"><i class="fa-regular fa-file-lines"
+                    id="menu-item-uranswer-icon"></i><span id="menu-item-uranswer-text">Your Answer</span></a>
+            <a href="#vocalPresence" class="menu-item"><i class="fa-solid fa-volume-low" id="menu-item-vocal-icon"></i><span id="menu-item-vocal-text">Vocal Precense</span></a>
+            <a href="#assessment" class="menu-item"><i class="fa-regular fa-sun"></i>Assessment</a>
+            <a href="#revisedAnswer" class="menu-item"><i class="fa-solid fa-wand-magic-sparkles"
+                    id="menu-item-ra-icon"></i>Revised Answer</a>
+            <br><br><br><br><br><br><br>
+            <a href="" id="nextQuestion">Next <i class="fa-regular fa-circle-right"></i> </a>
+        </section>
 
-    <section id="mainContent">
-        <div id="question-box-and-skip-container">
-            <div id="questionBox" class="content-section">
-                <div class="transparentContainerBox">
+        <section id="mainContent">
+            <div id="question-box-and-skip-container">
+                <div id="questionBox" class="content-section">
+                    <div class="transparentContainerBox">
 
-                    <!--Question Number-->
-                    <div id="questionNumber">
-                        <div class="theBrownVerticalDecoBar">
-                            <p>Interview Practice<br>Question {{ form.current_question }}/{{ form.length_of_interview }}
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <!--Question Body-->
-                    <div id="questionBody">
-                        <p id="question_text">{{ form.question_text }}</p>
-                    </div>
-
-                    <!--Recorder-->
-                    <div id="recorder">
-
-                        <div id="allRecorderButtons">
-                            <button id="recordButton" class="button-1">
-                                <img src="{% static 'interview/images/RecordButton.svg' %}" alt="Record Button"
-                                     class="svgRecorderButton"/>
-                            </button>
-                            <div id="descriptionRecord">Record</div>
-                            <button id="stopButton" class="button-1" disabled>
-                                <img src="{% static 'interview/images/StopButton.svg' %}" alt="Stop Button"
-                                     class="svgRecorderButton"/>
-                            </button>
-                            <div id="descriptionStop">Stop</div>
-                            <!--<button id="recordButton" class="button-1">Record</button>
-                               <button id="pauseButton" class="button-1" disabled>Pause</button>
-                               <button id="stopButton" class="button-1" disabled>Stop</button>-->
-                            <!--Timer-->
-                            <div id="timer">00:00</div>
-                            <script src="{% static 'interview/js/timer.js' %}"></script>
-
-                            <div id="instructionForRecording">Once ready, click the ‘Record’ button to start recording.
+                        <!--Question Number-->
+                        <div id="questionNumber">
+                            <div class="theBrownVerticalDecoBar">
+                                <p>Interview Practice<br>Question {{ form.current_question }}/{{
+                                    form.length_of_interview }}
+                                </p>
                             </div>
                         </div>
 
-                        <br>
-                        <strong>
-                            <div id="yourAnswer"></div>
-                        </strong>
-                        <div id="showAudio"></div>
-                        <ol id="recordingsList"></ol>
-                        <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-                        <script src="{% static 'interview/js/recorder.js' %}"></script>
-                        <script src="{% static 'interview/js/recorderapp.js' %}"></script>
-                        <script>let upload_url ={% url 'interview:upload_voice' %}</script>
+
+                        <!--Question Body-->
+                        <div id="questionBody">
+                            <p id="question_text">{{ form.question_text }}</p>
+                        </div>
+
+                        <!--Recorder-->
+                        <div id="recorder">
+
+                            <div id="allRecorderButtons">
+                                <button id="recordButton" class="button-1">
+                                    <img src="{% static 'interview/images/RecordButton.svg' %}" alt="Record Button"
+                                        class="svgRecorderButton" />
+                                </button>
+                                <div id="descriptionRecord">Record</div>
+                                <button id="stopButton" class="button-1" disabled>
+                                    <img src="{% static 'interview/images/StopButton.svg' %}" alt="Stop Button"
+                                        class="svgRecorderButton" />
+                                </button>
+                                <div id="descriptionStop">Stop</div>
+                                <!--<button id="recordButton" class="button-1">Record</button>
+                               <button id="pauseButton" class="button-1" disabled>Pause</button>
+                               <button id="stopButton" class="button-1" disabled>Stop</button>-->
+                                <!--Timer-->
+                                <div id="timer">00:00</div>
+                                <script src="{% static 'interview/js/timer.js' %}"></script>
+
+                                <div id="instructionForRecording">Once ready, click the ‘Record’ button to start
+                                    recording.
+                                </div>
+                            </div>
+
+                            <br>
+                            <strong>
+                                <div id="yourAnswer"></div>
+                            </strong>
+                            <div id="showAudio"></div>
+                            <ol id="recordingsList"></ol>
+                            <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+                            <script src="{% static 'interview/js/recorder.js' %}"></script>
+                            <script src="{% static 'interview/js/recorderapp.js' %}"></script>
+                            <script>let upload_url = {% url 'interview:upload_voice' %}</script>
+                        </div>
                     </div>
                 </div>
-            </div>
-<!--
+                <!--
             <div id="skip-button-containcer">
                 <a href="{% url 'interview:summary' %}" class="submit-button" id="skip-button">Skip</a>
             </div> 
 -->
 
-        </div>
-
-        <!--Answer, Assess & Revise-->
-        <div id="AAR">
-            <div id="answerTranscript" class="content-section">
-                <div class="transparentContainerBox">
-                    <div class="theBrownVerticalDecoBar">
-                        <h3>Transcript of Your Answer</h3>
-                    </div>
-                    <p id="my_answer">I can think of a time at my old job when I had to take the lead in a tricky situation. We had this project where we had to launch a new product, and I was the project manager.
-
-<br><br>The catch was, we had a bunch of people with different skills and personalities on the team. So, I had to step up and make things work:
-<br><br>Set the Stage: I kicked things off with a team meeting, laying out what needed to be done, who was responsible for what, and the tight timeline we had.
-<br><br>Keep the Chat Flowing: I encouraged everyone to speak their minds and made sure everyone felt heard. No idea was too small or too crazy.
-<br><br>Deal with Drama: Of course, there were some disagreements. I jumped in to sort out conflicts and find common ground among team members.
-<br><br>In the end, we launched that new product right on schedule and didn't blow our budget. This experience taught me that good leadership makes all the difference in getting a project done well, even with a diverse team.
-
-
-
-
-</div>
             </div>
 
-            <div id="assessment" class="content-section">
-                <div class="transparentContainerBox">
-                    <div class="theBrownVerticalDecoBar">
-                        <h3>Assessment</h3>
-                    </div>
-                    <p id="my_assessment">
-                        <span>1. Relevance: 9/10</span> - The candidate’s response directly addresses the interviewer’s question, describing a specific disagreement with a colleague and how it was resolved.
-                        <br><br><span>2. Specificity: 8/10</span> - The candidate provides sufficient details to provide context for the disagreement, such as the different priorities each person had and the compromise that was ultimately reached. However, there could have been more specific examples of how the disagreement played out.
-                        <br><br><span>3. Actions: 8/10</span> - The candidate articulates the steps they took to address the situation, such as having an open debate and reaching a compromise. However, it could have been clearer what specific actions the candidate took to contribute to the resolution.
-                        <br><br><span>4. Results and Impact: 8/10</span> - The candidate describes the positive outcome of the disagreement, such as the compromise that was reached. However, there could have been more discussion of the impact of the compromise and how it improved the work.
-                        <br><br><span>5. Learning: 6/10</span> - While the candidate does not mention any major mistakes or failures, they do not discuss any significant lessons learned from the disagreement either.
-                        <br><br><span>6. Clarity: 9/10</span> - The candidate's answer is easy to understand and follow. The language used is clear and concise, and the response is well-structured.
-                        <br><br><span>7. Soft skills: 9/10</span> - The candidate demonstrates several key soft skills, such as communication, problem-solving, and teamwork, in their description of how they resolved the disagreement.
+            <!--Answer, Assess & Revise-->
+            <div id="AAR">
+                <div id="answerTranscript" class="content-section">
+                    <div class="transparentContainerBox">
+                        <div class="theBrownVerticalDecoBar">
+                            <h3>Transcript of Your Answer</h3>
+                        </div>
+                        <p id="my_answer">I can think of a time at my old job when I had to take the lead in a tricky
+                            situation. We had this project where we had to launch a new product, and I was the project
+                            manager.
 
-                        <br><br><span>Overall</span> - I would rate the answer a 8/10. The response provides a clear and relevant example of a disagreement with a colleague and the steps taken to resolve it. However, there could have been more specific examples and discussion of the impact of the compromise, as well as any lessons learned from the situation. The candidate does, however, demonstrate several key soft skills, such as communication, problem-solving, and teamwork, making it a strong response overall.
-                        
-                    </p>
+                            <br><br>The catch was, we had a bunch of people with different skills and personalities on
+                            the team. So, I had to step up and make things work:
+                            <br><br>Set the Stage: I kicked things off with a team meeting, laying out what needed to be
+                            done, who was responsible for what, and the tight timeline we had.
+                            <br><br>Keep the Chat Flowing: I encouraged everyone to speak their minds and made sure
+                            everyone felt heard. No idea was too small or too crazy.
+                            <br><br>Deal with Drama: Of course, there were some disagreements. I jumped in to sort out
+                            conflicts and find common ground among team members.
+                            <br><br>In the end, we launched that new product right on schedule and didn't blow our
+                            budget. This experience taught me that good leadership makes all the difference in getting a
+                            project done well, even with a diverse team.
+                    </div>
+                </div>
+
+                <div id="vocalPresence" class="content-section">
+                    <div class="transparentContainerBox">
+                        <div class="theBrownVerticalDecoBar">
+                            <h3>Vocal Presence</h3>
+                        </div>
+                        <p id="my_vocalPresence"><span>Volume: 4/5</span> - A higher, but still moderate, vocal level projects energy and engagement that captures attention. While the interviewee's current volume effectively conveys ideas, a bolder voice could lend additional authoritativeness and impact to the well-formulated responses.
+                            <br><br><span>Speed: 5/5</span> - The interviewee exhibits an optimal cadence and pacing in their responses. Their rate of speech is measured and appropriate, facilitating easy comprehension.
+                                <br><br><span>Tone: 3/5</span> - While conveying ideas clearly, the interviewee's vocal tone could reveal greater enthusiasm through expanded expressiveness. Adopting a wider vocal range and melodic modulation would further showcase the candidate's innate passion and engagement.
+                                    <br><br><span>Precision of Language: 4/5</span> - The interviewee's consistently succinct, filler-free responses demonstrate exemplary preparation and command of language. Their judicious word selection reveals a keen understanding of the power of conciseness to convey maximum meaning. 
+ </p>
+                    </div>
+                    </div>
+
+                <div id="assessment" class="content-section">
+                    <div class="transparentContainerBox">
+                        <div class="theBrownVerticalDecoBar">
+                            <h3>Assessment</h3>
+                        </div>
+                        <p id="my_assessment">
+                            <span>1. Relevance: 9/10</span> - The candidate’s response directly addresses the
+                            interviewer’s question, describing a specific disagreement with a colleague and how it was
+                            resolved.
+                            <br><br><span>2. Specificity: 8/10</span> - The candidate provides sufficient details to
+                            provide context for the disagreement, such as the different priorities each person had and
+                            the compromise that was ultimately reached. However, there could have been more specific
+                            examples of how the disagreement played out.
+                            <br><br><span>3. Actions: 8/10</span> - The candidate articulates the steps they took to
+                            address the situation, such as having an open debate and reaching a compromise. However, it
+                            could have been clearer what specific actions the candidate took to contribute to the
+                            resolution.
+                            <br><br><span>4. Results and Impact: 8/10</span> - The candidate describes the positive
+                            outcome of the disagreement, such as the compromise that was reached. However, there could
+                            have been more discussion of the impact of the compromise and how it improved the work.
+                            <br><br><span>5. Learning: 6/10</span> - While the candidate does not mention any major
+                            mistakes or failures, they do not discuss any significant lessons learned from the
+                            disagreement either.
+                            <br><br><span>6. Clarity: 9/10</span> - The candidate's answer is easy to understand and
+                            follow. The language used is clear and concise, and the response is well-structured.
+                            <br><br><span>7. Soft skills: 9/10</span> - The candidate demonstrates several key soft
+                            skills, such as communication, problem-solving, and teamwork, in their description of how
+                            they resolved the disagreement.
+
+                            <br><br><span>Overall</span> - I would rate the answer a 8/10. The response provides a clear
+                            and relevant example of a disagreement with a colleague and the steps taken to resolve it.
+                            However, there could have been more specific examples and discussion of the impact of the
+                            compromise, as well as any lessons learned from the situation. The candidate does, however,
+                            demonstrate several key soft skills, such as communication, problem-solving, and teamwork,
+                            making it a strong response overall.
+
+                        </p>
+                    </div>
+                </div>
+
+                <div id="revisedAnswer" class="content-section">
+                    <div class="transparentContainerBox">
+                        <div class="theBrownVerticalDecoBar">
+                            <h3>Revised Answer</h3>
+                        </div>
+                        <p id="my_revise">One of the most challenging aspects of this project was the team dynamics. We
+                            had a diverse group of individuals with varying levels of expertise and different working
+                            styles. As the project manager, it was my responsibility to ensure that everyone was aligned
+                            with the project's objectives and working cohesively toward the common goal.
+                            <br><br>Here's how I demonstrated leadership skills in this situation:
+                            <br><br>Setting Clear Goals and Expectations: I started by holding a team meeting to outline
+                            our project's objectives, scope, and timeline. I made sure everyone understood their roles
+                            and responsibilities, emphasizing the importance of their contributions to the project's
+                            success.
+                            <br><br>Effective Communication: Throughout the project, I maintained open and transparent
+                            communication channels. I encouraged team members to voice their ideas, concerns, and
+                            questions. By fostering an environment of trust and open communication, I ensured that
+                            everyone felt heard and valued.
+                            <br><br>Conflict Resolution: As expected in any diverse team, conflicts arose. I addressed
+                            conflicts promptly, facilitating productive discussions and finding solutions that were
+                            acceptable to all parties involved. This helped maintain a positive working atmosphere.
+                            <br><br>In the end, we successfully launched the new product on time and within budget. The
+                            project's success was not only a testament to our collective efforts but also a reflection
+                            of my ability to lead, inspire, and navigate a diverse team toward a common goal.
+                        </p>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <div id="revisedAnswer" class="content-section">
-                <div class="transparentContainerBox">
-                    <div class="theBrownVerticalDecoBar">
-                        <h3>Revised Answer</h3>
-                    </div>
-                    <p id="my_revise">One of the most challenging aspects of this project was the team dynamics. We had a diverse group of individuals with varying levels of expertise and different working styles. As the project manager, it was my responsibility to ensure that everyone was aligned with the project's objectives and working cohesively toward the common goal.
-<br><br>Here's how I demonstrated leadership skills in this situation:
-<br><br>Setting Clear Goals and Expectations: I started by holding a team meeting to outline our project's objectives, scope, and timeline. I made sure everyone understood their roles and responsibilities, emphasizing the importance of their contributions to the project's success.
-<br><br>Effective Communication: Throughout the project, I maintained open and transparent communication channels. I encouraged team members to voice their ideas, concerns, and questions. By fostering an environment of trust and open communication, I ensured that everyone felt heard and valued.
-<br><br>Conflict Resolution: As expected in any diverse team, conflicts arose. I addressed conflicts promptly, facilitating productive discussions and finding solutions that were acceptable to all parties involved. This helped maintain a positive working atmosphere.
-<br><br>In the end, we successfully launched the new product on time and within budget. The project's success was not only a testament to our collective efforts but also a reflection of my ability to lead, inspire, and navigate a diverse team toward a common goal.</p>
-               </p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-<script src="{% static 'interview/js/scroll_smooth.js' %}"></script>
-<script src="{% static 'interview/js/next_question.js' %}"></script>
+        </section>
+    </main>
+    <script src="{% static 'interview/js/scroll_smooth.js' %}"></script>
+    <script src="{% static 'interview/js/next_question.js' %}"></script>
 </body>
+
 </html>

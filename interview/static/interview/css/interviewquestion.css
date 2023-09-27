@@ -71,7 +71,6 @@ display: block;
   text-decoration: none;
   color: white;
 }
-  
 
 #sideNavContainer a:hover{
   text-decoration: none;
@@ -544,7 +543,17 @@ i{
   left:3px;
 }
 
-#menu-item-next{
+#menu-item-vocal-icon{
+  position:relative;
+  left:2px;
+}
+
+#menu-item-vocal-text{
+  position:relative;
+  left:2px;
+}
+
+#nextQuestion{
   text-align: center;
   font-size: 1.25rem;
 }
