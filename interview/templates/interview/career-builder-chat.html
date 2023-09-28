@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Career Path Builder - Chat Box</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="{% static 'interview/css/career-builder-chat.css' %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div id="navContainer">
+          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
+          <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+          </ul>
+        </div>
+      </nav>
+
+<main>
+    <section id="sideNavContainer">
+        <img src="{% static 'interview/images/mentor1.png' %}" alt="Mentor 1" id="mentorone">
+        <div class="mentor-name">Matt Smith</div>
+        <p class="mentor-job-position">Investment Banking Associate<br>Goldman Sachs</p>
+        <p id="sidemenu-talk-to-others"><i class="fa-solid fa-comments" class="chat-icon"></i>Talk to other mentors</p>
+    </section>
+
+    <section id="mainContent">
+        <div class="transparentContainerBox">
+            <div class="each-chat-container">
+        <img src="{% static 'interview/images/Polygon 1.svg' %}" alt="Triangle for Chat Box" id="gray-triangle-one">   
+        <div class="grayBox">
+            <p class="answer">Hi, my name is Matt and I am an Investment Banking Associate at Goldman Sachs. I would be happy to answer any questions you may have about my background & experience as an investment banking associate. </p>
+        </div>
+    </div>
+
+        <div class="each-chat-container brown-chat-container">
+        <div class="brownBox">
+            <p class="answer">What does your day to day look like?</p>
+        </div>
+        <img src="{% static 'interview/images/Polygon 2.svg' %}" alt="Triangle for Chat Box" id="brown-triangle-one"> 
+    </div>
+
+    <div class="each-chat-container">
+        <img src="{% static 'interview/images/Polygon 1.svg' %}" alt="Triangle for Chat Box" id="gray-triangle-two"> 
+        <div class="grayBox">
+            <p class="answer"> A typical day of mine is characterized by rigorous and fast-paced activities. Normally I arrive in office between 8-9am. After immediately check emails and voicemails to prioritize tasks for the day, 
+                I attend the morning meeting with the team to get updates on deals and assignments. My daily duty includes: to work on 
+                valuation analyses and pitch decks for current deals and pitches; to build, validate and maintain financial models; to synthesize 
+                analysis into presentation format. I work 10-12 hours per day on average. My hours fluctuate with deals and markets, and can be worse when nearing big deadlines</p>
+        </div>
+    </div>
+
+        <div id="divider"></div>
+        <div id="inputbox-container">
+            <div id="inputbox">
+                <div id="enter-icon-container"><i class="fa-regular fa-circle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    </section>
+    
+
+
+</main>
+</body>

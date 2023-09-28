@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'Britannia'; /* Give your font a name */
+  src: url('fonts/Britannia CG Bold Regular.otf') format('opentype'); /* Specify the font file path */
+  /* You can also include additional font formats for better browser compatibility */
+}
+
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color:#3f302a;
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+}
+
+/*Nav Bar*/
+ 
+ nav{
+height:4.6875rem;
+top:0;
+left:0;
+right:0;
+border-bottom: 2px solid #7e5f50;
+position: fixed;
+z-index: 1;
+display: inline;
+background-color: #ffffff;
+  }
+
+#navContainer{
+   width: 100%;
+   margin:auto;/*center the NavContainer*/
+  }
+
+  #companyLogo{
+height: 3.125rem;
+width:auto;
+margin-left:2.5rem;
+margin-top:1.5625rem;
+  }
+
+  #navBar{
+    float: right;
+    margin-top:2.5rem;
+  }
+
+  .navMenu{
+    display: inline-block;
+    margin-right:2.5rem;
+    color:#7e5f50;
+    font-size: 1rem;
+  }
+
+  #navContainer a{
+    text-decoration: none;
+    color:#7E5F50;
+  }
+
+/* Side Nav Bar*/
+
+
+#sideNavContainer{
+  /*display: none;*/
+  
+    width: 16.5%;/*width of Side Nav Bar*/
+    height: 100%;
+    background-color: rgba(126,95,80,0.93);
+    color:#ffffff;
+    
+    position: fixed;
+    z-index: 0;
+    top:0;
+    left:0;
+    padding-top: 150px;
+
+    text-align: center;
+  }
+  
+    #mentorone{
+width:80%;
+    }
+  
+    #sideNavContainer i{
+      padding-right: 6px;
+    }
+
+    .mentor-name{
+      font-size: 1rem;
+      padding: 8px;
+      margin-bottom: 0;
+    }
+
+    .mentor-job-position{
+      margin-top:0;
+      font-size: 0.8rem;
+    }
+  
+    #sidemenu-talk-to-others{
+      position: relative;
+      top: 100px;
+    }
+  
+  #mainContent{
+  margin-left:16.5%; /* Equal to the width of the sidebar */
+  width:60%;
+  position: relative;
+    left:5.5%;
+    top:105px;
+    padding-bottom: 50px;
+  }
+
+  /*Main Content*/
+
+  .theBrownVerticalDecoBar{
+    font-size: 1.25rem;
+    line-height: 1.3;
+    
+    height:auto;
+    border-left: 7px #7E5F50 solid;
+    padding-left: 10px;
+    }
+
+    #title-interests{
+    font-size: 1.75rem;
+    }
+    
+    #select-interests-inner-container{
+      margin:30px;
+      padding-top:1px;
+    }
+
+    .transparentContainerBox{
+      background: white; 
+      box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
+      border-radius: 12px;
+      
+      width: 100%;
+      padding-bottom:10px;
+      padding-top: 10px;
+      padding-left:10px;
+      padding-right: 30px;
+
+  }
+
+.each-chat-container{
+  padding: 10px;
+  width:100%;
+  display: flex;
+  align-items: center; 
+}
+.brown-chat-container{
+  justify-content: flex-end;
+}
+
+.each-chat-container img{
+  display: inline-block;
+  height:13px;
+  margin:0;
+  padding: 0;
+}
+
+.brownBox, .grayBox{
+  display: inline-block;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+  
+.grayBox{
+  background-color: #f6f6f6;
+  width: 70%;
+}
+
+.brownBox{
+  background-color:#C9B3A8;
+  min-width:100px;
+}
+
+
+#divider{
+  width: 100%;
+  border: 0.5px solid #d9d9d9;
+}
+
+#inputbox-container{
+  border: 1px solid #d9d9d9;
+  border-radius: 30px;
+  margin-top:10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fa-circle-right{
+  font-size: 2rem;
+  color:#d9d9d9;
+  position: relative;
+  left:2px;
+}

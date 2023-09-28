@@ -1,0 +1,228 @@
+@font-face {
+  font-family: 'Britannia'; /* Give your font a name */
+  src: url('fonts/Britannia CG Bold Regular.otf') format('opentype'); /* Specify the font file path */
+  /* You can also include additional font formats for better browser compatibility */
+}
+
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color:#7E5F50;
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+}
+
+/*Nav Bar*/
+ 
+ nav{
+height:4.6875rem;
+top:0;
+left:0;
+right:0;
+border-bottom: 2px solid #7e5f50;
+position: fixed;
+z-index: 1;
+display: inline;
+background-color: #ffffff;
+  }
+
+#navContainer{
+   width: 100%;
+   margin:auto;/*center the NavContainer*/
+  }
+
+  #companyLogo{
+height: 3.125rem;
+width:auto;
+margin-left:2.5rem;
+margin-top:1.5625rem;
+  }
+
+  #navBar{
+    float: right;
+    margin-top:2.5rem;
+  }
+
+  .navMenu{
+    display: inline-block;
+    margin-right:2.5rem;
+    color:#7e5f50;
+    font-size: 1rem;
+  }
+
+  #navContainer a{
+    text-decoration: none;
+    color:#7E5F50;
+  }
+
+/* Side Nav Bar*/
+
+
+#sideNavContainer{
+  /*display: none;*/
+  
+    width: 16.5%;/*width of Side Nav Bar*/
+    height: 100%;
+    background-color: rgba(126,95,80,0.93);
+    color:#ffffff;
+    
+    position: fixed;
+    z-index: 0;
+    top:0;
+    left:0;
+    padding-top: 150px;
+  }
+  
+    #sideNavContainer p{
+    display: block; /*This allows menu content in <a> to display vertically*/
+    padding: 15px 35px;
+    text-decoration: none;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #sidemenu-personality{
+    background-color: #7E5F50;
+  }
+  
+    #sideNavContainer i {
+    padding-right: 6px;
+    color:#7E5F50;
+  }
+
+  #sideNavContainer #first-icon, #sideNavContainer #second-icon, #sideNavContainer #third-icon{
+    color:white;
+      }
+  
+  #mainContent{
+  margin-left:16.5%; /* Equal to the width of the sidebar */
+  width:60%;
+  position: relative;
+    left:5.5%;
+    top:105px;
+  }
+
+
+
+  /*Main Content*/
+
+  .theBrownVerticalDecoBar{
+    font-size: 1rem;
+    line-height: 1.3;
+    
+    height:auto;
+    border-left: 7px #7E5F50 solid;
+    padding-left: 10px;
+    }
+
+    #title-interests{
+    font-size: 1.75rem;
+    }
+    
+    #select-interests-inner-container{
+      margin:30px;
+      padding-top:1px;
+      padding-bottom: 50px;
+    }
+
+    .transparentContainerBox{
+      background: white; 
+      box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
+      border-radius: 12px;
+  }
+
+  #whatMBTI{
+    font-size: 1.75rem;
+    padding-top:20px;
+    padding-bottom: 20px;
+  }
+
+  .each-personality{
+    font-size: 1.5rem;
+  }
+  
+  .inline-element {
+    display: inline-block;
+    padding: 15px;
+  }
+
+  .pctbox{
+width:65px;
+padding:0;
+  }
+
+  .optionbox1{
+    text-align: end;
+    
+  }
+
+  .optionbox1, .optionbox2{
+    width:125px;
+    padding:0;
+  }
+
+  /*Input Range*/
+  input[type=range] {
+    position: relative;
+    top:20px;
+  }
+  
+  /*Next Button*/
+
+  #next-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+    padding-bottom:50px;
+  }
+
+  #next-button-container i{
+    margin-left:6px;
+  }
+
+  .submit-button {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 16px 26px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin-top: 15px;
+    text-decoration: none;
+  }
+  
+  .submit-button{
+    background-color:#7E5F50;
+    border: 1px solid #7E5F50;
+    color:white;
+    box-shadow: 0 4px 4px, rgba(0, 0, 0, 0.25);
+  }
+  
+  .submit-button:hover {
+    background-color: rgba(126,95,80,0.93);
+    border:1px solid rgba(126,95,80,0.93);
+    text-decoration: none;
+    transition-duration: 0.1s;
+    color:#ffffff;
+  }
