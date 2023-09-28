@@ -212,7 +212,7 @@ line-height: 2;
     position: relative;
     margin-top:25px;
     margin-bottom: 25px;
-    left:520px;
+    left:80%;
   }
 
   #other-work, #other-education, #duty, #skills {
@@ -276,4 +276,12 @@ line-height: 2;
     text-decoration: none;
     transition-duration: 0.1s;
     color:#ffffff;
+  }
+
+  @media only screen and (min-width: 1500px){
+
+    #sideNavContainer p, .theBrownVerticalDecoBar{
+      
+  font-size: 1.25rem;
+    }
   }

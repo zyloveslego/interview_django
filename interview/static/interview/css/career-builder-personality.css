@@ -226,3 +226,11 @@ padding:0;
     transition-duration: 0.1s;
     color:#ffffff;
   }
+
+  @media only screen and (min-width: 1500px){
+
+    #sideNavContainer p, .theBrownVerticalDecoBar{
+      
+  font-size: 1.25rem;
+    }
+  }
