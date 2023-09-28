@@ -60,7 +60,7 @@ main{
 }
   
 .transparentContainerBox{
-    width: 62.5%;
+    width: 55%;
     height:450px;
     margin:auto;  
     
@@ -70,17 +70,15 @@ main{
     background: white; 
 
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
-    border-radius: 12px
+    border-radius: 12px;
+    padding:30px 50px;
+    display: flex;
+    justify-content: center;
 }
   
 .theBrownVerticalDecoBar{
   font-size: 1.25rem;
-  line-height: 1.3;
-
-  position: relative;
-  left:50px;
-  top:30px;
-  
+  line-height: 1.3;  
   height:auto;
   border-left: 7px #7E5F50 solid;
   padding-left: 10px;
@@ -88,7 +86,7 @@ main{
 
   .theBrownVerticalDecoBar p{
   font-size: 1.5rem;
-  width:700px;
+  width:100%;
   }
 
 
@@ -143,7 +141,6 @@ margin-left:20px;
     line-height: 20px;
     list-style: none;
     padding: 16px 26px;
-    position: relative;
     transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     user-select: none;
     -webkit-user-select: none;
@@ -155,7 +152,7 @@ margin-left:20px;
     text-decoration: none;
 
     position:relative;
-    left:480px;
+    left:80%;
     top:30px;
   }
   
@@ -183,6 +180,18 @@ margin-left:20px;
   
   @media only screen and (min-width: 1500px){
     .transparentContainerBox{
-     min-height:565px;
+     min-height:500px;
+    }
+
+    .theBrownVerticalDecoBar{
+      height:40px;
+    } 
+    
+    .form-block{
+      font-size: 1.5rem;
+    }
+
+    .submit-button{
+      top:80px;
     }
   }
