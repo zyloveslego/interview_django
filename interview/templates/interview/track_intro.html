@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <head>
     {% load static %}
-  <meta charset="utf-8">
-  <title>Job Tracker</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link rel="stylesheet" type="text/css" href="track_intro.css" >
-  <!-- href="{% static 'interview/css/track_intro.css' %}"> -->
-  <style>
-    body{
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    <meta charset="utf-8">
+    <title>Job Tracker</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static "interview/css/track_intro.css" %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-  </style>
+    </style>
 </head>
 
 <body>
-    <nav>
-      <div id="navContainer">
-        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
         <ul id="navBar">
-          <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-          <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-          <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-          <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Smart Tracking</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+            <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
         </ul>
-      </div>
-    </nav>
-    
-    <main>
+    </div>
+</nav>
+
+<main>
 
 
-      <div id="WordLeftIMGRight">
+    <div id="WordLeftIMGRight">
 
-      <div id="bigWordAtTheTop">
-        <div id="firstWord">Smarter and Simpler job application<br>
-          - All in one place
+        <div id="bigWordAtTheTop">
+            <div id="firstWord">Smarter and Simpler job application<br>
+                - All in one place
+            </div>
+
+            <div id="secondWord">Our AI engine helps you organize and prioritize your saved jobs and remind you to keep
+                on track. We also help you tailor your resumes and CVs
+            </div>
+
+            <div id="interviewButtonContainer">
+                <div id="interviewButton">
+                    <a href="{% url 'interview:track_intro' %}">Start Tracking</a>
+                </div>
+            </div>
         </div>
 
-        <div id="secondWord">Our AI engine helps you organize and prioritize your saved jobs and remind you to keep on track. We also help you tailor your resumes and CVs
+        <div id="bigImage">
+            <img src="{% static "interview/images/track_table.png" %}" alt="Five people are cheering for something"/>
         </div>
-      
-        <div id="interviewButtonContainer">
-          <div id="interviewButton">
-          <a href="{% url 'interview:setup_page' %}">Start Tracking</a>
-        </div>
-      </div>
-      </div>
-
-      <div id="bigImage">
-        <img src="track_table.png" alt="Five people are cheering for something"/>
-      </div>
 
     </div>
 
-      <div id="PPPWord">
+    <div id="PPPWord">
         <div id="PPPBigWord">Take the Stress Out of Your Job Search
         </div>
-      </div>
+    </div>
 
-      <div id="WordRightIMGLeft">
+    <div id="WordRightIMGLeft">
         <div id="imageTwo">
-          <img src="track_img2.jpg" alt="A laptop with someone's hands typing on it."/>
+            <img src="{% static "interview/images/track_img2.jpg" %}" alt="A laptop with someone's hands typing on it."/>
         </div>
 
         <div id="trackFeatures">
-          <div>
-          <span>Application Tracker</span> - Never lose track of job postings, application status, notes, and more.
-          <br><br><span>Strategic Ranking</span> - Prioritize your applications based on smart criteria like fit and preferences. 
-          <br><br><span>Resume Optimization</span> - Create tailored resumes that match the job description for better chances.
-          <br><br><span>Reminders & Alerts</span> - Never miss a due date with automated reminders and follow-ups.
+            <div>
+                <span>Application Tracker</span> - Never lose track of job postings, application status, notes, and
+                more.
+                <br><br><span>Strategic Ranking</span> - Prioritize your applications based on smart criteria like fit
+                and preferences. 
+                <br><br><span>Resume Optimization</span> - Create tailored resumes that match the job description for
+                better chances.
+                <br><br><span>Reminders & Alerts</span> - Never miss a due date with automated reminders and follow-ups.
+            </div>
         </div>
-      </div>
-        </div>
-  
-       
-  
-      </div>
+    </div>
 
-      
-    </main>
+
+    </div>
+
+
+</main>
 </body>

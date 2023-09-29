@@ -380,7 +380,7 @@ margin:0;
 
   /*Answer Assessment & Revise*/
   #AAR {
-    display: block;
+    display: none;
     position: relative;
     /*left:40px;  /*For Skip Button*/ 
   }

@@ -10,13 +10,13 @@ body {
     word-wrap: break-word;
     overflow-wrap: break-word;
     color:black;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
 
 /*Nav Bar*/
- 
+
  nav{
 height:4.6875rem;
 top:0;
@@ -66,26 +66,22 @@ main{
     z-index: 0;
     width: 100%;
     margin:auto;
-    
+
 }
-  
+
 /*Big Words at the TOP*/
 
 #WordLeftIMGRight{
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center align vertically */
-  justify-content: space-between; 
+  justify-content: space-between;
   margin: 0; /* Remove margin */
-  padding: 0; 
-  font-family: sans-serif;
+  padding: 0;
   width: 100%;
- 
 }
 
 #bigWordAtTheTop{
   display:block;
-  text-align: center;
-  font-family: sans-serif;
   width: 40%;
 }
 
@@ -94,14 +90,15 @@ main{
   align-items: center; /* Center align vertically */
   justify-content: center;
   margin-left:15%;
-  margin-right: 15%;
+  margin-right:15%;
   margin-bottom: 0;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 #bigImage{
   order:2;
   width:60%;
+  padding: 3%;
 }
 
 #bigImage img{
@@ -112,17 +109,20 @@ main{
 
 #firstWord{
   font-size: 2rem;
-  padding: 20px 0;
+  color:#7E5F50;
+  font-weight: bold;
   font-family: sans-serif;
-  margin-left:15%;
-  margin-right: 15%;
+  padding: 20px 0;
+  margin-left:19%;
+  margin-right: 14%;
   margin-bottom: 5%;
   margin-top: 0;
+
 }
 
-#firstWord .emphasizeThoseWords{
-  color:#7e5f50;
-  /*font-weight:bold;*/
+#secondWord{
+  margin-left:19%;
+  margin-right: 14%;
 }
 
 
@@ -153,14 +153,14 @@ main{
     word-wrap: break-word;
     text-decoration: none;
   }
-  
+
   #interviewButton a{
     background-color:#7E5F50;
     border: 1px solid #7E5F50;
     color:white;
     box-shadow: 0 4px 4px, rgba(0, 0, 0, 0.25);
   }
-  
+
   #interviewButton:hover a{
     background-color: rgba(126,95,80,0.93);
     border:1px solid rgba(126,95,80,0.93);
@@ -170,17 +170,16 @@ main{
   }
 
   /*Set width of the content*/
-  #PPPWord, #threeConfidentInterviewees, #hereComesTheMonkeysContainer{
+  #PPPWord{
 width:70%;
 margin-right: auto;
 margin-left: auto;
   }
 
   #PPPWord{
-    margin-top:10%;
-    margin-bottom:10%;
+    margin-top:5%;
+    margin-bottom:5%;
     display:block;
-    
   }
 
   #PPPBigWord, #PPPLittleWord{
@@ -199,97 +198,37 @@ margin-left: auto;
     font-weight: 500;
   }
 
-  #threeConfidentInterviewees{
-    display: flex;
-    justify-content: center;
-    margin-top: 120px;
-    margin-bottom: 250px;
-    
+
+  #WordRightIMGLeft{
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align vertically */
+    justify-content: space-between;
+    margin: 0; /* Remove margin */
+    padding: 0;
+    width: 100%;
   }
 
-  #threeConfidentInterviewees img{
-    width:100%;
-    height:auto;
-  
+  #imageTwo{
+    width: 65%;
   }
 
-  .eachInterviewee{
-    display: inline-block;
-    padding: 1%;
-    width:33%;
-    
+  #imageTwo img{
+    width: 100%;
+    padding:2%;
   }
 
-  #theThirdInterviewee, #theFirstInterviewee{
-    position: relative;
-    top:120px;
-  }
-
-  .myGoal{
-    color:#7E5F50;
+  #trackFeatures{
+    order:2;
+    color: #7E5F50;
+    width: 30%;
+    display:block;
+    margin:8%;
     font-size: 1.25rem;
+  }
+
+  #trackFeatures span{
     font-weight: bold;
-    padding: 20px 0;
-    width: 165px;
-    
   }
-
-  .myGoalContainer{
-    display: flex;
-    justify-content: center;
-  }
-
-  /*4 Monkeys*/
-  #hereComesTheMonkeysContainer{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
-  }
-
-  #hereComesTheMonkeys img{
-    width:100px;
-    overflow: hidden;
-    position: relative;
-    left: -5px;
-    top: -10px;    
-  }
-
-  .monkeyLogoContainer{
-    width:80px;
-  }
-
-  .forEachMonkey{
-    display: inline-block;
-    padding-top: 30px;
-    padding-right: 28px;
-    padding-left: 0px;
-    color:#7E5F50;
-    background: white; 
-      box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.06); 
-      border-radius: 12px;
-  
-    /*transparentContainerBox*/
-      width:360px;
-      height:220px;
-      margin: 1rem;
-  }
-
-  .monkeysWordTitle{
-    font-weight: bold;
-    font-size: 1.25rem;
-    padding-bottom: 20px;
-  }
-
-
-  .logoLefttWordRightContainer{
-  display: flex;
-  justify-content: space-between; 
-  }
-
-  .monkeysWord{
-    order:2;/*This puts word to the right side and logo to the left side.*/
-  }
-
 
   @media only screen and (min-width: 1500px){
     #firstWord{
@@ -302,26 +241,8 @@ margin-left: auto;
     #PPPBigWord{
       font-size: 2.8rem;
     }
-  
-    #PPPLittleWord{
-      font-size: 1.5rem;
-    }
 
-    #hereComesTheMonkeys img{
-      width:125px;   
-    }
-    .monkeyLogoContainer{
-      width:100px;
-    }
-  
-    .forEachMonkey{
-        width:450px;
-        height:275px;
-        margin: 20px;
-        font-size: 1.25rem;
-    }
-  
-    .monkeysWordTitle{
+    #PPPLittleWord{
       font-size: 1.5rem;
     }
   }

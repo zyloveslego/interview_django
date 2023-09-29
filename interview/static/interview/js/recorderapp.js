@@ -176,11 +176,14 @@ function createDownloadLink(blob) {
     // submit Answer
     // submit.href = "#";
     submit.innerHTML = "Submit";
+
+    // voice submit action
     submit.addEventListener("click", function (event) {
         const xhr = new XMLHttpRequest();
 
         restart.style.display = 'none';
         submit.disabled = true;
+
 
         // loading pic show
         document.getElementById("spinner").style.display = 'block';
@@ -190,8 +193,9 @@ function createDownloadLink(blob) {
             if (this.readyState === 4) {
                 console.log("Server returned: ", e.target.responseText);
                 const response = JSON.parse(this.responseText);
-                document.getElementById("my_answer").innerText = response.voice_text;
-                document.getElementById("my_assessment").innerText = response.my_access;
+                document.getElementById("my_answer").innerHTML = response.voice_text;
+                document.getElementById("my_assessment").innerHTML = response.my_access;
+                document.getElementById("my_revise").innerHTML = response.my_revise;
 
                 // loading pic hidden
                 document.getElementById("spinner").style.display = 'none';
@@ -202,7 +206,7 @@ function createDownloadLink(blob) {
 
                 AAR.style.display = 'block';
                 // alert("Your answer is submitted!");
-                document.getElementById("assessment").scrollIntoView({behavior: 'smooth'});
+                document.getElementById("answerTranscript").scrollIntoView({behavior: 'smooth'});
             }
         };
         const fd = new FormData();
@@ -210,6 +214,20 @@ function createDownloadLink(blob) {
 
         const question_text = document.getElementById("question_text").innerText;
         fd.append("question_text", question_text);
+
+        // temp use, delete later
+        const regex = /question_index(\d+)/;
+        const currentURL = window.location.href;
+        const match = currentURL.match(regex);
+        let firstNumber = "1";
+        if (match) {
+            firstNumber = match[1];
+            console.log(firstNumber)
+        }else {
+            console.log("no question_index match");
+        }
+
+        fd.append("question_index", firstNumber)
 
         console.log(upload_url)
         xhr.open("POST", upload_url, true);
