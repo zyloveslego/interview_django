@@ -72,7 +72,7 @@ main{
 /*Big Words at the TOP*/
 
 #main-content{
-  width:900px;
+  width:75%;
   margin-left:auto;
   margin-right:auto;
   display:block;
@@ -80,6 +80,7 @@ main{
 }
 
 #WordRightIMGLeft{
+  width: 100%;
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center align vertically */
   justify-content: space-between; 
@@ -101,10 +102,16 @@ main{
 
 #bigWordAtTheTop{
   order:2;
+  width: 30%;
+  padding: 5%;
+}
+
+#bigImage{
+width: 70%;
 }
 
 #bigImage img{
-  width:450px;
+  width:100%;
   height:auto;
 }
 
@@ -200,7 +207,7 @@ main{
   }
 
   #second-image img{
-    width:900px;
+    width:100%;
   }
   
   #pave-container{
@@ -211,7 +218,7 @@ main{
     font-size: 2.25rem;
     position:relative;
     top:-240px;
-    left:560px;
+    left:70%;
     text-align: center;
 
   }
@@ -233,7 +240,7 @@ main{
 
   #three-icon{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position:relative;
     top:-100px;
   }
@@ -258,3 +265,20 @@ color: #7E5F50;
   #three-icon p{
     font-size: 0.75rem;
   }
+
+  @media only screen and (min-width: 1500px){
+
+    #firstWord{
+      font-size: 2.25rem;
+    }
+
+    #three-icon h3{
+      font-size: 1.5rem;
+    }
+  
+    #three-icon p{
+      font-size: 1rem;
+    }
+  }
+
+ 
