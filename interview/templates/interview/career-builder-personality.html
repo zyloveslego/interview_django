@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Career Path Builder - Personality</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link rel="stylesheet" type="{% static 'interview/css/career-builder-personality.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/career-builder-personality.css' %}">
     <style>
         body {
             -webkit-font-smoothing: antialiased;
@@ -15,16 +15,16 @@
 </head>
 
 <body>
-    <nav>
-        <div id="navContainer">
-          <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-          <ul id="navBar">
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
             <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
             <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
             <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-          </ul>
-        </div>
-      </nav>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <section id="sideNavContainer">
@@ -46,38 +46,42 @@
         <div id="select-interests" class="transparentContainerBox">
             <div id="select-interests-inner-container">
                 <h1 id="title-interests">Personality</h1>
-                <div id="whatMBTI">What is your Meyers-Briggs Type Indicator (MBTI)? 
+                <div id="whatMBTI">What is your Meyers-Briggs Type Indicator (MBTI)?
                 </div>
 
                 <div id="personalityMatrix">
                     <div class="each-personality">
                         <div class="inline-element optionbox1">Introvert</div>
                         <div class="inline-element pctbox"><span class="percentage-display">50%</span></div>
-                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100" step="1" value="50">
+                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100"
+                               step="1" value="50">
                         <div class="inline-element pctbox"><span class="remaining-percentage-display">50%</span></div>
                         <div class="inline-element optionbox2">Extravert</div>
                     </div>
-                
+
                     <div class="each-personality">
                         <div class="inline-element optionbox1">Intuitive</div>
                         <div class="inline-element pctbox"><span class="percentage-display">50%</span></div>
-                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100" step="1" value="50">
+                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100"
+                               step="1" value="50">
                         <div class="inline-element pctbox"><span class="remaining-percentage-display">50%</span></div>
                         <div class="inline-element optionbox2">Observant</div>
                     </div>
-                
+
                     <div class="each-personality">
                         <div class="inline-element optionbox1">Thinking</div>
                         <div class="inline-element pctbox"><span class="percentage-display">50%</span></div>
-                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100" step="1" value="50">
+                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100"
+                               step="1" value="50">
                         <div class="inline-element pctbox"><span class="remaining-percentage-display">50%</span></div>
                         <div class="inline-element optionbox2">Feeling</div>
                     </div>
-                
+
                     <div class="each-personality">
                         <div class="inline-element optionbox1">Judging</div>
                         <div class="inline-element pctbox"><span class="percentage-display">50%</span></div>
-                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100" step="1" value="50">
+                        <input class="inline-element" type="range" id="slider1" name="slider1" min="0" max="100"
+                               step="1" value="50">
                         <div class="inline-element pctbox"><span class="remaining-percentage-display">50%</span></div>
                         <div class="inline-element optionbox2">Prospecting</div>
                     </div>
@@ -91,22 +95,22 @@
             sliders.forEach((slider, index) => {
                 const percentageDisplay = slider.parentElement.querySelector('.percentage-display');
                 const remainingPercentageDisplay = slider.parentElement.querySelector('.remaining-percentage-display');
-        
+
                 // Update the percentage display when the slider value changes
                 slider.addEventListener('input', () => {
                     const percentage = (slider.value - slider.min) / (slider.max - slider.min) * 100;
                     percentageDisplay.textContent = `${percentage.toFixed(0)}%`;
-                    remainingPercentageDisplay.textContent = `${100-percentage.toFixed(0)}%`;
+                    remainingPercentageDisplay.textContent = `${100 - percentage.toFixed(0)}%`;
                 });
             });
         </script>
- 
 
-<div id="next-button-container">
-    <a href="{% url 'interview:career_results' %}"  id="next-button-two" class="submit-button">Submit<i class="fa-regular fa-circle-right"></i></a>
-</div>
+
+        <div id="next-button-container">
+            <a href="{% url 'interview:career_results' %}" id="next-button-two" class="submit-button">Submit<i
+                    class="fa-regular fa-circle-right"></i></a>
+        </div>
     </section>
-    
 
 
 </main>

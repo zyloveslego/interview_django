@@ -16,5 +16,7 @@ urlpatterns = [
     path("career_intro", views.career_intro, name="career_intro"),
     path("career_preferences", views.career_preferences, name="career_preferences"),
     path("career_results", views.career_results, name="career_results"),
+    path("career_chat", views.career_chat, name="career_chat"),
+    path("career_personality", views.career_personality, name="career_personality"),
 
 ]

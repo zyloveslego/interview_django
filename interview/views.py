@@ -50,6 +50,13 @@ def setup_page(request):
         # generate interview questions
         random_list = random.sample(range(1, Question.objects.count()), int(question))
         print(random_list)
+
+        # temp Q2, Q4, Q10
+        temp_list = [2, 4, 10]
+        random_list = temp_list + random_list
+        random_list = random_list[0:int(question)]
+        print(random_list)
+
         for index, random_n in enumerate(random_list):
             question_interview = InterviewQuestion(
                 interview_id=setup_info,
@@ -112,19 +119,25 @@ def get_access_from_chatgpt(question_text, answer_text):
               answer_text)
     print(prompt)
 
-    openai.api_key = ""
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": prompt},
-        ]
-    )
+    # openai.api_key = ""
+    # response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=[
+    #         {"role": "user", "content": prompt},
+    #     ]
+    # )
+    #
+    # # print(response)
+    # my_content = response['choices'][0]['message']['content']
+    # # print(my_content)
+    #
+    # return my_content
 
-    # print(response)
-    my_content = response['choices'][0]['message']['content']
-    # print(my_content)
+    # temp delay
+    import time
+    time.sleep(1)
 
-    return my_content
+    return None
 
 
 # receive upload voice
@@ -182,3 +195,11 @@ def career_preferences(request):
 
 def career_results(request):
     return render(request, 'interview/career-builder-results.html')
+
+
+def career_chat(request):
+    return render(request, 'interview/career-builder-chat.html')
+
+
+def career_personality(request):
+    return render(request, 'interview/career-builder-personality.html')
