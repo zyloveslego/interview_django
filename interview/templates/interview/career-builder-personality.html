@@ -28,6 +28,29 @@
 </nav>
 
 <main>
+      <!--Spinner-->
+      <div id="spinner">
+        <div class="loadingio-spinner-spinner-fnpk4eprp3r">
+            <div class="ldio-pal3955r1rq">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div>
+            <p>Your Answer is submitted!<br> Coach Monkey is assessing your answer...</p>
+        </div>
+    </div>
+
     <section id="sideNavContainer">
         <p id="sidemenu-background"><i class="fa-regular fa-circle-check" id="first-icon"></i>Background</p>
         <p id="sidemenu-interests"><i class="fa-regular fa-circle-check" id="second-icon"></i>Interests</p>
@@ -108,11 +131,30 @@
 
 
         <div id="next-button-container">
-            <a href="{% url 'interview:career_results' %}" id="next-button-two" class="submit-button">Submit<i
-                    class="fa-regular fa-circle-right"></i></a>
+            <button id="next-button-two" class="submit-button">Submit<i
+                    class="fa-regular fa-circle-right"></i></button>
+                    <!--href="{% url 'interview:career_results' %}"-->
         </div>
     </section>
+    
 
+    <!--Showing spinner for 2 sec, then go to Result Page-->
+    <script>
+const btn = document.getElementById('next-button-two');
+const spinner = document.getElementById('spinner');
+const sideNavContainer = document.getElementById('sideNavContainer');
+const mainContent = document.getElementById('mainContent');
+
+btn.addEventListener('click', () => {
+    spinner.style.display = 'block';
+    sideNavContainer.style.display = 'none';
+    mainContent.style.display = 'none';
+
+  setTimeout(() => {
+    window.location.href = "{% url 'interview:career_results' %}";
+  }, 2000);
+});
+    </script>
 
 </main>
 </body>
