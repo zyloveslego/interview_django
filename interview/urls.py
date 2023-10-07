@@ -20,4 +20,7 @@ urlpatterns = [
     path("career_personality", views.career_personality, name="career_personality"),
     path("track_intro", views.track_intro, name="track_intro"),
 
+    path('register', views.user_register, name='register'),
+    path('login', views.user_login, name='login'),
+
 ]

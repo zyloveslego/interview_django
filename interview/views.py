@@ -1,6 +1,11 @@
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.shortcuts import render, redirect, HttpResponse
-from .models import InterviewInfo, User, Question, InterviewQuestion
+from .models import InterviewInfo, Question, InterviewQuestion
+from django.contrib.auth.models import User
+from .forms import NewUserForm
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 import random
 
@@ -20,6 +25,7 @@ def setup_page(request):
     if request.method == 'POST':
         # Process the form data
         print(request.POST.keys())
+        print(request.user.username)
         question = request.POST['n_question']
         year = request.POST['YOE']
         role = request.POST['role']
@@ -35,12 +41,12 @@ def setup_page(request):
         # print(question)
 
         # temp generate user
-        user_instance = User.objects.filter(user_id=1)[0]
+        user_instance = User.objects.filter(username="admin")[0]
         # print(user_instance)
 
         # generate interview
         setup_info = InterviewInfo(
-            used_id=user_instance,
+            user_id=user_instance,
             total_question=int(question),
             year_of_experience=int(year),
             role="IC",
@@ -241,3 +247,45 @@ def career_personality(request):
 
 def track_intro(request):
     return render(request, 'interview/track_intro.html')
+
+
+# register
+def user_register(request):
+    if request.method == "POST":
+        form = NewUserForm(data=request.POST)
+        # print(request.POST)
+        # print("\n")
+        # print(form.errors)
+        # print("\n")
+        # print(form)
+        # print("\n")
+        # print(form.is_valid())
+        if form.is_valid():
+            # print("get in")
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect("interview:login")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    form = NewUserForm()
+    return render(request, 'interview/register.html', context={"register_form": form})
+
+
+# login
+def user_login(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect("interview:landing_page")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    form = AuthenticationForm()
+    return render(request, 'interview/login.html', context={"login_form": form})

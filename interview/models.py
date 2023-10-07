@@ -1,4 +1,6 @@
 from django.db import models
+# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -19,16 +21,16 @@ class Question(models.Model):
 
 
 # User
-class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
-    # mail
-    # name
-    pass
+# class User(models.Model):
+#     user_id = models.AutoField(primary_key=True)
+#     # mail
+#     # name
+#     pass
 
 
 # interview info table
 class InterviewInfo(models.Model):
-    used_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default="test")
     interview_id = models.AutoField(primary_key=True)
     total_question = models.IntegerField(default=1)
     year_of_experience = models.IntegerField(default=0)
