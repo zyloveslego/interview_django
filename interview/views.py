@@ -2,8 +2,8 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.shortcuts import render, redirect, HttpResponse
 from .models import InterviewInfo, Question, InterviewQuestion
 from django.contrib.auth.models import User
-from .forms import NewUserForm
-from django.contrib.auth import login, authenticate
+from .forms import NewUserForm, CustomAuthenticationForm
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -253,8 +253,10 @@ def track_intro(request):
 def user_register(request):
     if request.method == "POST":
         form = NewUserForm(data=request.POST)
+        # TODO: try return field error
+        # for field in form:
+        #     print("Field Error:", field.name, field.errors)
         if form.is_valid():
-            # print("get in")
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
@@ -265,9 +267,10 @@ def user_register(request):
 
 
 # login
+# TODO: 如果已经login了, 则直接跳转
 def user_login(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -280,5 +283,11 @@ def user_login(request):
                 messages.error(request, "Invalid username or password.")
         else:
             messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm()
+    form = CustomAuthenticationForm()
     return render(request, 'interview/login.html', context={"login_form": form})
+
+
+# log out test use
+def user_logout(request):
+    logout(request)
+    return render(request, 'interview/logout_temp.html')
