@@ -36,9 +36,6 @@ def setup_page(request):
 
         # save to the database
         print("write into database; generate interview ID")
-        # print(role)
-        # print(year)
-        # print(question)
 
         # temp generate user
         user_instance = User.objects.filter(username="admin")[0]
