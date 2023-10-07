@@ -24,17 +24,18 @@ import openai
 def setup_page(request):
     if request.method == 'POST':
         # Process the form data
-        print(request.POST.keys())
-        print(request.user.username)
+        # print(request.POST.keys())
+        # print(request.user.username)
         question = request.POST['n_question']
         year = request.POST['YOE']
         role = request.POST['role']
 
-        print("Question: " + str(question))
-        print("Year: " + str(year))
-        print("Role: " + str(role))
+        # print("Question: " + str(question))
+        # print("Year: " + str(year))
+        # print("Role: " + str(role))
 
-        # save to the database
+        # TODO: save to database
+        # save to database
         print("write into database; generate interview ID")
 
         # temp generate user
@@ -54,6 +55,7 @@ def setup_page(request):
         random_list = random.sample(range(1, Question.objects.count()), int(question))
         print(random_list)
 
+        # TODO: update to random
         # temp Q2, Q4, Q10
         temp_list = [2, 4, 10]
         random_list = temp_list + random_list
@@ -201,7 +203,8 @@ def upload_voice(request):
                 my_access = "<span>1. Relevance: 9/10</span> - The candidate's answer directly addresses the question about a time they failed and how they dealt with it. It's highly relevant to the interviewer's query.<br><br><span>2. Specificity: 8/10</span> - The answer provides a specific example of a project involving a marketing campaign and a missed deadline. However, it could benefit from more specific details about the project or the consequences of missing the initial deadline.<br><br><span>3. Actions: 8/10</span> - The candidate outlines their actions, such as pushing the team to work longer hours and taking responsibility for the failure. However, it would be more beneficial if they described specific steps they took to rectify the situation beyond just taking responsibility.<br><br><span>4. Results and Impact: 7/10</span> - The candidate mentions that they ultimately delivered a successful campaign, but they don't provide concrete details about the positive results or the quantifiable impact of their actions.<br><br><span>5. Learning: 9/10</span> - The candidate demonstrates a clear understanding of what they learned from the situation, including the importance of project planning, open communication, and listening to feedback. This highlights a growth mindset.<br><br><span>6. Clarity: 9/10</span> - The answer is clear and easy to follow, with a logical structure.<br><br><span>7. Soft skills: 8/10</span> - The answer illustrates soft skills such as leadership, communication, and the ability to reflect on and learn from mistakes.<br><br><span>Overall</span> - I would rate the answer an 8/10. The interviewee provides a relevant and clear response to the question, showing self-awareness and a willingness to learn from their failures. However, more specific details about the project and its outcomes would have strengthened the answer and highlighted their impact more effectively."
                 my_revise = "Absolutely, I'd be happy to share a specific experience where I faced a significant challenge and how I handled it.<br><br>In a previous role, I was leading a crucial team project focused on developing a new marketing campaign for one of our major clients. Initially, I made the mistake of not conducting a thorough project scoping, which led to incorrect assumptions about what could realistically be accomplished within the given timeline. As we neared the deadline, it became evident that we were falling behind schedule.<br><br>In response, I regrettably tried to solve the issue by pushing the team to work longer hours to catch up. Looking back, I realize that this approach was misguided and put undue pressure on the team. I failed to heed their valuable feedback that the timeline was unrealistic.<br><br>As the final deadline approached, and it became apparent that we couldn't meet it, I knew it was time to take responsibility for the failure. I had an open and honest conversation with my manager, explaining the challenges we faced and the reasons for the project's delay.<br><br>From this experience, I learned some invaluable lessons. First and foremost, I now understand the critical importance of meticulously planning projects from the outset, ensuring that all stakeholders have a realistic understanding of what can be achieved within a given timeframe. Additionally, I learned the significance of fostering open lines of communication with the team and genuinely listening to their insights and concerns. Rather than solely driving harder to meet an unrealistic deadline, I now understand the importance of collaborating with my manager and the client to appropriately adjust the project scope.<br><br>Although we missed the initial deadline, this setback allowed us to refocus our efforts and ultimately deliver a highly successful marketing campaign for the client. This experience reinforced my commitment to continuous improvement and the importance of adapting to challenges in a more constructive manner."
 
-            return JsonResponse({'success': True, "voice_text": voice_text, "my_access": my_access, "my_revise": my_revise})
+            return JsonResponse(
+                {'success': True, "voice_text": voice_text, "my_access": my_access, "my_revise": my_revise})
         else:
             return JsonResponse({'success': False, 'error': 'No voice file was uploaded.'})
     else:
@@ -250,13 +253,6 @@ def track_intro(request):
 def user_register(request):
     if request.method == "POST":
         form = NewUserForm(data=request.POST)
-        # print(request.POST)
-        # print("\n")
-        # print(form.errors)
-        # print("\n")
-        # print(form)
-        # print("\n")
-        # print(form.is_valid())
         if form.is_valid():
             # print("get in")
             user = form.save()
