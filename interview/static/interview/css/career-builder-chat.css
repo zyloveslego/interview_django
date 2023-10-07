@@ -104,7 +104,7 @@ width:80%;
   
   #mainContent{
   margin-left:16.5%; /* Equal to the width of the sidebar */
-  width:60%;
+  width:55%;
   position: relative;
     left:5.5%;
     top:105px;
@@ -141,7 +141,12 @@ width:80%;
       padding-top: 10px;
       padding-left:10px;
       padding-right: 30px;
-
+     
+      /*Put the chat input box at the bottom of the container*/
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 700px; /* set the height of the container */
   }
 
 .each-chat-container{
