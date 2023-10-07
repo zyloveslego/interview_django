@@ -1,8 +1,4 @@
 /recorded_voice
-db.sqlite3
-manage.py
-requirements.txt
-/interview_django_v2
 *.py
 *.pyc
 *.DS_Store
