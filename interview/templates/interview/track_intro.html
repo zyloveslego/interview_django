@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% extends 'interview/nav.html' %}
+
+{% block header %}
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -12,19 +14,9 @@
         }
     </style>
 </head>
+{% endblock %}
 
-<body>
-<nav>
-    <div id="navContainer">
-        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
-        <ul id="navBar">
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-            <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
-        </ul>
-    </div>
-</nav>
+{% block content %}
 
 <main>
 
@@ -77,8 +69,9 @@
     </div>
 
 
-    </div>
+
 
 
 </main>
-</body>
+
+{% endblock %}

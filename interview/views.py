@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.shortcuts import render, redirect, HttpResponse
 from .models import InterviewInfo, Question, InterviewQuestion
@@ -6,21 +7,17 @@ from .forms import NewUserForm, CustomAuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-
 import random
-
 from django.views.decorators.csrf import csrf_exempt
-
 import whisper
-
 from django.http import JsonResponse
-
 import openai
 
 
 # Create your views here.
 
 # interview set up page
+@login_required()
 def setup_page(request):
     if request.method == 'POST':
         # Process the form data
@@ -80,6 +77,7 @@ def setup_page(request):
 
 
 # interview question page
+@login_required()
 def interview_question_page(request, interview_id, question_index):
     interview_info = InterviewInfo.objects.filter(interview_id=interview_id)[0]
     interview_question = InterviewQuestion.objects.filter(interview_id=interview_id, question_index=question_index)
@@ -99,6 +97,7 @@ def interview_question_page(request, interview_id, question_index):
 
 
 # interview over
+@login_required()
 def interview_summary(request):
     return render(request, 'interview/interviewsummary.html')
 
@@ -172,6 +171,7 @@ def get_access_from_chatgpt(question_text, answer_text):
 
 # temp use, delete later
 @csrf_exempt
+@login_required()
 def upload_voice(request):
     if request.method == 'POST':
         voice_file = request.FILES.get('audio_data')
@@ -267,8 +267,12 @@ def user_register(request):
 
 
 # login
-# TODO: 如果已经login了, 则直接跳转
 def user_login(request):
+    # if logged in, jump to landing page
+    if request.user.username is not None and request.user.username != "":
+        return redirect(request, 'interview/landingpage.html')
+
+    # log in
     if request.method == "POST":
         form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -277,17 +281,19 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
+                # messages.info(request, f"You are now logged in as {username}.")
                 return redirect("interview:landing_page")
             else:
                 messages.error(request, "Invalid username or password.")
         else:
             messages.error(request, "Invalid username or password.")
+
     form = CustomAuthenticationForm()
+
     return render(request, 'interview/login.html', context={"login_form": form})
 
 
 # log out test use
 def user_logout(request):
     logout(request)
-    return render(request, 'interview/logout_temp.html')
+    return redirect('interview:landing_page')

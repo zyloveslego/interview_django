@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block header %}
+{% endblock %}
+
+<body>
+<nav>
+    <div id="navContainer">
+        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
+        <ul id="navBar">
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
+            <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
+            {% if user.is_authenticated %}
+	            <li class="navMenu"><a href="{% url 'interview:logout' %}" id="logoutButton">Logout</a></li>
+            {% else %}
+                <li class="navMenu"><a href="{% url 'interview:login' %}" id="loginButton">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

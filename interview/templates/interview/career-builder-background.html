@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% extends 'interview/nav.html' %}
+
+{% block header %}
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -15,18 +17,9 @@
     <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-<nav>
-    <div id="navContainer">
-        <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
-        <ul id="navBar">
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-            <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
-        </ul>
-    </div>
-</nav>
+{% endblock %}
+
+{% block content %}
 
 <main>
     <section id="sideNavContainer">
@@ -211,4 +204,5 @@
     </script>
 
 </main>
-</body>
+
+{% endblock %}

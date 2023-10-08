@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'interview/nav.html' %}
 
+{% block header %}
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -15,20 +15,9 @@
     </style>
     <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
 </head>
+{% endblock %}
 
-<body>
-    <nav>
-        <div id="navContainer">
-            <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo" />
-            <ul id="navBar">
-                <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-                <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-                <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-                <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
-            </ul>
-        </div>
-    </nav>
-
+{% block content %}
     <main>
         <!--Spinner-->
         <div id="spinner">
@@ -243,6 +232,5 @@
     </main>
     <script src="{% static 'interview/js/scroll_smooth.js' %}"></script>
     <script src="{% static 'interview/js/next_question.js' %}"></script>
-</body>
 
-</html>
+{% endblock %}
