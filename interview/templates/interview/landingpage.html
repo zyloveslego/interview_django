@@ -18,10 +18,11 @@
     <div id="navContainer">
         <img src="{% static 'interview/images/Logo.svg' %}" alt="Company Logo" id="companyLogo"/>
         <ul id="navBar">
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Home</a></li>
-            <li class="navMenu"><a href="{% url 'interview:landing_page' %}">Mock Interview</a></li>
-            <li class="navMenu"><a href="{% url 'interview:career_intro' %}">Career Path Builder</a></li>
-            <li class="navMenu"><a href="{% url 'interview:track_intro' %}">Smart Tracking</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}" class="nav-menu-color">Home</a></li>
+            <li class="navMenu"><a href="{% url 'interview:landing_page' %}" class="nav-menu-color">Mock Interview</a></li>
+            <li class="navMenu"><a href="{% url 'interview:career_intro' %}" class="nav-menu-color">Career Path Builder</a></li>
+            <li class="navMenu"><a href="{% url 'interview:track_intro' %}" class="nav-menu-color">Smart Tracking</a></li>
+            <li class="navMenu"><a href="{% url 'interview:track_intro' %}" id="loginButton">Login</a></li>
         </ul>
     </div>
 </nav>
