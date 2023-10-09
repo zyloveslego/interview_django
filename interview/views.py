@@ -10,7 +10,7 @@ from django.contrib.auth.forms import AuthenticationForm
 import random
 from django.views.decorators.csrf import csrf_exempt
 import whisper
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound
 import openai
 
 
@@ -27,6 +27,8 @@ def setup_page(request):
         year = request.POST['YOE']
         role = request.POST['role']
 
+        current_user = request.user.username
+
         # print("Question: " + str(question))
         # print("Year: " + str(year))
         # print("Role: " + str(role))
@@ -36,7 +38,7 @@ def setup_page(request):
         print("write into database; generate interview ID")
 
         # temp generate user
-        user_instance = User.objects.filter(username="admin")[0]
+        user_instance = User.objects.filter(username=str(current_user))[0]
         # print(user_instance)
 
         # generate interview
@@ -80,6 +82,12 @@ def setup_page(request):
 @login_required()
 def interview_question_page(request, interview_id, question_index):
     interview_info = InterviewInfo.objects.filter(interview_id=interview_id)[0]
+    # print(interview_info.user_id)
+    # print(request.user.username)
+    # print(type(request.user.username))
+    # print(type(interview_info.user_id))
+    if str(request.user.username) != str(interview_info.user_id):
+        return HttpResponseNotFound("<h1>Page not found</h1>")
     interview_question = InterviewQuestion.objects.filter(interview_id=interview_id, question_index=question_index)
     if interview_question.exists():
         interview_question = interview_question[0]
@@ -97,6 +105,7 @@ def interview_question_page(request, interview_id, question_index):
 
 
 # interview over
+# TODO: user check
 @login_required()
 def interview_summary(request):
     return render(request, 'interview/interviewsummary.html')
@@ -270,7 +279,7 @@ def user_register(request):
 def user_login(request):
     # if logged in, jump to landing page
     if request.user.username is not None and request.user.username != "":
-        return redirect(request, 'interview/landingpage.html')
+        return redirect('interview:landing_page')
 
     # log in
     if request.method == "POST":
