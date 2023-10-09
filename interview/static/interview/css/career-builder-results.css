@@ -15,49 +15,6 @@ body {
     padding: 0;
 }
 
-/*Nav Bar*/
- 
- nav{
-height:4.6875rem;
-top:0;
-left:0;
-right:0;
-border-bottom: 2px solid #7e5f50;
-position: fixed;
-z-index: 1;
-display: inline;
-background-color: #ffffff;
-  }
-
-#navContainer{
-   width: 100%;
-   margin:auto;/*center the NavContainer*/
-  }
-
-  #companyLogo{
-height: 3.125rem;
-width:auto;
-margin-left:2.5rem;
-margin-top:1.5625rem;
-  }
-
-  #navBar{
-    float: right;
-    margin-top:2.5rem;
-  }
-
-  .navMenu{
-    display: inline-block;
-    margin-right:2.5rem;
-    color:#7e5f50;
-    font-size: 1rem;
-  }
-
-  #navContainer a{
-    text-decoration: none;
-    color:#7E5F50;
-  }
-
   /*Main Content*/
 
   #main-content, #mentor{
