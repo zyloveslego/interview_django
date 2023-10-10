@@ -8,6 +8,7 @@ urlpatterns = [
          name="interview_question_page"),
     path("summary", views.interview_summary, name="summary"),
     path("landingpage", views.landing_page, name="landing_page"),
+    path("", views.landing_page, name="landing_page"),
     path("test/", views.test, name="test"),
     path("upload_voice/", views.upload_voice, name="upload_voice"),
 
