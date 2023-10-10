@@ -139,6 +139,7 @@ def get_answer_from_chatgpt(question_text, answer_text):
     rewrite_prompt = rewrite_prompt_default
     # print(rewrite_prompt)
 
+    print("getting access")
     openai.api_key = config('openai_key')
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -148,8 +149,8 @@ def get_answer_from_chatgpt(question_text, answer_text):
     )
 
     access_answer_content = response['choices'][0]['message']['content']
-    print("getting access")
 
+    print("getting rewrite")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -160,7 +161,6 @@ def get_answer_from_chatgpt(question_text, answer_text):
     )
 
     rewrite_answer_content = response['choices'][0]['message']['content']
-    print("getting rewrite")
 
     return access_answer_content, rewrite_answer_content
 
