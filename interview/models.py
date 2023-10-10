@@ -47,3 +47,6 @@ class InterviewQuestion(models.Model):
     interview_id = models.ForeignKey(InterviewInfo, on_delete=models.CASCADE)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     question_index = models.IntegerField(default=1)
+    user_answer = models.CharField(max_length=2000)
+    access_answer = models.CharField(max_length=2000)
+    revise_answer = models.CharField(max_length=2000)

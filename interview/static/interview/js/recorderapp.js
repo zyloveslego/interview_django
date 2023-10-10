@@ -215,19 +215,31 @@ function createDownloadLink(blob) {
         const question_text = document.getElementById("question_text").innerText;
         fd.append("question_text", question_text);
 
-        // temp use, delete later
+        // get question index and interview index
         const regex = /question_index(\d+)/;
         const currentURL = window.location.href;
         const match = currentURL.match(regex);
-        let firstNumber = "1";
+        let question_index = "1";
         if (match) {
-            firstNumber = match[1];
-            console.log(firstNumber)
+            question_index = match[1];
+            console.log(question_index)
         }else {
             console.log("no question_index match");
         }
 
-        fd.append("question_index", firstNumber)
+        fd.append("question_index", question_index)
+
+        const regex2 = /interview\/(\d+)/;
+        const match2 = currentURL.match(regex2);
+        let interview_id = "1";
+        if (match2) {
+            interview_id = match2[1];
+            console.log(interview_id)
+        }else {
+            console.log("no question_index match");
+        }
+
+        fd.append("interview_id", interview_id)
 
         console.log(upload_url)
         xhr.open("POST", upload_url, true);
