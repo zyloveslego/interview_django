@@ -18,6 +18,16 @@ recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 //pauseButton.addEventListener("click", pauseRecording);
 
+
+var au = document.createElement('audio');
+var li = document.createElement('li');
+var link = document.createElement('a');
+var restart = document.createElement('button');
+var submit = document.createElement('button');
+submit.innerHTML = "Submit";
+restart.classList.add('restart-button');
+submit.classList.add('submit-button');
+
 //hide AAR contents
 //AAR.style.display='none';
 
@@ -130,21 +140,14 @@ function stopRecording() {
     rec.exportWAV(createDownloadLink);
 }
 
-
-var au = document.createElement('audio');
-var li = document.createElement('li');
-var link = document.createElement('a');
-var restart = document.createElement('button');
-var submit = document.createElement('button');
-restart.classList.add('restart-button');
-submit.classList.add('submit-button');
-
 function createDownloadLink(blob) {
     li.style.display = 'block';
     au.style.display = 'block';
     yourAnswer.style.display = 'block';
 
     var url = URL.createObjectURL(blob);
+
+
 
     //name of .wav file to use during upload and download (without extendion)
     var filename = new Date().toISOString();
@@ -175,11 +178,18 @@ function createDownloadLink(blob) {
 
     // submit Answer
     // submit.href = "#";
+    // submit.innerHTML = "Submit";
+    submit = document.createElement('button');
     submit.innerHTML = "Submit";
+    submit.classList.add('submit-button');
+    li.appendChild(document.createTextNode(" "))//add a space in between
+    li.appendChild(submit)//add the upload link to li
 
-    // voice submit action
-    submit.addEventListener("click", function (event) {
-        const xhr = new XMLHttpRequest();
+    //add the li element to the ol
+    recordingsList.appendChild(li);
+
+    function voice_submit() {
+        var xhr = new XMLHttpRequest();
 
         restart.style.display = 'none';
         submit.disabled = true;
@@ -223,7 +233,7 @@ function createDownloadLink(blob) {
         if (match) {
             question_index = match[1];
             console.log(question_index)
-        }else {
+        } else {
             console.log("no question_index match");
         }
 
@@ -235,7 +245,7 @@ function createDownloadLink(blob) {
         if (match2) {
             interview_id = match2[1];
             console.log(interview_id)
-        }else {
+        } else {
             console.log("no question_index match");
         }
 
@@ -244,19 +254,23 @@ function createDownloadLink(blob) {
         console.log(upload_url)
         xhr.open("POST", upload_url, true);
         xhr.send(fd);
-    })
-    li.appendChild(document.createTextNode(" "))//add a space in between
-    li.appendChild(submit)//add the upload link to li
+    }
 
+    // var old_element = submit
+    // var new_element = old_element.cloneNode(true);
+    // old_element.parentNode.replaceChild(new_element, old_element);
 
-    //add the li element to the ol
-    recordingsList.appendChild(li);
+    // voice submit action
+    // var submit = document.getElementById("voice_submit");
+    submit.removeEventListener("click", voice_submit);
+    submit.addEventListener("click", voice_submit);
 }
 
 
 restart.addEventListener("click", function (event) {
     const confirmed = confirm("Are you sure you want to continue? You will lose everything you just recorded.");
     if (confirmed) {
+        submit.remove();
         recordButton.disabled = false;
         //pauseButton.disabled = true;
         stopButton.disabled = true;

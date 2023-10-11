@@ -129,8 +129,8 @@ def get_answer_from_chatgpt(question_text, answer_text):
     access_prompt_from_file = open("./interview/interview_data/access_prompt.txt")
     access_prompt_default = access_prompt_from_file.read()
     access_prompt = (
-            access_prompt_default + "\n\n" + "Interviewer Question: " + question_text + "\n" + "Interviewee Answer: " +
-            answer_text
+            access_prompt_default + "\n\n" + "Interviewer Question: " + "\"" + question_text + "\"" + "\n" +
+            "Interviewee Answer: " + "\"" + answer_text + "\""
     )
     # print(access_prompt)
 
@@ -150,6 +150,8 @@ def get_answer_from_chatgpt(question_text, answer_text):
     )
 
     access_answer_content = response['choices'][0]['message']['content']
+    print("-------------")
+    print(access_answer_content)
 
     print("getting rewrite")
     response = openai.ChatCompletion.create(
@@ -162,6 +164,8 @@ def get_answer_from_chatgpt(question_text, answer_text):
     )
 
     rewrite_answer_content = response['choices'][0]['message']['content']
+    print("-------------")
+    print(rewrite_answer_content)
 
     return access_answer_content, rewrite_answer_content
 
