@@ -55,11 +55,11 @@ def setup_page(request):
         random_list = random.sample(range(1, Question.objects.count()), int(question))
         print(random_list)
 
-        # # temp Q2, Q4, Q10
-        # temp_list = [2, 4, 10]
-        # random_list = temp_list + random_list
-        # random_list = random_list[0:int(question)]
-        # print(random_list)
+        # temp Q2, Q4, Q10
+        temp_list = [2, 4, 17]
+        random_list = temp_list + random_list
+        random_list = random_list[0:int(question)]
+        print(random_list)
 
         for index, random_n in enumerate(random_list):
             question_interview = InterviewQuestion(
