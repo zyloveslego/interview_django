@@ -13,6 +13,7 @@ import whisper
 from django.http import JsonResponse, HttpResponseNotFound
 import openai
 from decouple import config
+import re
 
 
 # Create your views here.
@@ -170,6 +171,80 @@ def get_answer_from_chatgpt(question_text, answer_text):
     return access_answer_content, rewrite_answer_content
 
 
+def format_access(text):
+    try:
+        # Split the text into lines
+        lines = text.split('\n')
+        lines = [line for line in lines if line != '']
+        print(lines)
+
+        # Regular expression pattern to extract the word and score
+        pattern = r'\d+\.\s.*?(\d/10)'
+
+        format_text = ""
+
+        # Iterate through each line and extract the word and score
+        for line in lines[0:-1]:
+            match = re.search(pattern, line)
+            item_text = match.group(0)
+            start_index = match.start()
+            end_index = match.end()
+
+            # print(f"Start Index: {start_index}, End Index: {end_index}")
+            # print(item_text)
+
+            insert_text = "<span>"
+            part1 = line[:start_index]
+            part2 = line[start_index:]
+            line = part1 + insert_text + part2
+
+            insert_text = "</span>"
+            part1 = line[:(end_index + 6)]
+            part2 = line[(end_index + 6):]
+            line = part1 + insert_text + part2
+
+            insert_text = "<br><br>"
+            line = line + insert_text
+
+            # print(line)
+
+            format_text = format_text + line
+
+        word_to_find = "Overall"
+        start_index = lines[-1].find(word_to_find)
+        end_index = start_index + len(word_to_find)
+
+        insert_text = "<span>"
+        part1 = lines[-1][:start_index]
+        part2 = lines[-1][start_index:]
+        lines[-1] = part1 + insert_text + part2
+
+        insert_text = "</span>"
+        part1 = lines[-1][:(end_index + 6)]
+        part2 = lines[-1][(end_index + 6):]
+        lines[-1] = part1 + insert_text + part2
+
+        format_text = format_text + "<br><br>" + lines[-1]
+
+    except BaseException as e:
+        print(e)
+        return text
+
+    return format_text
+
+
+def format_rewrite(text):
+    # Find the index of the first and last double quotes
+    first_quote_index = text.find('"')
+    last_quote_index = text.rfind('"')
+
+    # Extract the text between the first and last double quotes
+    result = text[first_quote_index + 1:last_quote_index]
+
+    return result
+
+
+
 # TODO: 音频文件怎么处理、gpt使用次数限制
 # receive upload voice and ask gpt
 @csrf_exempt
@@ -185,6 +260,7 @@ def upload_voice(request):
             # options = whisper.DecodingOptions(language='en', fp16=False)
             model = whisper.load_model("tiny")
             result = model.transcribe("./recorded_voice/" + str(voice_file), fp16=False, language='English')
+            # result = model.transcribe(voice_file, fp16=False, language='English')
 
             print(result["text"].strip())
             print(request.POST['question_text'])
@@ -207,8 +283,8 @@ def upload_voice(request):
             return JsonResponse(
                 {'success': True,
                  "voice_text": voice_text,
-                 "my_access": access_answer_content,
-                 "my_revise": rewrite_answer_content
+                 "my_access": format_access(access_answer_content),
+                 "my_revise": format_rewrite(rewrite_answer_content)
                  })
 
             # TODO: error类型需要更新
