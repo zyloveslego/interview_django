@@ -14,6 +14,8 @@ from pathlib import Path
 
 from django.contrib.messages import constants as messages
 
+# import whisper
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -144,3 +146,5 @@ MESSAGE_TAGS = {
 LOGIN_URL = '/login'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# model = whisper.load_model("tiny")

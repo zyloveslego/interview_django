@@ -20,4 +20,4 @@ Please provide your response in the following format:
 
 Overall, I would rate the answer a *your overall score out of 10. *your overall assessment."
 
-Add you a short paragraph summary of your overall score and assessment to the end.
+Add you a short paragraph summary of your overall score and assessment to the end only based on interviewee's answer. If the interviewee's answer is empty or random. Please don't give high score.

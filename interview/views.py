@@ -1,3 +1,4 @@
+import torch.cuda
 from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.shortcuts import render, redirect, HttpResponse
@@ -14,6 +15,11 @@ from django.http import JsonResponse, HttpResponseNotFound
 import openai
 from decouple import config
 import re
+from interview_django_v2 import settings
+
+
+# model = whisper.load_model("tiny")
+openai.api_key = config('openai_key')
 
 
 # Create your views here.
@@ -123,36 +129,39 @@ def save_uploaded_file(file: InMemoryUploadedFile, file_path: str) -> None:
         for chunk in file.chunks():
             destination.write(chunk)
     file.close()
+    destination.close()
 
 
 # get response from chatgpt
 def get_answer_from_chatgpt(question_text, answer_text):
     access_prompt_from_file = open("./interview/interview_data/access_prompt.txt")
     access_prompt_default = access_prompt_from_file.read()
-    access_prompt = (
-            access_prompt_default + "\n\n" + "Interviewer Question: " + "\"" + question_text + "\"" + "\n" +
-            "Interviewee Answer: " + "\"" + answer_text + "\""
-    )
-    # print(access_prompt)
+    access_prompt = access_prompt_default + "\n\n" + "Interviewer Question: " + "\"" + question_text + "\"" + "\n" + "Interviewee Answer: " + "\"" + answer_text + "\""
+    access_prompt_from_file.close()
+
+    print("access_prompt")
+    print(access_prompt)
+    print("access_prompt end")
 
     rewrite_prompt_from_file = open("./interview/interview_data/rewrite_prompt.txt")
     rewrite_prompt_default = rewrite_prompt_from_file.read()
     rewrite_prompt = rewrite_prompt_default
+    rewrite_prompt_from_file.close()
     # print(rewrite_prompt)
-
-    openai.api_key = config('openai_key')
 
     print("getting access")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": access_prompt},
-        ]
+        ],
+        temperature=0.2,
     )
 
     access_answer_content = response['choices'][0]['message']['content']
     print("-------------")
     print(access_answer_content)
+    print("-------------")
 
     print("getting rewrite")
     response = openai.ChatCompletion.create(
@@ -255,18 +264,28 @@ def upload_voice(request):
         if voice_file:
             # Process the voice file here, e.g. save it to a database or process it with a speech recognition library.
             print(voice_file)
-            save_uploaded_file(voice_file, "./recorded_voice/" + str(voice_file))
-            # voice to text
-            # options = whisper.DecodingOptions(language='en', fp16=False)
-            model = whisper.load_model("tiny")
-            result = model.transcribe("./recorded_voice/" + str(voice_file), fp16=False, language='English')
-            # result = model.transcribe(voice_file, fp16=False, language='English')
+            save_uploaded_file(voice_file, "./recorded_voice/" + str(voice_file) + ".mp3")
 
-            print(result["text"].strip())
-            print(request.POST['question_text'])
+            file = open("./recorded_voice/" + str(voice_file) + ".mp3", "rb")
+            transcription = openai.Audio.transcribe("whisper-1", file)
+            voice_text = transcription.get("text")
 
-            voice_text = result["text"].strip()
+
+            # # voice to text
+            # # options = whisper.DecodingOptions(language='en', fp16=False)
+            # model = whisper.load_model("tiny")
+            # result = model.transcribe("./recorded_voice/" + str(voice_file), fp16=False, language='English')
+            # # result = model.transcribe(voice_file, fp16=False, language='English')
+            #
+            # print(result["text"].strip())
+            # print(request.POST['question_text'])
+            #
+            # voice_text = result["text"].strip()
             question_text = request.POST['question_text']
+
+            # model.cpu()
+            # del model
+            # torch.cuda.empty_cache()
 
             access_answer_content, rewrite_answer_content = get_answer_from_chatgpt(question_text, voice_text)
             # access_answer_content, rewrite_answer_content = 123, 123
