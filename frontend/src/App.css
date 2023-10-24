@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  color: #3f302a;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.theBrownVerticalDecoBar {
+  height: auto;
+  border-left: 7px #7E5F50 solid;
+  padding-left: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
