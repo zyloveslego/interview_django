@@ -50,6 +50,49 @@ margin-left:16.5%; /* Equal to the width of the sidebar */
 padding-bottom: 50px;
 }
 
+/*Side Bar & Icon*/
+i{
+  padding-right: 4px;
+  color:white;
+}
+
+#menu-item-question-icon{
+  position:relative;
+  left:0px;
+}
+
+#menu-item-uranswer-icon{
+  position:relative;
+  left:1.5px;
+}
+
+#menu-item-uranswer-text{
+  position:relative;
+  left:3px;
+}
+
+#menu-item-vocal-icon{
+  position:relative;
+  left:2px;
+}
+
+#menu-item-vocal-text{
+  position:relative;
+  left:2px;
+}
+
+#nextQuestion, #nextQuestion-back{
+  text-align: center;
+  font-size: 1rem;
+  border:1px #7E5F50 solid;
+}
+
+#back-and-next{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 
 
 /* Main */
@@ -471,41 +514,6 @@ margin:0;
 }
 .ldio-pal3955r1rq div { box-sizing: content-box; }
 
-/*Side Bar & Icon*/
-i{
-  padding-right: 4px;
-  color:white;
-}
-
-#menu-item-question-icon{
-  position:relative;
-  left:0px;
-}
-
-#menu-item-uranswer-icon{
-  position:relative;
-  left:1.5px;
-}
-
-#menu-item-uranswer-text{
-  position:relative;
-  left:3px;
-}
-
-#menu-item-vocal-icon{
-  position:relative;
-  left:2px;
-}
-
-#menu-item-vocal-text{
-  position:relative;
-  left:2px;
-}
-
-#nextQuestion{
-  text-align: center;
-  font-size: 1.25rem;
-}
 
 
 @media only screen and (min-width: 1500px){
