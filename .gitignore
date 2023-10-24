@@ -1,4 +1,2 @@
-/recorded_voice
-*.py
-*.pyc
+.idea
 *.DS_Store
