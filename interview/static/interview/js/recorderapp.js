@@ -189,6 +189,8 @@ function createDownloadLink(blob) {
     recordingsList.appendChild(li);
 
     function voice_submit() {
+        au.pause();
+
         var xhr = new XMLHttpRequest();
 
         restart.style.display = 'none';
