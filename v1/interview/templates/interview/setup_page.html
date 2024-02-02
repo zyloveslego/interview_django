@@ -1,6 +1,7 @@
 {% extends 'interview/nav.html' %}
 
 {% block header %}
+
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -20,25 +21,94 @@
 {% block content %}
 
 <main>
+
+    <section class="section-wrapper">
+        <div id="question-list" class="container">
+            <h3>Select a Question List to Start Practice!</h3>
+            <div id="container-wrapper">
+                <div class="container">
+                    <div class="inner-container">
+                        <a class="list-button" id="behavioral">
+                            <div class="list">
+                                <div class="list-title">Top 10 Behavioral Questions</div>
+                                <img class="list-pic" src="{% static 'interview/images/behavior.png' %}"
+                                    alt="human behavior" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="container">
+                    <a class="list-button" id="teamwork">
+                        <div class="list">
+                            <div class="list-title">Teamwork<br> Questions</div>
+                            <img class="list-pic" src="{% static 'interview/images/teamwork.png' %}"
+                                alt="4 hands holding on to each other, showing seamless colaboration" />
+                        </div>
+                    </a>
+                    <a class="list-button" id="communication">
+                        <div class="list">
+                            <div class="list-title">Communication Questions</div>
+                            <img class="list-pic" src="{% static 'interview/images/chat.png' %}" alt="3 chat boxes" />
+                        </div>
+                    </a>
+                </div>
+                <div class="container">
+                    <a class="list-button" id="leadership">
+                        <div class="list">
+                            <div class="list-title">Leadership<br> Questions</div>
+                            <img class="list-pic" src="{% static 'interview/images/leadership.png' %}" alt="leader" />
+                        </div>
+                    </a>
+                    <a class="list-button" id="decision">
+                        <div class="list">
+                            <div class="list-title">Decision-making Questions</div>
+                            <img class="list-pic" src="{% static 'interview/images/teaching.png' %}"
+                                alt="One person presenting in front of a chart" />
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="or" class="container">
+            <p>OR</p>
+        </div>
+
+        <div id="question-based-on-resume" class="container">
+            <h3>Generate Interview Questions Based on Your Resume</h3>
+            <button class="submit-button" id="upload-resume">Upload Resume</button>
+            <img id="drag-to-upload" src="{% static 'interview/images/drag.png' %}" />
+    </section>
+
+
+    <section id="start-button-container">
+        <button class="submit-button" id="start">Start Now</button>
+    </section>
+    </div>
+</main>
+
+
+<!-- <main>
     
         <div class="transparentContainerBox">
             <div id="setupBox" class="content-section">
             <div id="setupQuestion">
                 <div class="theBrownVerticalDecoBar">
                     <p>Tell us more about yourself and customize your mock interview experience</p>
-                </div>
+                </div> -->
 
-                <!--Setup Form-->
-                <div class="form-block w-form">
+<!--Setup Form-->
+<!-- <div class="form-block w-form">
                     <form id="wf-form-interview-setup-Form" name="wf-form-interview-setup-Form"
                           data-name="interview setup Form" method="post" class="interview-setup-form"
                           data-wf-page-id="644dd40e1a62013c9d0dab85"
                           data-wf-element-id="bde9699f-01e1-5fbf-8f15-b8c9853ce5ac"
                           action="{% url 'interview:setup_page' %}">
-                        {% csrf_token %}
+                        {% csrf_token %} -->
 
-                        <!--Select Role-->
-                        <div class="div-block-2">
+<!--Select Role-->
+<!-- <div class="div-block-2">
                             <label for="YOE" class="questions-setup-text">Choose Your Role:</label>
                             <label class="radio-button-field w-radio">
                                 <input type="radio" id="individual-contributor" name="role"
@@ -53,10 +123,10 @@
                                 <span class="radio-button-label w-form-label" for="manager">Manager</span>
                             </label>
                         </div>
+ -->
 
-
-                        <!--Select years of experience-->
-                        <div class="div-block-2">
+<!--Select years of experience-->
+<!-- <div class="div-block-2">
                             <label for="YOE" class="questions-setup-text">Years of Experience:</label>
                             <select class="w-select" name="YOE" id="YOE" required="">
                                 <option value="" disabled selected>Select an option</option>
@@ -66,10 +136,10 @@
                                 <option value="4">5-10 years</option>
                                 <option value="5">10+ years</option>
                             </select>
-                        </div>
+                        </div> -->
 
-                        <!--Select # of Questions-->
-                        <div class="div-block-2">
+<!--Select # of Questions-->
+<!-- <div class="div-block-2">
                             <label for="YOE-4" class="questions-setup-text">Number of Questions:</label>
                             <label class="radio-button-field w-radio">
                                 <input type="radio" data-name="Radio 3" id="radio-3" name="n_question" value="3"
@@ -84,31 +154,21 @@
                                        class="w-form-formradioinput w-radio-input">
                                 <span class="radio-button-label w-form-label" for="radio-5">  7    </span>
                             </label>
-                        </div>
+                        </div> -->
 
-                        <!--Start Button-->
-                        <div class="div-block-3">
-                            <!--<a href="interviewquestion.html" class="submit-button">Start Now</a>-->
+<!--Start Button-->
+<!-- <div class="div-block-3">
                             <input type="submit" value="Start Now" class="submit-button">
                         </div>
 
                     </form>
-                    <!--
-                    <div class="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <div class="w-form-fail">
-                      <div>Oops! Something went wrong while submitting the form.</div>
-                    </div>
-                    -->
                 </div>
-
 
             </div>
         </div>
     </div>
 
+</main> -->
 
-</main>
 
 {% endblock %}
