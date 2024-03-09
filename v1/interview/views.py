@@ -15,8 +15,8 @@ from django.http import JsonResponse, HttpResponseNotFound
 import openai
 from decouple import config
 import re
+from django.core import serializers
 from interview_django_v2 import settings
-
 
 # model = whisper.load_model("tiny")
 openai.api_key = config('openai_key')
@@ -253,7 +253,6 @@ def format_rewrite(text):
     return result
 
 
-
 # TODO: 音频文件怎么处理、gpt使用次数限制
 # receive upload voice and ask gpt
 @csrf_exempt
@@ -269,7 +268,6 @@ def upload_voice(request):
             file = open("./recorded_voice/" + str(voice_file) + ".mp3", "rb")
             transcription = openai.Audio.transcribe("whisper-1", file)
             voice_text = transcription.get("text")
-
 
             # # voice to text
             # # options = whisper.DecodingOptions(language='en', fp16=False)
@@ -311,6 +309,37 @@ def upload_voice(request):
             return JsonResponse({'success': False, 'error': 'No voice file was uploaded.'})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method.'})
+
+
+# dashboard页面
+def dashboard(request):
+    pass
+    return render(request, 'interview/dashboard.html')
+
+
+# 显示已答题和未答题
+# 这里面可能存在一个问题，一道题可能回答过多次
+def question_list(request):
+    pass
+
+
+# 显示所有interview
+@csrf_exempt
+def interview_list(request):
+    interview_data = InterviewInfo.objects.all()
+    pk_name = InterviewInfo._meta.pk.name
+    pk_values = [getattr(obj, pk_name) for obj in interview_data]
+    interview_data = serializers.serialize('json', interview_data)
+    return JsonResponse({'success': True, "interview_data": interview_data, "pk_values": pk_values})
+
+
+# 显示单次interview的所有question
+def questions_list_in_interview(request, interview_id):
+    print(interview_id)
+    interview_questions = InterviewQuestion.objects.filter(interview_id=interview_id)
+    # interview_questions_data = serializers.serialize('json', interview_questions)
+    # print(interview_questions_data)
+    return render(request, 'interview/interview_questions.html', {'interview_questions': interview_questions})
 
 
 # temp use, delete later

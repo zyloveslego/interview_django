@@ -8,16 +8,29 @@ from django.contrib.auth.models import User
 # interview question
 class Question(models.Model):
     question_id = models.AutoField(primary_key=True)
-    QUESTION_TYPE_CHOICE = (
+    QUESTION_ROLE_CHOICE = (
         ('IC', 'IC'),
         ('Manager', 'Manager'),
     )
-    question_type = models.CharField(
-        choices=QUESTION_TYPE_CHOICE,
+    question_role = models.CharField(
+        choices=QUESTION_ROLE_CHOICE,
         default='IC',
         max_length=20,
     )
     question_text = models.CharField(max_length=200)
+
+    QUESTION_TYPE_CHOICE = (
+        ('top10', 'top10'),
+        ('communication', 'communication'),
+        ('decision_making', 'decision_making'),
+        ('teamwork', 'teamwork'),
+        ('leadership', 'leadership'),
+    )
+    question_type = models.CharField(
+        choices=QUESTION_TYPE_CHOICE,
+        default='communication',
+        max_length=20,
+    )
 
 
 # User

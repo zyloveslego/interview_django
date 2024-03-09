@@ -25,4 +25,8 @@ urlpatterns = [
     path('login', views.user_login, name='login'),
     path('logout', views.user_logout, name='logout'),
 
+    path('dashboard', views.dashboard, name='dashboard'),
+    path('interview_list', views.interview_list, name='interview_list'),
+    path('interview_questions/<int:interview_id>/', views.questions_list_in_interview, name='questions_list_in_interview'),
+
 ]

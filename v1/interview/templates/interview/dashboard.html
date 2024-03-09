@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<p>This is dashboard.</p>
+<button id="get_interview_button">show all interview</button>
+<div id="get_interview_response">数据库需要增加字段, 比如面试时合适进行的；增加question list字段？</div>
+
+<h2>Interview Data</h2>
+
+<table id="interviewTable">
+  <tr>
+      <th>Interview ID</th>
+      <th>User ID</th>
+      <th>Total Questions</th>
+      <th>Years of Experience</th>
+      <th>Role</th>
+      <th>Total Time</th>
+      <th>Action</th>
+  </tr>
+</table>
+
+<script>
+document.getElementById("get_interview_button").addEventListener("click", function() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "{% url 'interview:interview_list' %}", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            {#document.getElementById("get_interview_response").innerHTML = xhr.responseText;#}
+            var interviewData = JSON.parse(xhr.responseText).interview_data;
+            var data = JSON.parse(interviewData);
+            var pk_values = JSON.parse(xhr.responseText).pk_values;
+
+            const table = document.getElementById("interviewTable");
+            
+            let count = 0;
+            data.forEach(function(item) {
+                const row = table.insertRow();
+                const interview_question_link = "{% url 'interview:questions_list_in_interview' interview_id=0 %}".replace(0, pk_values[count])
+                const actionCell = row.insertCell(0);
+                const link = document.createElement("a");
+                link.innerHTML = pk_values[count];
+                link.href = interview_question_link
+                actionCell.appendChild(link);
+                row.insertCell(1).innerHTML = item.fields.user_id;
+                row.insertCell(2).innerHTML = item.fields.total_question;
+                row.insertCell(3).innerHTML = item.fields.year_of_experience;
+                row.insertCell(4).innerHTML = item.fields.role;
+                row.insertCell(5).innerHTML = item.fields.total_time;
+                count++;
+            });
+
+        }
+    };
+    xhr.send();
+});
+</script>
+
+
+</body>
+</html>
