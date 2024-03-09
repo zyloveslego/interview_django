@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled, Button, AppBar, Toolbar } from '@mui/material/';
 import logo from '../images/Logo.svg';
+import { NavLink } from 'react-router-dom';
 
 function Nav() {
 
@@ -22,7 +23,7 @@ padding-left:2%;
                 {/*Change width of #menuItem to control the position of menu items*/}
                 <div id="menuItem" style={{ marginLeft: 'auto', width: '55%' }}>
                     <CustomizedAppBarMenuItem>Mock interview</CustomizedAppBarMenuItem>
-                    <CustomizedAppBarMenuItem>Career Path Builder</CustomizedAppBarMenuItem>
+                    <NavLink><CustomizedAppBarMenuItem>Career Path Builder</CustomizedAppBarMenuItem></NavLink>
                     <CustomizedAppBarMenuItem>Smart Tracking</CustomizedAppBarMenuItem>
                     <Button sx={{ marginLeft: '2%', fontSize: '0.8rem' }} color="primary" variant="contained">Login</Button>
                 </div>

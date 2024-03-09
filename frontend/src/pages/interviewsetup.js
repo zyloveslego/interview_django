@@ -3,7 +3,7 @@ import './setup.css';
 import Nav from '../components/nav';
 import { getQuestions } from '../setup';
 import { useTheme, styled, Typography, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, MenuItem, InputLabel, Select, Paper } from '@mui/material/';
-
+import { Link } from 'react-router-dom';
 
 function Setup() {
 
@@ -21,7 +21,7 @@ function Setup() {
     return (
         <div className="App">
             <header className="App-header">
-                <Nav />
+
 
                 <Paper elevation={3} sx={{ padding: '3%', width: '50%', textAlign: 'left' }}>
                     <div className="theBrownVerticalDecoBar">

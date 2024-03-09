@@ -1,9 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTheme, styled, Typography, Button, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, MenuItem, InputLabel, Select, Paper } from '@mui/material/';
 import './interviewquestion.css';
 import Nav from '../components/nav';
 import RecordButton from '../images/RecordButton.svg';
 import StopButton from '../images/StopButton.svg';
+import { AudioRecorder, useAudioRecorder } from 'react-audio-voice-recorder';
+import MuiAudioPlayer from "mui-audio-player-plus";
+import { createBrowserRouter } from 'react-router-dom';
+import { BsRecordCircleFill } from "react-icons/bs";
+import { FaSquare } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa";
+
+function ShowAudio({ shouldShow, url }) {
+    console.log(shouldShow, url)
+    if (shouldShow) {
+        return <div><MuiAudioPlayer id="inline" inline src={url} /></div>;
+    }
+    return null;
+}
 
 function InterviewQuestion() {
 
@@ -18,7 +32,7 @@ display: block;
 `;
 
     const MainContentPaper = styled(Paper)`
-padding: 3%;
+padding: 4%;
 width: 65%;
 text-align: left;
 min-height: 420px;
@@ -27,30 +41,92 @@ position: relative;
 top: 30px;
 `;
 
-    useEffect(() => {
-        const scriptRecorder = document.createElement('script');
-        const scriptRecorderApp = document.createElement('script');
-        const scriptTimer = document.createElement('script');
+    const [showAudio, setShowAudio] = useState(false);
+    const [url, setURL] = useState("");
+    const recorderControls = useAudioRecorder();
 
-        scriptRecorder.src = "../js/recorder.js";
-        scriptRecorder.async = true;
+    const addAudioElement = (blob) => {
+        const url = URL.createObjectURL(blob);
 
-        scriptRecorderApp.src = "../js/recorderapp.js";
-        scriptRecorderApp.async = true;
+        const audio = document.createElement("audio");
+        audio.src = url;
+        audio.controls = true;
+        // setURL(url)
+        // setShowAudio(true)
+        document.getElementById("recordingsList").appendChild(audio)
+        // document.body.appendChild(<div><MuiAudioPlayer id="inline" inline src={url} /></div>);
+    };
 
-        scriptRecorderApp.src = "../js/timer.js";
-        scriptRecorderApp.async = true;
+    // //Scroll Function
+    // const menuItems = document.querySelectorAll('.menu-item');
+    // const contentSections = document.querySelectorAll('.content-section');
 
-        document.body.appendChild(scriptRecorder);
-        document.body.appendChild(scriptRecorderApp);
-        document.body.appendChild(scriptTimer);
+    // function updateActiveMenuItem() {
+    //     contentSections.forEach((section, index) => {
+    //         const rect = section.getBoundingClientRect();
+    //         if (rect.top <= 200 && rect.bottom >= 200) {
+    //             menuItems.forEach(item => item.classList.remove('active'));
+    //             menuItems[index].classList.add('active');
+    //         }
+    //     });
+    // }
 
-        return () => {
-            document.body.removeChild(scriptRecorder);
-            document.body.removeChild(scriptRecorderApp);
-            document.body.removeChild(scriptTimer);
+    // // Event listener for scrolling
+    // window.addEventListener('scroll', updateActiveMenuItem);
+
+    // // Event listeners for menu items to scroll to the respective sections
+    // menuItems.forEach((menuItem, index) => {
+    //     menuItem.addEventListener('click', () => {
+    //         contentSections[index].scrollIntoView({ behavior: 'smooth' });
+    //     });
+    // });
+
+    // Audio Recorder
+    const [isRecording, setIsRecording] = useState(false);
+    const [audioURL, setAudioURL] = useState('');
+    const mediaRecorder = useRef(null);
+    const chunks = useRef([]);
+
+    const startRecording = async () => {
+        setAudioURL('');
+        try {
+            let audioData = null;
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder.current = new MediaRecorder(stream);
+            mediaRecorder.current.ondataavailable = (event) => {
+                // chunks.current.push(event.data);
+                audioData = [event.data]
+            };
+            mediaRecorder.current.onstop = () => {
+                const blob = new Blob(audioData, { type: 'audio/wav' });
+                setAudioURL(URL.createObjectURL(blob));
+
+                // ajax.post(url, header, body)
+
+            };
+            mediaRecorder.current.start();
+            setIsRecording(true);
+
+
+
+        } catch (error) {
+            console.error('Error accessing microphone:', error);
         }
-    }, []);
+    };
+
+    const stopRecording = () => {
+        if (mediaRecorder.current && isRecording) {
+            mediaRecorder.current.stop();
+            setIsRecording(false);
+        }
+    };
+
+    const handlePlay = () => {
+        const audio = new Audio(audioURL);
+        audio.play();
+    };
+
+
 
     return (
         <div id="main">
@@ -68,55 +144,84 @@ top: 30px;
                     left: '0',
                     paddingTop: '150px'
                 }}>
-                    <CustomizedSideBarMenuItem>Questions</CustomizedSideBarMenuItem>
-                    <CustomizedSideBarMenuItem>Your Answer</CustomizedSideBarMenuItem>
-                    <CustomizedSideBarMenuItem>Vocal Presence</CustomizedSideBarMenuItem>
-                    <CustomizedSideBarMenuItem>Assessment</CustomizedSideBarMenuItem>
-                    <CustomizedSideBarMenuItem>Revised Answer</CustomizedSideBarMenuItem>
+                    <a className="menu-item" href="#questionBox"><CustomizedSideBarMenuItem>Questions</CustomizedSideBarMenuItem></a>
+                    <a className="menu-item" href="#answerTranscript"><CustomizedSideBarMenuItem>Your Answer</CustomizedSideBarMenuItem></a>
+                    <a className="menu-item" href="#vocalPresence"><CustomizedSideBarMenuItem>Vocal Presence</CustomizedSideBarMenuItem></a>
+                    <a className="menu-item" href="#assessment"><CustomizedSideBarMenuItem>Assessment</CustomizedSideBarMenuItem></a >
+                    <a className="menu-item" href="#revisedAnswer"><CustomizedSideBarMenuItem>Revised Answer</CustomizedSideBarMenuItem></a >
                 </Paper>
             </div>
 
             <div id="mainContent">
-                <MainContentPaper elevation={3}>
-                    <div id="questionNumber">
-                        <div className="theBrownVerticalDecoBar">
-                            <p>Interview Practice<br></br>Question 1/5
-                            </p>
-                        </div>
-                        <Typography variant='h5'>Tell me a time you need to meet a tight deadline, but you have multiple other tasks on your table.</Typography>
-                    </div>
-                    <div id="recorder">
-                        <div id="allRecorderButtons">
-                            <Button id="recordButton" className="button-1">
-                                <img src={RecordButton} alt="Record Button"
-                                    className="svgRecorderButton" />
-                            </Button>
-
-                            <Button id="stopButton" className="button-1">
-                                <img src={StopButton} alt="Stop Button"
-                                    className="svgRecorderButton" />
-                            </Button>
-
-                            <div id="timer">00:00</div>
-                            <script src="./js/timer.js"></script>
-
-                            <div id="instructionForRecording">Once ready, click the ‘Record’ button to start
-                                recording.
+                <div id="questionBox" class="content-section">
+                    <MainContentPaper elevation={3}>
+                        <div id="questionNumber">
+                            <div className="theBrownVerticalDecoBar">
+                                <p>Interview Practice<br></br>Question 1/5
+                                </p>
                             </div>
+                            <Typography variant='h5'>Tell me a time you need to meet a tight deadline, but you have multiple other tasks on your table.</Typography>
+                        </div>
+                        <div id="recorder">
+                            {/* <div id="allRecorderButtons">
+                                <Button id="recordButton" className="button-1">
+                                    <img src={RecordButton} alt="Record Button"
+                                        className="svgRecorderButton" onClick={recorderControls.startRecording} />
+                                </Button>
+
+                                <Button id="stopButton" className="button-1">
+                                    <img src={StopButton} alt="Stop Button"
+                                        className="svgRecorderButton" onClick={recorderControls.stopRecording} />
+                                </Button>
+                                <div id="instructionForRecording">Once ready, click the ‘Record’ button to start
+                                    recording.
+                                </div>
+                            </div> */}
+
+                            <div className='recorder-wrapper'>
+
+                                <button className={`${isRecording ? 'btn-recording' : 'btn-idling'}`} onClick={isRecording ? stopRecording : startRecording}>
+                                    {isRecording ? <FaSquare /> : <FaCircle />}
+                                    {/* {isRecording ? 'Stop Recording' : 'Start Recording'} */}
+                                </button>
+                                {isRecording &&
+                                    <div>
+                                        <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                                    </div>
+                                }
+                                {audioURL && (
+                                    <div>
+                                        {/* <button onClick={handlePlay}>Play Recording</button> */}
+                                        <audio controls src={audioURL} />
+                                    </div>
+                                )}
+                            </div>
+
+                            <br></br>
+                            <strong>
+                                <div id="yourAnswer">
+                                </div>
+                            </strong>
+
+                            {/* <AudioRecorder
+                                onRecordingComplete={addAudioElement}
+                                audioTrackConstraints={{
+                                    noiseSuppression: true,
+                                    echoCancellation: true,
+                                }}
+                            // recorderControls={recorderControls}
+                            />
+
+                            {/* <button onClick={recorderControls.stopRecording}>Stop recording</button> */}
+                            {/* <ShowAudio shouldShow={showAudio} url={url} /> */}
+
+                            <ol id="recordingsList"></ol>
+                            {/*inserting these scripts at the end to be able to use all the elements in the DOM */}
+
                         </div>
 
-                        <br></br>
-                        <strong>
-                            <div id="yourAnswer"></div>
-                        </strong>
-                        <div id="showAudio"></div>
-                        <ol id="recordingsList"></ol>
-                        {/*inserting these scripts at the end to be able to use all the elements in the DOM */}
-                        <script src="./js/recorder.js"></script>
-                        <script src="./js/recorderapp.js"></script>
-                    </div>
-
-                </MainContentPaper>
+                    </MainContentPaper>
+                </div>
 
                 <div id="AAR">
                     <div id="answerTranscript" class="content-section">

@@ -19,8 +19,7 @@ from django.core import serializers
 from interview_django_v2 import settings
 
 # model = whisper.load_model("tiny")
-openai.api_key = config('openai_key')
-
+openai.api_key = "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"
 
 # Create your views here.
 
