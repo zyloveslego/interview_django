@@ -1,0 +1,220 @@
+main {
+    background-color: #F4F3F3;
+    /*border: 1PX solid black;*/
+    position: relative;
+    top: 77px;
+    z-index: 0;
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Tahoma', sans-serif;
+    color: #3f302a;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.white-background {
+    background-color: white;
+    width: 55%;
+    padding: 20px;
+    padding-top: 40px;
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    padding-bottom: 15px;
+    border-bottom: 2px #F4F3F3 solid;
+}
+
+table {
+    width: 100%;
+}
+
+/* Set width for each column */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 30%;
+    /* Width of first column */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 25%;
+    /* Width of second column */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 15%;
+    /* Width of third column */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 15%;
+    /* Width of third column */
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 15%;
+    /* Width of third column */
+}
+
+th,
+td {
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 1px #F4F3F3 solid;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+th {
+    padding-top: 23px;
+}
+
+td {
+    font-size: 1.1rem;
+}
+
+.cell-button {
+    background-color: white;
+    border: none;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.cell-button:hover {
+    cursor: pointer;
+    color: #7e5f50;
+}
+
+/* Styles for tabs */
+.tab {
+    overflow: hidden;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 12px;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    color: #656464;
+    font-family: 'Tahoma', sans-serif;
+    margin-top: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    border-bottom: #7e5f50 2px solid;
+    color: #7e5f50;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border-bottom: #7e5f50 2px solid;
+    color: #7e5f50;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+
+    font-size: 1.05rem;
+}
+
+/* Show the tab content when clicked */
+.tab-content-active {
+    display: block;
+}
+
+.tabcontent ul {
+    list-style-type: none;
+    padding: 7px;
+}
+
+.tabcontent li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #7e5f50;
+}
+
+
+/*previous-practice-question-list*/
+.subtitle {
+    font-size: 0.75rem;
+    color: #7d7b7b;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* Set width for each column */
+#previous-practice-question-list th:nth-child(1),
+#previous-practice-question-list td:nth-child(1) {
+    width: 50%;
+    /* Width of first column */
+}
+
+#previous-practice-question-list th:nth-child(2),
+#previous-practice-question-list td:nth-child(2) {
+    width: 12%;
+    /* Width of second column */
+}
+
+#previous-practice-question-list th:nth-child(3),
+#previous-practice-question-list td:nth-child(3) {
+    width: 12%;
+    /* Width of third column */
+}
+
+#previous-practice-question-list th:nth-child(4),
+#previous-practice-question-list td:nth-child(4) {
+    width: 12%;
+    /* Width of third column */
+}
+
+#previous-practice-question-list th:nth-child(5),
+#previous-practice-question-list td:nth-child(5) {
+    width: 12%;
+    /* Width of third column */
+}
+
+#previous-practice-question-list th,
+#previous-practice-question-list td {
+    padding-right: 15px;
+}
+
+.review-button {
+    background-color: #7e5f50;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    border-radius: 5px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+}
