@@ -126,7 +126,7 @@ def hint_page(request, question_type):
         question_interview = InterviewQuestion(
             interview_id=setup_info,
             question_id=Question.objects.filter(question_type=question_type).filter(question_id=random_n)[0],
-            question_index=index+1,
+            question_index=index + 1,
         )
         question_interview.save()
 
@@ -304,6 +304,90 @@ def format_rewrite(text):
     return result
 
 
+def hume_process(voice_file):
+    # get Sentiment for hume
+    from hume import HumeBatchClient
+    # from hume.models.config import BurstConfig
+    from hume.models.config import ProsodyConfig
+
+    client = HumeBatchClient("MF6rs18g5wGNTjoJHiZgeu1b9gGGv1iyvTAB6t5nOjWCMmcl")
+
+    files = [voice_file]
+    # burst_config = BurstConfig()
+    prosody_config = ProsodyConfig()
+
+    job = client.submit_job([], [prosody_config], files=files)
+
+    print("Running...", job)
+    job.await_complete()
+    predictions = job.get_predictions()
+
+    # sum all fragments
+    emotions_dict = {}
+    output_feature_list = ['Interest', 'Excitement', 'Anxiety', 'Fear', ]
+
+    for i in predictions[0]['results']['predictions'][0]['models']['prosody']['grouped_predictions'][0]['predictions']:
+        #     print(i['text'])
+        #     print(i['time'])
+        #     # print(i['emotions'])
+        #     print('----')
+        for j in i['emotions']:
+            if j['name'] in emotions_dict.keys():
+                emotions_dict[j['name']] = emotions_dict[j['name']] + j['score']
+            else:
+                emotions_dict[j['name']] = j['score']
+
+    sorted_dict = sorted(emotions_dict.items(), key=lambda x: x[1], reverse=True)
+
+    sentiment_dict = {}
+    for j in sorted_dict:
+        mood, value = j
+        if mood in output_feature_list:
+            # print(mood, value)
+            sentiment_dict.setdefault(mood, value)
+
+    return sentiment_dict
+
+
+def map_volume(mp3_file_path, target_range=(1, 100)):
+    def map_value(value, from_range, to_range):
+        # 映射函数
+        return (value - from_range[0]) * (to_range[1] - to_range[0]) / (from_range[1] - from_range[0]) + to_range[0]
+
+    from pydub import AudioSegment
+    from pydub.playback import play
+    # 读取MP3文件
+    audio = AudioSegment.from_file(mp3_file_path, format="wav")
+
+    # 获取当前音量级别
+    current_volume = audio.dBFS
+
+    # 映射到目标范围
+    mapped_volume = map_value(current_volume, (-100, 0), target_range)
+
+    # print(f"Current Volume: {current_volume} dBFS")
+    # print(f"Mapped Volume: {mapped_volume} (in target range)")
+    return current_volume, mapped_volume
+
+
+def get_speak_rate(transcript):
+    import librosa
+    from nltk.tokenize import word_tokenize
+    import string
+    # 从WAV文件中加载音频
+    audio_data, sample_rate = librosa.load("xiong.mp3")
+
+    # 计算音频的时长（秒）
+    duration = librosa.get_duration(y=audio_data, sr=sample_rate)
+
+    words = word_tokenize(transcript.text)
+    words_without_punc = [i for i in words if i not in string.punctuation]
+
+    speaking_rate = len(words_without_punc) / duration * 60
+    # print(f"说话速度：{speaking_rate:.2f} 词/分钟")
+    return speaking_rate
+
+
 # TODO: 音频文件怎么处理、gpt使用次数限制
 # receive upload voice and ask gpt
 @csrf_exempt
@@ -319,6 +403,11 @@ def upload_voice(request):
             file = open("./recorded_voice/" + str(voice_file) + ".mp3", "rb")
             transcription = openai.Audio.transcribe("whisper-1", file)
             voice_text = transcription.get("text")
+
+            # deal with voice
+            sentiment_dict = hume_process(voice_file)
+            current_volume, mapped_volume = map_volume(voice_file)
+            speaking_rate = get_speak_rate(transcription)
 
             # # voice to text
             # # options = whisper.DecodingOptions(language='en', fp16=False)
