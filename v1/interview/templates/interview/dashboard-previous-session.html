@@ -1,0 +1,78 @@
+{% extends 'interview/nav.html' %}
+
+{% block header %}
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Mock Interview - Dashboard</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/dashboard.css' %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
+</head>
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <div id="previous-practice-question-list" class="white-background">
+        <div class="section-title">Leadership 10</div>
+        <div class="subtitle">Practice Date 2/20/2024</div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th> Language</th>
+                    <th> Vocal</th>
+                    <th> Content</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. Give me an example of a time you made a mistake at work, and explain how you fixed the issue.
+                    </td>
+                    <td> 8</td>
+                    <td> 8</td>
+                    <td> 8</td>
+                    <td><button class="review-button">Review</button></td>
+
+                </tr>
+                <tr>
+                    <td>2. Talk about a time when you had a problem with an employee's behavior. How did you resolve the
+                        issue?</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td><button class="review-button">Review</button></td>
+                </tr>
+                <tr>
+                    <td>3. Describe a situation where you has to collaborate with someone who had a different working
+                        style.</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td><button class="review-button">Review</button></td>
+                </tr>
+                <tr>
+                    <td>4. What's an effective strategy that you've used to motivate others?</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td><button class="review-button">Review</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</main>
