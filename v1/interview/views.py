@@ -19,73 +19,124 @@ from django.core import serializers
 from interview_django_v2 import settings
 
 # model = whisper.load_model("tiny")
-openai.api_key = ""
+# TODO: remember to put in another file
+openai.api_key = "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"
 
 
 # Create your views here.
 
+# region old set up page, discard for now
 # interview set up page
+# @login_required()
+# def setup_page(request):
+#     if request.method == 'POST':
+#         # Process the form data
+#         # print(request.POST.keys())
+#         # print(request.user.username)
+#         question = request.POST['n_question']
+#         year = request.POST['YOE']
+#         role = request.POST['role']
+#
+#         current_user = request.user.username
+#
+#         # print("Question: " + str(question))
+#         # print("Year: " + str(year))
+#         # print("Role: " + str(role))
+#
+#         # save to database
+#         print("write into database; generate interview ID")
+#
+#         # temp generate user
+#         user_instance = User.objects.filter(username=str(current_user))[0]
+#         # print(user_instance)
+#
+#         # generate interview
+#         setup_info = InterviewInfo(
+#             user_id=user_instance,
+#             total_question=int(question),
+#             year_of_experience=int(year),
+#             role="IC",
+#             total_time=0)
+#         setup_info.save()
+#
+#         # generate interview questions
+#         random_list = random.sample(range(1, Question.objects.count()), int(question))
+#         print(random_list)
+#
+#         # temp Q2, Q4, Q10
+#         temp_list = [2, 4, 17]
+#         random_list = temp_list + random_list
+#         random_list = random_list[0:int(question)]
+#         print(random_list)
+#
+#         for index, random_n in enumerate(random_list):
+#             question_interview = InterviewQuestion(
+#                 interview_id=setup_info,
+#                 question_id=Question.objects.filter(question_id=random_n)[0],
+#                 question_index=index + 1,
+#             )
+#             question_interview.save()
+#
+#         # Redirect to interview page
+#         return redirect('interview:interview_question_page',
+#                         interview_id=str(setup_info.interview_id),
+#                         question_index=1)
+#     else:
+#         # If it's not a POST request, just render the form
+#         return render(request, 'interview/setup_page.html')
+# endregion
+
 @login_required()
 def setup_page(request):
-    if request.method == 'POST':
-        # Process the form data
-        # print(request.POST.keys())
-        # print(request.user.username)
-        question = request.POST['n_question']
-        year = request.POST['YOE']
-        role = request.POST['role']
+    return render(request, 'interview/setup_page.html')
 
-        current_user = request.user.username
 
-        # print("Question: " + str(question))
-        # print("Year: " + str(year))
-        # print("Role: " + str(role))
+# some hint info before the interview begin
+@login_required()
+def hint_page(request, question_type):
+    referer = request.META.get('HTTP_REFERER')
+    # print(referer)
+    if "setup" not in str(referer):
+        return redirect("interview:setup_page")
 
-        # TODO: save to database
-        # save to database
-        print("write into database; generate interview ID")
+    # generate interviewInfo
+    current_user = request.user.username
+    user_instance = User.objects.filter(username=str(current_user))[0]
+    # print(current_user)
+    # print(user_instance)
 
-        # temp generate user
-        user_instance = User.objects.filter(username=str(current_user))[0]
-        # print(user_instance)
+    # default
+    question_count = 10
+    year_of_experience = 0
 
-        # generate interview
-        setup_info = InterviewInfo(
-            user_id=user_instance,
-            total_question=int(question),
-            year_of_experience=int(year),
-            role="IC",
-            total_time=0)
-        setup_info.save()
+    setup_info = InterviewInfo(
+        user_id=user_instance,
+        total_question=question_count,
+        year_of_experience=year_of_experience,
+        role="IC",
+        total_time=0)
+    setup_info.save()
 
-        # generate interview questions
-        random_list = random.sample(range(1, Question.objects.count()), int(question))
-        print(random_list)
+    # generate interview questions
+    question_ids = Question.objects.filter(question_type=question_type).values_list('question_id', flat=True)
+    random_list = random.sample(list(question_ids), question_count)
+    # print(random_list)
 
-        # temp Q2, Q4, Q10
-        temp_list = [2, 4, 17]
-        random_list = temp_list + random_list
-        random_list = random_list[0:int(question)]
-        print(random_list)
+    for index, random_n in enumerate(random_list):
+        question_interview = InterviewQuestion(
+            interview_id=setup_info,
+            question_id=Question.objects.filter(question_type=question_type).filter(question_id=random_n)[0],
+            question_index=index+1,
+        )
+        question_interview.save()
 
-        for index, random_n in enumerate(random_list):
-            question_interview = InterviewQuestion(
-                interview_id=setup_info,
-                question_id=Question.objects.filter(question_id=random_n)[0],
-                question_index=index + 1,
-            )
-            question_interview.save()
+    # print(setup_info.interview_id)
 
-        # Redirect to interview page
-        return redirect('interview:interview_question_page',
-                        interview_id=str(setup_info.interview_id),
-                        question_index=1)
-    else:
-        # If it's not a POST request, just render the form
-        return render(request, 'interview/setup_page.html')
+    return render(request, 'interview/hint_page.html', {'interview_id': setup_info.interview_id})
 
 
 # interview question page
+
 @login_required()
 def interview_question_page(request, interview_id, question_index):
     interview_info = InterviewInfo.objects.filter(interview_id=interview_id)[0]

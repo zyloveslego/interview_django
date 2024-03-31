@@ -28,7 +28,7 @@
             <div id="container-wrapper">
                 <div class="container">
                     <div class="inner-container">
-                        <a class="list-button" id="behavioral">
+                        <a href="{% url 'interview:hint_page' 'top10' %}" class="list-button" id="behavioral">
                             <div class="list">
                                 <div class="list-title">Top 10 Behavioral Questions</div>
                                 <img class="list-pic" src="{% static 'interview/images/behavior.png' %}"
@@ -38,14 +38,14 @@
                     </div>
                 </div>
                 <div class="container">
-                    <a class="list-button" id="teamwork">
+                    <a href="{% url 'interview:hint_page' 'teamwork' %}" class="list-button" id="teamwork">
                         <div class="list">
                             <div class="list-title">Teamwork<br> Questions</div>
                             <img class="list-pic" src="{% static 'interview/images/teamwork.png' %}"
                                 alt="4 hands holding on to each other, showing seamless colaboration" />
                         </div>
                     </a>
-                    <a class="list-button" id="communication">
+                    <a href="{% url 'interview:hint_page' 'communication' %}" class="list-button" id="communication">
                         <div class="list">
                             <div class="list-title">Communication Questions</div>
                             <img class="list-pic" src="{% static 'interview/images/chat.png' %}" alt="3 chat boxes" />
@@ -53,13 +53,13 @@
                     </a>
                 </div>
                 <div class="container">
-                    <a class="list-button" id="leadership">
+                    <a href="{% url 'interview:hint_page' 'leadership' %}" class="list-button" id="leadership">
                         <div class="list">
                             <div class="list-title">Leadership<br> Questions</div>
                             <img class="list-pic" src="{% static 'interview/images/leadership.png' %}" alt="leader" />
                         </div>
                     </a>
-                    <a class="list-button" id="decision">
+                    <a href="{% url 'interview:hint_page' 'decision_making' %}" class="list-button" id="decision">
                         <div class="list">
                             <div class="list-title">Decision-making Questions</div>
                             <img class="list-pic" src="{% static 'interview/images/teaching.png' %}"

@@ -6,6 +6,7 @@ urlpatterns = [
     path("setup", views.setup_page, name="setup_page"),
     path("interview/<int:interview_id>/question_index<int:question_index>/", views.interview_question_page,
          name="interview_question_page"),
+    path("hint/<str:question_type>/", views.hint_page, name="hint_page"),
     path("summary", views.interview_summary, name="summary"),
     path("landingpage", views.landing_page, name="landing_page"),
     path("", views.landing_page, name="landing_page"),

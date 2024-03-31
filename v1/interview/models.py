@@ -53,6 +53,7 @@ class InterviewInfo(models.Model):
     ]
     role = models.CharField(choices=ROLE_CHOICE, max_length=20)
     total_time = models.IntegerField(default=0)  # unit second
+    # timestamp = models.DateTimeField(auto_now_add=True)
 
 
 # interview question
