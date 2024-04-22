@@ -12,15 +12,21 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 import whisper
 from django.http import JsonResponse, HttpResponseNotFound
-import openai
+from openai import OpenAI
 from decouple import config
 import re
 from django.core import serializers
+from django.core.paginator import Paginator
+from datetime import datetime
+import json
+
 from interview_django_v2 import settings
 
 # model = whisper.load_model("tiny")
 # TODO: remember to put in another file
-openai.api_key = "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"
+openai_key = ""
+hume_key = ""
+client = OpenAI(api_key=openai_key)
 
 
 # Create your views here.
@@ -114,6 +120,7 @@ def hint_page(request, question_type):
         total_question=question_count,
         year_of_experience=year_of_experience,
         role="IC",
+        interview_type=question_type,
         total_time=0)
     setup_info.save()
 
@@ -201,7 +208,7 @@ def get_answer_from_chatgpt(question_text, answer_text):
     # print(rewrite_prompt)
 
     print("getting access")
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": access_prompt},
@@ -215,7 +222,7 @@ def get_answer_from_chatgpt(question_text, answer_text):
     print("-------------")
 
     print("getting rewrite")
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": access_prompt},
@@ -229,6 +236,24 @@ def get_answer_from_chatgpt(question_text, answer_text):
     print(rewrite_answer_content)
 
     return access_answer_content, rewrite_answer_content
+
+
+def get_answer_from_chatgpt_v2(question_text, answer_text):
+    prompt_from_file = open("./interview/interview_data/prompt.txt")
+    prompt_default = prompt_from_file.read()
+    json_prompt_default = json.loads(prompt_default)
+    json_prompt_default['input']['question'] = question_text
+    json_prompt_default['input']['answer'] = answer_text
+
+    response = client.chat.completions.create(
+        model="gpt-4-1106-preview",
+        messages=[
+            {"role": "user", "content": json.dumps(json_prompt_default)},
+        ]
+    )
+
+    response_message = response.choices[0].message
+    return response_message, "none"
 
 
 def format_access(text):
@@ -304,22 +329,23 @@ def format_rewrite(text):
     return result
 
 
-def hume_process(voice_file):
+def hume_process(voice_path):
     # get Sentiment for hume
     from hume import HumeBatchClient
     # from hume.models.config import BurstConfig
     from hume.models.config import ProsodyConfig
 
-    client = HumeBatchClient("MF6rs18g5wGNTjoJHiZgeu1b9gGGv1iyvTAB6t5nOjWCMmcl")
+    hume_client = HumeBatchClient(hume_key)
 
-    files = [voice_file]
+    files = [voice_path]
     # burst_config = BurstConfig()
     prosody_config = ProsodyConfig()
 
-    job = client.submit_job([], [prosody_config], files=files)
+    job = hume_client.submit_job([], [prosody_config], files=files)
 
     print("Running...", job)
     job.await_complete()
+
     predictions = job.get_predictions()
 
     # sum all fragments
@@ -370,12 +396,12 @@ def map_volume(mp3_file_path, target_range=(1, 100)):
     return current_volume, mapped_volume
 
 
-def get_speak_rate(transcript):
+def get_speak_rate(voice_path, transcript):
     import librosa
     from nltk.tokenize import word_tokenize
     import string
     # 从WAV文件中加载音频
-    audio_data, sample_rate = librosa.load("xiong.mp3")
+    audio_data, sample_rate = librosa.load(voice_path)
 
     # 计算音频的时长（秒）
     duration = librosa.get_duration(y=audio_data, sr=sample_rate)
@@ -400,14 +426,21 @@ def upload_voice(request):
             print(voice_file)
             save_uploaded_file(voice_file, "./recorded_voice/" + str(voice_file) + ".mp3")
 
-            file = open("./recorded_voice/" + str(voice_file) + ".mp3", "rb")
-            transcription = openai.Audio.transcribe("whisper-1", file)
-            voice_text = transcription.get("text")
+            voice_path = "./recorded_voice/" + str(voice_file) + ".mp3"
+            saved_voice_file = open("./recorded_voice/" + str(voice_file) + ".mp3", "rb")
+            transcription = client.audio.transcriptions.create(
+                model="whisper-1",
+                file=saved_voice_file
+            )
+            voice_text = transcription.text
 
             # deal with voice
-            sentiment_dict = hume_process(voice_file)
-            current_volume, mapped_volume = map_volume(voice_file)
-            speaking_rate = get_speak_rate(transcription)
+            sentiment_dict = hume_process(voice_path)
+            current_volume, mapped_volume = map_volume(voice_path)
+            speaking_rate = get_speak_rate(voice_path, transcription)
+
+            vocal_related = "情感: " + str(sentiment_dict) + "\n" + "音量: " + str(
+                mapped_volume) + "\n" + "语速: " + str(speaking_rate)
 
             # # voice to text
             # # options = whisper.DecodingOptions(language='en', fp16=False)
@@ -425,8 +458,8 @@ def upload_voice(request):
             # del model
             # torch.cuda.empty_cache()
 
-            access_answer_content, rewrite_answer_content = get_answer_from_chatgpt(question_text, voice_text)
-            # access_answer_content, rewrite_answer_content = 123, 123
+            # access_answer_content, rewrite_answer_content = get_answer_from_chatgpt_v2(question_text, voice_text)
+            access_answer_content, rewrite_answer_content = "temp", "temp"
 
             question_index = int(request.POST['question_index'])
             interview_id = InterviewInfo.objects.get(interview_id=int(request.POST['interview_id']))
@@ -440,8 +473,9 @@ def upload_voice(request):
             return JsonResponse(
                 {'success': True,
                  "voice_text": voice_text,
-                 "my_access": format_access(access_answer_content),
-                 "my_revise": format_rewrite(rewrite_answer_content)
+                 "my_access": access_answer_content,
+                 "my_revise": vocal_related,
+                 "my_vocal": rewrite_answer_content
                  })
 
             # TODO: error类型需要更新
@@ -451,10 +485,10 @@ def upload_voice(request):
         return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 
-# dashboard页面
+# test dashboard页面
 def dashboard(request):
     pass
-    return render(request, 'interview/dashboard.html')
+    return render(request, 'interview/dashboard_test.html')
 
 
 # 显示已答题和未答题
@@ -463,7 +497,7 @@ def question_list(request):
     pass
 
 
-# 显示所有interview
+# 显示所有interview, dispatched
 @csrf_exempt
 def interview_list(request):
     interview_data = InterviewInfo.objects.all()
@@ -473,13 +507,119 @@ def interview_list(request):
     return JsonResponse({'success': True, "interview_data": interview_data, "pk_values": pk_values})
 
 
-# 显示单次interview的所有question
+# 显示单次interview的所有question, dispatched
 def questions_list_in_interview(request, interview_id):
-    print(interview_id)
     interview_questions = InterviewQuestion.objects.filter(interview_id=interview_id)
-    # interview_questions_data = serializers.serialize('json', interview_questions)
-    # print(interview_questions_data)
-    return render(request, 'interview/interview_questions.html', {'interview_questions': interview_questions})
+    interview_info = InterviewInfo.objects.get(interview_id=interview_id)
+    print(interview_info.interview_type)
+    return render(request, 'interview/interview_questions_test.html', {'interview_questions': interview_questions})
+
+
+# dashboard 主页
+@login_required()
+def dashboard_main(request):
+    # get current user
+    current_user = request.user.username
+    user_instance = User.objects.filter(username=str(current_user))[0]
+
+    # 返回所有面试的信息(分页)
+    interview_data = InterviewInfo.objects.filter(user_id=user_instance)
+
+    # id修改, 时间保留日期, 题目分数取平均
+    processed_page_data = []
+
+    for i in interview_data:
+        processed_page_item = {}
+        processed_page_item.setdefault('interview_id', i.interview_id)
+        processed_page_item.setdefault('interview_type', i.interview_type.capitalize())
+        processed_page_item.setdefault('timestamp', i.timestamp.strftime("%Y-%m-%d"))
+
+        questions = InterviewQuestion.objects.filter(interview_id=i.interview_id)
+
+        language_score_list = []
+        vocal_score_list = []
+        content_score_list = []
+        for q in questions:
+            language_score_list.append(q.language_score)
+            vocal_score_list.append(q.vocal_score)
+            content_score_list.append(q.content_score)
+
+        processed_page_item.setdefault('language_score', sum(language_score_list) / len(language_score_list))
+        processed_page_item.setdefault('vocal_score', sum(vocal_score_list) / len(vocal_score_list))
+        processed_page_item.setdefault('content_score', sum(content_score_list) / len(content_score_list))
+
+        processed_page_data.append(processed_page_item)
+
+    items_per_page = 5
+    paginator = Paginator(processed_page_data, items_per_page)
+    page_number = request.GET.get('page', 1)
+    processed_page_data = paginator.get_page(page_number)
+
+    # 返回根据题目类型分类的信息(暂时不做分页)
+    top10_questions = Question.objects.filter(question_type='top10')
+    communication_questions = Question.objects.filter(question_type='communication')
+    decision_making_questions = Question.objects.filter(question_type='decision_making')
+    teamwork_questions = Question.objects.filter(question_type='teamwork')
+    leadership_questions = Question.objects.filter(question_type='leadership')
+
+    return_data = {
+        'interview_data': processed_page_data,
+        'top10_questions': top10_questions,
+        'communication_questions': communication_questions,
+        'decision_making_questions': decision_making_questions,
+        'teamwork_questions': teamwork_questions,
+        'leadership_questions': leadership_questions,
+    }
+
+    return render(request, 'interview/dashboard_main.html', return_data)
+
+
+# dashboard interview 单页
+@login_required()
+def dashboard_interview(request, interview_id):
+    interview_questions = InterviewQuestion.objects.filter(interview_id=interview_id)
+    interview_info = InterviewInfo.objects.get(interview_id=interview_id)
+    # print(interview_info.interview_type)
+    # print(interview_info.timestamp.strftime("%Y-%m-%d"))
+
+    render_data = {
+        'interview_questions': interview_questions,
+        'interview_type': str(interview_info.interview_type).capitalize(),
+        'interview_data': interview_info.timestamp.strftime("%m/%d/%Y"),
+    }
+
+    return render(request, 'interview/dashboard_interview.html', render_data)
+
+
+# single question practice
+@login_required()
+def single_question_practice(request, question_id, question_type):
+    print("single_question_practice")
+    # create a single question interview
+    # generate interviewInfo
+    current_user = request.user.username
+    user_instance = User.objects.filter(username=str(current_user))[0]
+    question_type = question_type.lower()
+
+    setup_info = InterviewInfo(
+        user_id=user_instance,
+        total_question=1,
+        year_of_experience=0,
+        role="IC",
+        interview_type=question_type,
+        total_time=0)
+    setup_info.save()
+
+    # generate interview questions
+    question_interview = InterviewQuestion(
+        interview_id=setup_info,
+        question_id=Question.objects.filter(question_id=question_id)[0],
+        question_index=1,
+    )
+    question_interview.save()
+
+    # 跳转到面试页面
+    return interview_question_page(request, setup_info.interview_id, 1)
 
 
 # temp use, delete later
@@ -526,6 +666,7 @@ def questions_list_in_interview(request, interview_id):
 
 # test
 def test(request):
+    # load questions from csv
     # import pandas as pd
     # questions_from_file = pd.read_csv("./interview/interview_data/behaviorQuestions.csv", sep=',')
     # df = pd.DataFrame(questions_from_file)
