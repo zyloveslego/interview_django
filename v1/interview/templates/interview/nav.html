@@ -12,6 +12,9 @@
         <ul id="navBar">
             <li class="navMenu"><a href="{% url 'interview:landing_page' %}" class="nav-menu-color">Home</a></li>
             <li class="navMenu"><a href="{% url 'interview:landing_page' %}" class="nav-menu-color">Mock Interview</a></li>
+            {#--summary临时用--#}
+            <li class="navMenu"><a href="{% url 'interview:dashboard_main' %}" class="nav-menu-color">Dashboard</a></li>
+            {#--summary临时用--#}
             <li class="navMenu"><a href="{% url 'interview:career_intro' %}" class="nav-menu-color">Career Path Builder</a></li>
             <li class="navMenu"><a href="{% url 'interview:track_intro' %}" class="nav-menu-color">Smart Tracking</a></li>
             {% if user.is_authenticated %}

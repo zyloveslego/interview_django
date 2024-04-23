@@ -1,0 +1,98 @@
+{
+"instructions": "Evaluate the candidate's answer based on the specified criteria, providing a score from 1 to 10, an assessment, suggestions for improvement, and an example revision for each criterion. In the example revision, 'original' should be a sentence or phrase from the candidate's answer, and 'revised' should be your revised version based on the assessment and suggestions. Provide an overall score and assessment at the end. Output the evaluation in JSON format.",
+"criteria": [
+"Relevance",
+"Specificity",
+"Actions",
+"Results and Impact",
+"Learning",
+"Clarity",
+"Soft Skills"
+],
+"examples": [
+{
+"question": "Describe a time when you had a disagreement with your colleague?",
+"answer": "Let me tell you about a disagreement I had with a colleague recently at work. We were working together on developing a new product roadmap and had different views on what the priorities should be for the next release. My colleague wanted to focus on building out as many new features as possible, taking an aggressive approach. I felt it was more important to spend time optimizing existing features based on customer feedback first before adding too many new capabilities. Our engineering team had also recently gone through some turnover, so I thought ramping them up slowly made sense. We had an open debate about the pros and cons of each approach. Eventually, we agreed to do some compromise where we focused about 60% of the release on improvements, bug fixes and polish, while still introducing one or two carefully selected new features.",
+"evaluation": {
+"criteria_evaluations": [
+{
+"criterion": "Relevance",
+"score": 9,
+"assessment": "The answer directly addresses the interviewer's question by providing a specific example of a disagreement with a colleague.",
+"suggestions": "The answer could provide more context on the roles or responsibilities of the individuals involved in the disagreement.",
+"example_revision": {
+"original": "Let me tell you about a disagreement I had with a colleague recently at work.",
+"revised": "As a product manager, let me tell you about a recent disagreement I had with a senior engineer on my team regarding our product roadmap."
+}
+},
+{
+"criterion": "Specificity",
+"score": 8,
+"assessment": "The answer provides good details about the situation, including the different perspectives and the context of the engineering team's turnover.",
+"suggestions": "Additional details on the specific product, features, or customer feedback could further strengthen the example.",
+"example_revision": {
+"original": "I felt it was more important to spend time optimizing existing features based on customer feedback first before adding too many new capabilities.",
+"revised": "Based on customer feedback indicating frustration with our app's performance and usability issues, I felt it was crucial to prioritize optimizing our existing features for our flagship mobile app before adding too many new capabilities that could further deteriorate the user experience."
+}
+},
+{
+"criterion": "Actions",
+"score": 7,
+"assessment": "The answer mentions having an open debate about the different approaches, but could provide more details on the specific actions taken to resolve the disagreement.",
+"suggestions": "Elaborate on the steps you took to facilitate the discussion, propose solutions, and ultimately reach a compromise.",
+"example_revision": {
+"original": "We had an open debate about the pros and cons of each approach.",
+"revised": "To resolve the disagreement, I scheduled a meeting to have an open and collaborative discussion where we could both present our perspectives and supporting rationale. After thoroughly considering the pros and cons of each approach, I proposed the compromise solution of allocating a majority of the release to optimizations while still allowing for a few new features."
+}
+},
+{
+"criterion": "Results and Impact",
+"score": 8,
+"assessment": "The answer conveys the positive outcome of reaching a compromise solution, but could provide more details on the specific impact or results achieved.",
+"suggestions": "Quantify or describe the impact of the compromise solution, such as improvements in customer satisfaction, product quality, or team morale.",
+"example_revision": {
+"original": "Eventually, we agreed to do some compromise where we focused about 60% of the release on improvements, bug fixes and polish, while still introducing one or two carefully selected new features.",
+"revised": "Eventually, we agreed to the compromise solution of focusing 60% of the release on improvements, bug fixes, and polishing existing features, while carefully introducing one or two new high-priority features requested by our top customers. This approach led to a 25% reduction in customer support tickets related to performance and usability issues, and a 15% increase in user retention over the following quarter."
+}
+},
+{
+"criterion": "Learning",
+"score": 6,
+"assessment": "The answer does not explicitly mention any lessons learned or growth mindset from the experience.",
+"suggestions": "Consider adding a sentence or two about what you learned from the disagreement and how it has influenced your approach to handling similar situations in the future.",
+"example_revision": {
+"original": "",
+"revised": "This experience taught me the importance of actively listening to different perspectives and being open to compromise solutions that balance competing priorities. Moving forward, I make a conscious effort to facilitate collaborative decision-making and find common ground when disagreements arise within my team."
+}
+},
+{
+"criterion": "Clarity",
+"score": 8,
+"assessment": "The answer is well-structured and easy to follow, demonstrating effective communication skills.",
+"suggestions": "Consider breaking up some of the longer sentences to improve conciseness and readability.",
+"example_revision": {
+"original": "My colleague wanted to focus on building out as many new features as possible, taking an aggressive approach. I felt it was more important to spend time optimizing existing features based on customer feedback first before adding too many new capabilities.",
+"revised": "My colleague advocated for an aggressive approach, focusing on building out as many new features as possible. However, I believed it was crucial to first optimize our existing features based on customer feedback before introducing too many new capabilities."
+}
+},
+{
+"criterion": "Soft Skills",
+"score": 9,
+"assessment": "The answer effectively illustrates several soft skills, including collaboration, communication, problem-solving, and customer-centricity.",
+"suggestions": "Highlight additional soft skills, such as active listening, empathy, or conflict resolution, that were demonstrated in handling the disagreement.",
+"example_revision": {
+"original": "",
+"revised": "Throughout the disagreement, I made a conscious effort to actively listen to my colleague's perspective with an open mind and empathy for their viewpoint. This helped us find common ground and facilitated a resolution that addressed both our concerns."
+}
+}
+],
+"overall_score": 8,
+"overall_assessment": "The candidate's answer provides a relevant and specific example of a disagreement with a colleague, demonstrating effective communication, problem-solving, and collaboration skills. The answer could be further improved by providing more details on the actions taken to resolve the disagreement, the quantifiable impact of the compromise solution, and the lessons learned from the experience."
+}
+}
+],
+"input": {
+"question": "Describe a time when you demonstrated leadership?",
+"answer": "Last year, I was part of a group project in one of my classes. We had to work together to create a marketing plan for a new product launch. At first, our group was struggling to make progress because we had conflicting ideas and couldn't agree on a direction. I stepped up and suggested we split into smaller teams to research different aspects of the project, then regroup to share our findings. This helped us divide the workload more effectively. When we came back together, I facilitated a discussion to synthesize everyone's input into a cohesive plan. While it wasn't a major leadership role, I helped our group get organized and complete the project successfully."
+}
+}

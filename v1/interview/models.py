@@ -1,6 +1,7 @@
 from django.db import models
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # Create your models here.
@@ -52,8 +53,20 @@ class InterviewInfo(models.Model):
         ('Manager', 'Manager'),
     ]
     role = models.CharField(choices=ROLE_CHOICE, max_length=20)
+    INTERVIEW_TYPE_CHOICE = [
+        ('top10', 'top10'),
+        ('communication', 'communication'),
+        ('decision_making', 'decision_making'),
+        ('teamwork', 'teamwork'),
+        ('leadership', 'leadership'),
+    ]
+    interview_type = models.CharField(
+        choices=INTERVIEW_TYPE_CHOICE,
+        default='communication',
+        max_length=20,
+    )
     total_time = models.IntegerField(default=0)  # unit second
-    # timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=timezone.now)
 
 
 # interview question
@@ -64,3 +77,7 @@ class InterviewQuestion(models.Model):
     user_answer = models.CharField(max_length=2000)
     access_answer = models.CharField(max_length=2000)
     revise_answer = models.CharField(max_length=2000)
+
+    language_score = models.IntegerField(default=1)
+    vocal_score = models.IntegerField(default=1)
+    content_score = models.IntegerField(default=1)

@@ -1,0 +1,183 @@
+{% extends 'interview/nav.html' %}
+
+{% block header %}
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Mock Interview - Dashboard</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'interview/css/dashboard.css' %}">
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1a12d6fc49.js" crossorigin="anonymous"></script>
+</head>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div id="previous-practice" class="white-background">
+        <div class="section-title">Previous Practices</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question List</th>
+                    <th>Practice Date</th>
+                    <th>Language</th>
+                    <th>Vocal</th>
+                    <th>Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for interview in interview_data %}
+                        <tr>
+                        <td><button class="cell-button" onclick="dashboardInterview({{ interview.interview_id }})">{{ interview.interview_type }}</button></td>
+                        <td>{{ interview.timestamp }}</td>
+                        <td>{{ interview.language_score }}</td>
+                        <td>{{ interview.vocal_score }}</td>
+                        <td>{{ interview.content_score }}</td>
+                        </tr>
+                    {% endfor %}
+{#                <tr>#}
+{##}
+{#                    <td><button class="cell-button">Leadership 10</button></td>#}
+{#                    <td>3/2/2024</td>#}
+{#                    <td>8</td>#}
+{#                    <td>8</td>#}
+{#                    <td>8</td>#}
+{##}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td><button class="cell-button">Teamwork 10</button></td>#}
+{#                    <td>2/20/2024</td>#}
+{#                    <td>7</td>#}
+{#                    <td>8</td>#}
+{#                    <td>6</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td><button class="cell-button">Decision-making 10</button></td>#}
+{#                    <td>2/10/2024</td>#}
+{#                    <td>7</td>#}
+{#                    <td>8</td>#}
+{#                    <td>6</td>#}
+{#                </tr>#}
+
+            </tbody>
+        </table>
+    
+        <!-- 分页导航 -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if interview_data.has_previous %}
+                    <a href="?page=1">&laquo; 第一页</a>
+                    <a href="?page={{ interview_data.previous_page_number }}">上一页</a>
+                {% endif %}
+        
+                <span class="current">
+                    第 {{ interview_data.number }} 页，共 {{ interview_data.paginator.num_pages }} 页。
+                </span>
+        
+                {% if interview_data.has_next %}
+                    <a href="?page={{ interview_data.next_page_number }}">下一页</a>
+                    <a href="?page={{ interview_data.paginator.num_pages }}">最后一页 &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
+    </div>
+
+    <div id="question-bank" class="white-background">
+        <div class="section-title">Question Bank</div>
+
+        <body>
+
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">Top 10</button>
+                <button class="tablinks" onclick="openTab(event, 'Tab2')">Communication 10</button>
+                <button class="tablinks" onclick="openTab(event, 'Tab3')">Decision-making 10</button>
+                <button class="tablinks" onclick="openTab(event, 'Tab4')">Teamwork 10</button>
+                <button class="tablinks" onclick="openTab(event, 'Tab5')">Leadership Management 10</button>
+            </div>
+
+            <div id="Tab1" class="tabcontent tab-content-active">
+                <ul>
+                    {% for question in top10_questions %}
+                        <li><a href="{% url 'interview:single_question_practice' question_id=question.question_id question_type="top10" %}">{{ forloop.counter }}. {{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="Tab2" class="tabcontent">
+
+                <ul>
+                    {% for question in communication_questions %}
+                        <li><a href="{% url 'interview:single_question_practice' question_id=question.question_id question_type="communication" %}">{{ forloop.counter }}. {{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="Tab3" class="tabcontent">
+                <ul>
+                    {% for question in decision_making_questions %}
+                        <li><a href="{% url 'interview:single_question_practice' question_id=question.question_id question_type="decision_making" %}">{{ forloop.counter }}. {{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="Tab4" class="tabcontent">
+                <ul>
+                    {% for question in teamwork_questions %}
+                        <li><a href="{% url 'interview:single_question_practice' question_id=question.question_id question_type="teamwork" %}">{{ forloop.counter }}. {{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="Tab5" class="tabcontent">
+                <ul>
+                    {% for question in leadership_questions %}
+                        <li><a href="{% url 'interview:single_question_practice' question_id=question.question_id question_type="leadership" %}">{{ forloop.counter }}. {{ question.question_text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <script>
+                // Function to switch between tabs
+                function openTab(evt, tabName) {
+                    // Hide all tab contents
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+
+                    // Deactivate all tab links
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+
+                    // Show the selected tab content and mark the button as active
+                    document.getElementById(tabName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+
+                // Open the default tab on page load
+                document.getElementById("defaultOpen").click();
+
+                function dashboardInterview(interview_id) {
+                    window.location.href = "{% url 'interview:dashboard_interview' interview_id="interview_id" %}".replace("interview_id", interview_id);
+                }
+
+
+            </script>
+
+        </body>
+    </div>
+</main>
+
+{% endblock %}

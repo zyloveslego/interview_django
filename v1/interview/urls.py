@@ -27,7 +27,10 @@ urlpatterns = [
     path('logout', views.user_logout, name='logout'),
 
     path('dashboard', views.dashboard, name='dashboard'),
-    path('interview_list', views.interview_list, name='interview_list'),
-    path('interview_questions/<int:interview_id>/', views.questions_list_in_interview, name='questions_list_in_interview'),
+    # path('interview_list', views.interview_list, name='interview_list'),
+    # path('interview_questions/<str:interview_id>/', views.questions_list_in_interview, name='questions_list_in_interview'),
+    path('dashboard_main', views.dashboard_main, name='dashboard_main'),
+    path('dashboard_interview/<str:interview_id>/', views.dashboard_interview, name='dashboard_interview'),
+    path('single_question/<str:question_id>/<str:question_type>/', views.single_question_practice, name='single_question_practice'),
 
 ]

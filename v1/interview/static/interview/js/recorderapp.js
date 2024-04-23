@@ -5,7 +5,7 @@ let gumStream; 						//stream from getUserMedia()
 let rec; 							//Recorder.js object
 let input; 							//MediaStreamAudioSourceNode we'll be recording
 
-// shim for AudioContext when it's not avb. 
+// shim for AudioContext when it's not avb.
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext; //audio context to help us record
 
@@ -99,7 +99,7 @@ function startRecording() {
 		//pause
 		rec.stop();
 		pauseButton.innerHTML="Resume";
-    //update the Instruction For Recording 
+    //update the Instruction For Recording
 		document.getElementById("instructionForRecording").innerHTML="Take a breathe...Click 'Resume' when you are ready."
 
 	}else{
@@ -107,7 +107,7 @@ function startRecording() {
 		rec.record()
 		pauseButton.innerHTML="Pause";
 
-    //update the Instruction For Recording 
+    //update the Instruction For Recording
 		document.getElementById("instructionForRecording").innerHTML="Recording..."
 
 	}
@@ -116,10 +116,10 @@ function startRecording() {
 function stopRecording() {
     console.log("stopButton clicked");
 
-//update the Instruction For Recording 
+//update the Instruction For Recording
     document.getElementById("instructionForRecording").innerHTML = `Great! Your answer is recorded.<br> Don't forget to submit your answer.`;
 
-//show Your Answer 
+//show Your Answer
     document.getElementById("yourAnswer").innerHTML = "Your Answer:";
 
     //disable the stop button, enable the record too allow for new recordings
@@ -205,9 +205,13 @@ function createDownloadLink(blob) {
             if (this.readyState === 4) {
                 console.log("Server returned: ", e.target.responseText);
                 const response = JSON.parse(this.responseText);
-                document.getElementById("my_answer").innerHTML = response.voice_text;
-                document.getElementById("my_assessment").innerHTML = response.my_access;
-                document.getElementById("my_revise").innerHTML = response.my_revise;
+                // document.getElementById("my_answer").innerHTML = response.voice_text;
+                // document.getElementById("my_assessment").innerHTML = response.my_access;
+                // document.getElementById("my_revise").innerHTML = response.my_revise;
+                document.getElementById("my_answer").innerText = response.voice_text;
+                document.getElementById("my_assessment").innerText = response.my_access;
+                document.getElementById("my_revise").innerText = response.my_revise;
+                document.getElementById("my_vocalPresence").innerText = response.my_vocal;
 
                 // loading pic hidden
                 document.getElementById("spinner").style.display = 'none';
